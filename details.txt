@@ -1,0 +1,17 @@
+Tasks
+Pick a previous senior design project, or alternate topic to base your final project on. Your time frame can either be 6 months or 12 months, depending on the size and depth of your project. You MUST get it approved by the professor beforehand. Submit your 1st, 2nd, and 3rd choices through email, including your group number, for a project in case there is a conflict.
+
+Final Project Breakdown: CS3338 Final Project.docxDownload CS3338 Final Project.docx
+
+
+Submission Format
+Submit your GitHub repository link. The repo folder should include the following:
+
+Software Design Document (SDD) as a .tex file (1 Document Overall, with revisions at each snapshot)
+Software Requirement Specification (SRS) as a .tex file (1 Document Overall, with revisions at each snapshot)
+README / User manual (must be built into your repo and include your Jira link): formal objective breakdown, goals/reason why it’s needed, how to download or access, etc.  as a .tex file
+Design Spec: breakdown of every page/part/tool of your project as a .tex file, this should include a list of all packages, dependencies, and libraries you would need to upload into a Docker container for you project to run
+Snapshot Objectives (Snapshot 1/2/3/4): List the objectives of each snapshot on a single document as a .tex file
+TestRail Documents (Snapshot 2/3/4): Submit the reports created for your test run, there should be 4 different documents
+Workflow: Create a high level diagram of your project, this should explain, at a overview level, how your software works (how a user connects to your UI/UX software, where their data goes, what has access)
+Time Frame
