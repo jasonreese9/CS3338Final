@@ -9,7 +9,7 @@
 
 \begin{document}
 
-\title{Software_Requirement_Specifications}
+\title{Software Requirement Specifications}
 \author{Jason Reese}
 \author{Jason Reese}
 \author{Jason Reese}
@@ -18,12 +18,57 @@
 \maketitle
 
 \fancyhf{}
-\fancyhead[C]{Software_Requirement_Specifications}
+\fancyhead[C]{Software Requirement Specifications}
 \fancyfoot[C]{\thepage}
 
 This document will explain 
 
-\section{Section 1}
-The \textit{Section 1} .
+\section{Requirements}
+
+\begin{enumerate}
+	\item There will be four types of users, students, faculty, student organizations, and admins
+	\item The admin will be able to manage everything about the site and will have every permission
+	\item Any registered user should be able to view an events page and RSVP
+	\item Faculty and student organizations should be able to create/schedule events, delete/cancel events, reschedule events, and see how many students are interested. 
+	\begin{enumerate}
+		\item Students who have RSVP’d for an event should get a notification when an event they were interested in has been adjusted.
+	\end{enumerate}
+	\item New users can register to be a student, student organization, or a faculty. Student organizations and faculty must be approved by an admin.
+	\item Only admins and faculty will be able to view a student’s profile. Student organizations are not allowed to view student profiles due to FERPA.
+	\item Students will be able to view their own profiles but will not have access to the profiles of other students.
+	\item Students will view a homepage upon logging into their accounts.
+	\item Faculty should be able to look up a student by name to find their profile.
+	\item When creating events, faculty and student organizations will be able to give the events identifiers. Students will be able to filter by these identifiers explicitly and events will be filtered based on the identifiers associated with the student’s profile upon visiting the page.
+	\item Students will have access to a scoreboard page that will display how much of the flight plan they have completed, suggested activities, and what they should be doing depending on the year they are in.
+	\item The flight plan will be split into three sections: academic preparation, career development, and leadership \& community engagement. 
+	\item Academic preparation will help the students with figuring out which classes they need to take to graduate and how they can find help with those classes.
+	\item Career development will encourage the students to attend events related to their career and will help them find jobs.
+	\item Leadership \& Community Engagement will encourage the students to attend events and interact with their community and join clubs or student organizations related to their major.
+	\item The design of our project is such that we will have a database that will store our events and our users and their permissions.
+	\item We will have a frontend, an API, a backend, and a database.
+	\item Permissions will be granted based on roles.
+	\item Every user will have a profile. Different roles will have different profiles.
+	\item The profile will contain information about the user which is only visible to certain users based on their roles.
+	\item Students will only be able to view their own profiles and faculty or student organization profiles.
+	\item The roles we have are admin, faculty, student organization, and student.
+	\item When registering, users can choose to sign up as a student, faculty, or student organization.
+	\item If a user chooses to sign up as a student they are automatically the student role.
+	\item If the user tries to sign up as a faculty or student organization an admin must review and approve it and assign them roles first.
+	\item When creating events, faculty and student organizations will be able to input information related to the event including:
+	\item Who is hosting the event
+	\item The time the event takes place
+	\item If necessary, when to register and when registration opens and closes
+	\item Where to go for more information
+	\item Whether the event requires registration
+	\item The identifiers or keywords associated with the event that can be used to filter for the event.
+	\item The location of the event (including online or in-person)
+	\item Any additional information regarding the event and who to contact with questions regarding the event.
+	\item The ability to upload pictures, flyers or links for the event.
+	\item Who posted the event.
+	\item Every user will have a password, the password will be salted and use bcrypt.
+	\item A future release will support using SingleSignOn instead of storing passwords.
+\end{enumerate}
+
+
 
 \end{document}

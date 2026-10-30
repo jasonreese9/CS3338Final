@@ -5,7 +5,8 @@ all: project_design_spec.pdf
 	$(MAKE) -C Software_Design_Documents all
 	$(MAKE) -C TestRail_Documents all
 	$(MAKE) -C Workflow_Diagram all
-	$(MAKE) -C User_Manual Snapshot_Objectives all
+	$(MAKE) -C User_Manual 
+	$(MAKE) -C Snapshot_Objectives all
 
 %.pdf: %.tex
 	pdflatex  $<
@@ -16,4 +17,5 @@ clean:
 	$(MAKE) -C Software_Design_Documents clean
 	$(MAKE) -C TestRail_Documents clean
 	$(MAKE) -C Workflow_Diagram clean
-	$(MAKE) -C User_Manual Snapshot_Objectives clean
+	$(MAKE) -C User_Manual clean
+	$(MAKE) -C Snapshot_Objectives clean
