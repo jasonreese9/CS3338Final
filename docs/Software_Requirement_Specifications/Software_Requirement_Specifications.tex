@@ -4,6 +4,12 @@
 \usepackage{indentfirst}
 \usepackage{fancyhdr}
 
+% Automatically prefixes the section number to all first-level enumerate lists
+\usepackage{enumitem}
+% label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
+% leftmargin=3\parindent indents 3 paragraphs.
+\setlist[enumerate,1]{label=\thesubsection.\arabic*,leftmargin=\parindent}
+
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
 
@@ -23,37 +29,110 @@
 
 This document will explain 
 
-\section{Requirements}
-
-\begin{enumerate}
-	\item There will be four types of users, students, faculty, student organizations, and admins
-	\item The admin will be able to manage everything about the site and will have every permission
-	\item Any registered user should be able to view an events page and RSVP
-	\item Faculty and student organizations should be able to create/schedule events, delete/cancel events, reschedule events, and see how many students are interested. 
-	\begin{enumerate}
-		\item Students who have RSVP’d for an event should get a notification when an event they were interested in has been adjusted.
+\section{Registration}
+	\begin{enumerate}[leftmargin=3\parindent]
+	\item When registering, users can choose to sign up as a:
+		\begin{itemize}
+			\item Student
+			\item Faculty
+			\item Student Organization
+			\item Admin
+		\end{itemize}
+	\item If the user tries to sign up as a faculty or student organization an admin must review and approve it and assign them roles first.
 	\end{enumerate}
-	\item New users can register to be a student, student organization, or a faculty. Student organizations and faculty must be approved by an admin.
-	\item Only admins and faculty will be able to view a student’s profile. Student organizations are not allowed to view student profiles due to FERPA.
-	\item Students will be able to view their own profiles but will not have access to the profiles of other students.
-	\item Students will view a homepage upon logging into their accounts.
-	\item Faculty should be able to look up a student by name to find their profile.
-	\item When creating events, faculty and student organizations will be able to give the events identifiers. Students will be able to filter by these identifiers explicitly and events will be filtered based on the identifiers associated with the student’s profile upon visiting the page.
-	\item Students will have access to a scoreboard page that will display how much of the flight plan they have completed, suggested activities, and what they should be doing depending on the year they are in.
+\section{Users}
+	\subsection{User Roles}
+		\begin{enumerate}[leftmargin=3\parindent]
+			\item There will be 4 User Roles
+			\item Permissions will be granted based on roles.
+			\item Student
+				\begin{itemize}
+					\item The Student role is automatically applied when a user registers as a Student.
+				\end{itemize}
+			\item Faculty
+				\begin{itemize}
+					\item The Faculty role requires an Admin to approve the request.
+				\end{itemize}
+			\item Student Organization
+				\begin{itemize}
+					\item The Student Organization role requires an Admin to approve the request.
+				\end{itemize}
+			\item Admin
+				\begin{itemize}
+					\item The Admin role requires an Admin to approve the request.
+					\item When the service is first configured and Admin user must be created.
+				\end{itemize}
+		\end{enumerate}
+	\subsection{User Permissions}
+		\begin{enumerate}[leftmargin=3\parindent]
+			\item Any registered user should be able to view an events page and RSVP
+			\item New users can register to be a student, student organization, or a faculty.
+			\item Student organizations and faculty must be approved by an admin.
+			\item Only admins and faculty will be able to view a student’s profile.
+		\end{enumerate}
+		\subsection{Student Users}
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item Students who have RSVP’d for an event should get a notification when an event they were interested in has been adjusted.
+				\item Students will be able to view their own profiles but will not have access to the profiles of other students.
+				\item Students will view a homepage upon logging into their accounts.
+			\end{enumerate}
+		\subsection{Faculty Users}
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item Faculty and student organizations should be able to create/schedule events, delete/cancel events, reschedule events, and see how many students are interested. 
+				\item Faculty should be able to look up a student by name to find their profile.
+			\end{enumerate}
+		\subsection{Student Organization Users}
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item Faculty and student organizations should be able to create/schedule events, delete/cancel events, reschedule events, and see how many students are interested.
+				\item Student organizations are not allowed to view student profiles due to FERPA.
+			\end{enumerate}
+		\subsection{Admin Users}
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item Admin users will be able to manage everything about the site.
+				\item Admin users will have all permissions.
+			\end{enumerate}
+	\subsection{User Profiles}
+		\begin{enumerate}[leftmargin=3\parindent]
+			\item Every user will have a profile.
+			\item Each role will has a specfict profile.
+			\item The profile will contain information about the user which is only visible to certain users based on their roles.
+			\item Students will only be able to view their own profiles, and faculty or student organization profiles.
+		\end{enumerate}
+\section{Home Page}
+		\subsection{Student Home Page}
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item The students home page will show events filtered based on the identifiers associated with the student’s profile.
+				\item Students will have access to a scoreboard page that will display how much of the flight plan they have completed, suggested activities, and what they should be doing depending on the year they are in.
+				\item Students who have RSVP’d for an event should get a notification when an event they were interested in has been adjusted.
+			\end{enumerate}
+		\subsection{Faculty Home Page}
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item Faculty 
+			\end{enumerate}
+		\subsection{Student Organization Home Page}
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item Student Organization
+			\end{enumerate}
+		\subsection{Admin Home Page}
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item The admin 
+			\end{enumerate}
+\section{Events}
+	\begin{enumerate}
+		\item When creating events, faculty and student organizations will be able to give the events identifiers.
+		\item Students will be able to filter by event identifiers explicitly.
+	\end{enumerate}
+
+\section{Other}
+	\begin{enumerate}
 	\item The flight plan will be split into three sections: academic preparation, career development, and leadership \& community engagement. 
 	\item Academic preparation will help the students with figuring out which classes they need to take to graduate and how they can find help with those classes.
 	\item Career development will encourage the students to attend events related to their career and will help them find jobs.
 	\item Leadership \& Community Engagement will encourage the students to attend events and interact with their community and join clubs or student organizations related to their major.
 	\item The design of our project is such that we will have a database that will store our events and our users and their permissions.
 	\item We will have a frontend, an API, a backend, and a database.
-	\item Permissions will be granted based on roles.
-	\item Every user will have a profile. Different roles will have different profiles.
-	\item The profile will contain information about the user which is only visible to certain users based on their roles.
-	\item Students will only be able to view their own profiles and faculty or student organization profiles.
-	\item The roles we have are admin, faculty, student organization, and student.
-	\item When registering, users can choose to sign up as a student, faculty, or student organization.
-	\item If a user chooses to sign up as a student they are automatically the student role.
-	\item If the user tries to sign up as a faculty or student organization an admin must review and approve it and assign them roles first.
+
+
 	\item When creating events, faculty and student organizations will be able to input information related to the event including:
 	\item Who is hosting the event
 	\item The time the event takes place
