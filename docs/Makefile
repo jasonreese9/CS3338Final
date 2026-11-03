@@ -1,21 +1,16 @@
-.PHONY: all clean
+# -*- mode: makefile -*-
+MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
-all: project_design_spec.pdf
-	$(MAKE) -C Software_Requirement_Specifications all
-	$(MAKE) -C Software_Design_Documents all
-	$(MAKE) -C TestRail_Documents all
-	$(MAKE) -C Workflow_Diagram all
-	$(MAKE) -C User_Manual 
-	$(MAKE) -C Snapshot_Objectives all
+# Define all subdirectories in one clean list
+SUBDIRS := Software_Requirement_Specifications \
+           Software_Design_Documents \
+           TestRail_Documents \
+           Workflow_Diagram \
+           User_Manual \
+           Snapshot_Objectives
 
-%.pdf: %.tex
-	pdflatex  $<
+all:: project_design_spec.pdf
+	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir all; done
 
-clean:
-	rm *.pdf *.log 
-	$(MAKE) -C Software_Requirement_Specifications clean
-	$(MAKE) -C Software_Design_Documents clean
-	$(MAKE) -C TestRail_Documents clean
-	$(MAKE) -C Workflow_Diagram clean
-	$(MAKE) -C User_Manual clean
-	$(MAKE) -C Snapshot_Objectives clean
+clean::
+	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir clean; done

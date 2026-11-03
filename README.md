@@ -46,6 +46,7 @@ This directory contains any images referenced in the documents.
 ## /docs
 This directory contains all of the documentation written for the project.
 
+
 ### /docs/Snapshot_Objectives
 ### /docs/Software_Design_Documents
 ### /docs/Software_Requirement_Specifications

@@ -1,10 +1,13 @@
+# -*- mode: makefile -*-
+MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+
 .PHONY: all clean docs
 
-all: docs
-	
+all:: docs
+	@echo
 
-docs:
+docs::
 	$(MAKE) -C docs
 
-clean:
+clean::
 	$(MAKE) -C docs clean
