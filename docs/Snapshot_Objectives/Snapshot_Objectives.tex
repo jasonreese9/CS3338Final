@@ -4,18 +4,23 @@
 \usepackage{indentfirst}
 \usepackage{fancyhdr}
 
+% Automatically prefixes the section number to all first-level enumerate lists
+\usepackage{enumitem}
+% label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
+% leftmargin=3\parindent indents 3 paragraphs.
+\setlist[enumerate,1]{label=\thesubsection.\arabic*,leftmargin=\parindent}
+
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
 
 \begin{document}
 
 \title{Snapshot Objectives}
+\author{Project Group 26}
 \author{Jason Reese}
-\author{Jason Reese}
-\author{Jason Reese}
+\author{Juan Torres Llamas}
+\author{Victor Hernandez}
 \date{Oct 24th, 2026}
-
-\maketitle
 
 \fancyhf{}
 \fancyhead[C]{Snapshot Objectives}

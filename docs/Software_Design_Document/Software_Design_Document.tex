@@ -1,0 +1,58 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+
+% Automatically prefixes the section number to all first-level enumerate lists
+\usepackage{enumitem}
+% label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
+% leftmargin=3\parindent indents 3 paragraphs.
+\setlist[enumerate,1]{label=\thesubsection.\arabic*,leftmargin=\parindent}
+
+\pagestyle{fancy}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\title{Software Design Document}
+\author{Project Group 26}
+\author{Jason Reese}
+\author{Juan Torres Llamas}
+\author{Victor Hernandez}
+\date{Oct 24th, 2026}
+
+\fancyhf{}
+\fancyhead[C]{Software Design Document}
+\fancyfoot[C]{\thepage}
+
+\maketitle %
+\tableofcontents
+\newpage %
+
+\section{Introduction}
+\subsection{Purpose}
+The Golden Eagle Flight Plan is an application that helps university students track their four-year academic and professional development journey in one centralized platform.
+Currently, students must juggle multiple disconnected sources for campus resources and advising: emails, social media, various websites, and one-off meetings with advisors.
+This application solves that problem by bringing everything together: a gamified scoreboard system that tracks student progress across Academic Preparation, Career
+Development, and Community \& Leadership; a personalized resources and events feed that surfaces content relevant to each student's major, year, and interests; and a faculty-
+facing dashboard that allows advisors to post targeted content and monitor individual student progress. The goal is to graduate well-rounded, career-ready, and community-
+engaged students by making growth visible and actionable for both students and faculty.
+
+\subsection{Document Conventions}
+\subsection{Intended Audience and Reading Suggestions}
+\subsection{System Overview}
+
+\section{Design Considerations}
+    \subsection{Assumptions and Dependencies}
+        \begin{itemize}[leftmargin=3\parindent]
+            \item Users have basic knowledge to navigate websites.
+            \item Users have a working internet connection.
+            \item The software will change as features are added.
+        \end{itemize}
+    \subsection{General Constraints}
+    \subsection{Technical Constraints}
+
+
+
+\end{document}

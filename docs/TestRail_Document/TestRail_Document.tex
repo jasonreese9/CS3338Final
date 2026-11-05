@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+
+% Automatically prefixes the section number to all first-level enumerate lists
+\usepackage{enumitem}
+% label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
+% leftmargin=3\parindent indents 3 paragraphs.
+\setlist[enumerate,1]{label=\thesubsection.\arabic*,leftmargin=\parindent}
+
+\pagestyle{fancy}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\title{Test Rail Document}
+\author{Project Group 26}
+\author{Jason Reese}
+\author{Juan Torres Llamas}
+\author{Victor Hernandez}
+\date{Oct 24th, 2026}
+
+\fancyhf{}
+\fancyhead[C]{TestRail Document}
+\fancyfoot[C]{\thepage}
+
+\maketitle %
+\tableofcontents
+\newpage %
+
+This document will explain 
+
+\section{Section 1}
+The \textit{Section 1} .
+
+\end{document}
