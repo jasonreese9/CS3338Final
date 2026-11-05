@@ -3,6 +3,8 @@
 \usepackage{geometry}
 \usepackage{indentfirst}
 \usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{titling}
 
 % Automatically prefixes the section number to all first-level enumerate lists
 \usepackage{enumitem}
@@ -15,16 +17,24 @@
 
 \begin{document}
 
-\title{User Manual}
-\author{Project Group 26}
-\author{Jason Reese}
-\author{Juan Torres Llamas}
-\author{Victor Hernandez}
-\date{Oct 24th, 2026}
+\newcommand{\myTitle}{User Manual}
+
+\title{\myTitle}
+\author{
+Project Group 26\\
+\\
+Jason Reese \\
+Juan Torres Llamas \\
+Victor Hernandez
+}
+
+\date{\today}
 
 \fancyhf{}
-\fancyhead[C]{User Manual}
-\fancyfoot[C]{\thepage}
+\pagestyle{fancy}
+\fancyhead[L]{\myTitle}
+\fancyhead[R]{Page \thepage}
+\fancyfoot[C]{}
 
 \maketitle %
 \tableofcontents

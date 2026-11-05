@@ -7,4 +7,4 @@ brew install --cask mactex
 
 # make sure we have tex plugins we need:
 sudo tlmgr update --self
-sudo tlmgr install enumitem
+sudo tlmgr install enumitem titling

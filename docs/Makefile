@@ -2,9 +2,9 @@
 MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 # Define all subdirectories in one clean list
-SUBDIRS := Software_Requirement_Specifications \
-           Software_Design_Documents \
-           TestRail_Documents \
+SUBDIRS := Software_Requirement_Specification \
+           Software_Design_Document \
+           TestRail_Document \
            Workflow_Diagram \
            User_Manual \
            Snapshot_Objectives
