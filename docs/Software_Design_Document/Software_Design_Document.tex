@@ -63,6 +63,90 @@ engaged students by making growth visible and actionable for both students and f
     \subsection{General Constraints}
     \subsection{Technical Constraints}
 
+\section{Database Design}
+    \subsection{Tables}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item There will be a users table and a roles table.
+            \item Each role will have a name, permissions, and a unique ID.
+            \item A user will have a list of roles and a profile.
+            \item The profile will be stored in a separate table.
+            \item The users table contains a list of usernames, unique user IDs, and unique role IDs, which are used to look up the roles and profiles in their appropriate tables.
+            \item The profile table associates the profiles with the unique user IDs.
+        \end{enumerate}
 
+\section{Login Page Design}
+    \subsection{Login Page}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item If the user is not logged in they will be redirected to a login page upon attempting to access any part of the site.
+            \item The login page will have two buttons:
+                \begin{itemize}
+                    \item A button for logging into an existing account.
+                    \item A button for creating a new account.
+                \end{itemize}
+        \end{enumerate}
+    \subsection{Logging Into an Existing Account}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item If the user decides to log into an existing account, they will be redirected to a page where they can enter their username and password in two different text fields.
+            \item The username field will be above the password field and both fields will be labeled.
+            \item There will be a forgot password button below the password field.
+            \item Underneath the forgot password button will be a login button.
+            \item The password field will be censored and each character the user enters into the field will appear as a \textbullet\ to the user.
+            \item If the user clicks the login button, the site will first check if the username is present in the database. If it is, it will confirm if the passwords match.
+            \item If the username isn't in the database or the passwords don't match, the user will stay on the login screen and will be prompted with an error telling them Incorrect Username/Password.
+            \item The error will not tell the user which was incorrect, only that one of the two was incorrect.
+            \item If the user is able to successfully login, they will be redirected to the homepage.
+        \end{enumerate}
+    \subsection{Forgot Password}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item If the user clicks the forgot password button, they will be redirected to a screen that tells the user a link to reset the password has been sent to the email associated with the account.
+            \item The confirmation screen should not tell the user what email it was sent to.
+            \item The link in the email will redirect the user to a reset password screen in which they will enter their new password and confirm their new password.
+        \end{enumerate}
+    \subsection{Creating a New Account}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item If the user decides to create a new account, they will be redirected to a page in which they click on one of three buttons that determine whether they are trying to create a Student, Faculty, or Student Organization account.
+            \item If the user clicks the student option they will be asked to enter the following information in different text fields:
+                \begin{itemize}
+                    \item First Name
+                    \item Last Name
+                    \item Username
+                    \item Password
+                    \item Confirm password
+                    \item University Email Address
+                    \item Major
+                    \item Phone number
+                \end{itemize}
+            \item If the user clicks the faculty option they will be asked to enter the following information in different text fields:
+                \begin{itemize}
+                    \item First Name
+                    \item Last Name
+                    \item Username
+                    \item Password
+                    \item Confirm password
+                    \item University Email Address
+                    \item Major
+                    \item Phone number
+                    \item Department
+                    \item Job Title
+                \end{itemize}
+            \item If the user clicks the student organization option they will be asked to enter the following information in different text fields:
+                \begin{itemize}
+                    \item Organization name
+                    \item Username
+                    \item Password
+                    \item Confirm password
+                    \item Email Address
+                    \item Description of the organization
+                \end{itemize}
+            \item The password and confirm password text fields will be censored and each character the user enters into the field will appear as a \textbullet\ to the user.
+        \end{enumerate}
+    \subsection{Account Validation}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item The user will not be able to create an account using an email that is already present in the system.
+            \item The system will reject any email addresses that are entered and do not end in @calstatela.edu for students or faculty.
+            \item The system will accept any email address for student organizations.
+            \item If the user claims to be a Faculty or Student Organization, they will be redirected to a site telling them their account will be created once an Administrator verifies it.
+            \item After it is verified, the user will get a notification through their email telling them their account has been verified and they can now log in.
+        \end{enumerate}
 
 \end{document}
