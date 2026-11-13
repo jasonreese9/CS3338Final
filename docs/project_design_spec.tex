@@ -1,52 +1,189 @@
-\documentclass{article}
-
-\usepackage{geometry}
-\usepackage{indentfirst}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{titling}
-
-% Automatically prefixes the section number to all first-level enumerate lists
-\usepackage{enumitem}
-% label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
-% leftmargin=3\parindent indents 3 paragraphs.
-\setlist[enumerate,1]{label=\thesubsection.\arabic*,leftmargin=\parindent}
-
-\pagestyle{fancy}
-\geometry{a4paper, margin=1in}
-
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{longtable,booktabs,array,enumitem,hyperref,xcolor,graphicx,pdflscape}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlist[itemize]{leftmargin=*}
+\newcommand{\planned}{\textit{(still to be confirmed)}}
+\title{Golden Eagle Flight Plan\\Project Design Specification\\CS 3338 Final Project}
+\author{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
+\date{November 2026}
 \begin{document}
-
-\newcommand{\myTitle}{Project Design Spec}
-
-\title{\myTitle}
-\author{
-Project Group 26\\
-\\
-Jason Reese \\
-Juan Torres Llamas \\
-Victor Hernandez
-}
-
-\date{\today}
-
-\fancyhf{}
-\pagestyle{fancy}
-\fancyhead[L]{\myTitle}
-\fancyhead[R]{Page \thepage}
-\fancyfoot[C]{}
-
-\maketitle %
+\maketitle
+\begin{center}Design draft --- November 2026\end{center}
 \tableofcontents
-\newpage %
+\newpage
 
-This document will explain how each section of the website functions.
+\section{Project Overview}
+This document goes over how we plan to organize the Golden Eagle Flight Plan project, including the pages users will see, how accounts and permissions will work, what information we need to store, and which tools the project will use. It follows our Software Requirements Specification (SRS) and Software Design Document (SDD). Our goal is to put student events and development resources in one place. Some features are still being planned, so this document describes the design rather than saying everything has already been built.
 
-\section{Section 1}
-The \textit{Section 1} handles web display. Web display means rendering the contents of what the
-user should currently be looking at.
+\section{Users and Permissions}
+Our SRS lists four user roles: student, faculty, student organization, and administrator. Each role will have different permissions. The backend will need to check these permissions so users cannot access restricted information just by going directly to a page.
+\begin{longtable}{p{0.27\textwidth}p{0.63\textwidth}}
+\toprule Role & Intended access \\ \midrule
+Student & Register without administrative role approval; view own profile, home page, events, RSVP, and flight-plan scoreboard; cannot view other students' profiles.\\
+Faculty & Register pending administrator approval; manage events, view and search student profiles according to approved access rules.\\
+Student organization & Register pending administrator approval; manage events; cannot access student profiles.\\
+Administrator & Review faculty/organization registrations, assign roles, and administer site permissions and content.\\
+\bottomrule
+\end{longtable}
+\noindent\textbf{Student privacy:} Our requirements mention FERPA when explaining why student organizations cannot view student profiles. Before building this part, we still need to confirm which student information faculty should be allowed to see.
 
-\section{Database}
-The \textit{database} handles requests from all aspects of the website, mainly the main control, the main page, the main tasks, and the explore page.
+\section{Page and Screen Designs}
+\subsection{Login Landing Screen}
+If someone tries to open a page without being logged in, they will be sent to the login page. From there, they can either sign in or create a new account.
+\subsection{Login Form}
+The login form will have a username field, a password field, a forgot-password option, and a login button. The password will be hidden while the user types. If the login fails, the page will say ``Incorrect Username/Password'' instead of telling the user which part was wrong. A successful login will take the user to the homepage.
+\subsection{Password Recovery Screens}
+If a user forgets their password, they can request a reset link. The confirmation page will say that the email was sent, but it will not show the email address. The reset page will ask the user to enter and confirm a new password. We still need to decide how reset links will expire and how to prevent repeated requests.
+\subsection{Account Type Selection and Registration}
+Users select student, faculty, or student organization. Student registration collects first and last name, username, password and confirmation, university email, major, and phone number. Faculty registration also collects department and job title. Organization registration collects organization name, username, password and confirmation, email, and description. The SDD requires unique emails; student/faculty addresses must end in \texttt{@calstatela.edu}, while organization addresses are not restricted to that domain. Password entries are masked. Faculty and organization applications enter an administrator approval flow; students receive the student role automatically.
+\subsection{Home Page}
+After logging in, students will see a homepage. We plan to use it as a starting point for reaching events, profiles, resources, and the scoreboard. The exact layout has not been decided yet.
+\subsection{Profile Pages}
+Every account will have a profile. Students can see their own profile, but not another student's profile. Faculty will be able to search for students by name and view the information they are allowed to access. We still need to agree on which profile fields can be edited and by whom.
+\subsection{Events Page and Event Detail}
+Anyone with an account will be able to look through events and RSVP. Faculty and student organizations will also be able to post events, change dates, cancel events, and check how many people are interested. The event form will include the host, date and time, location, registration details, tags, contact information, and any flyers or useful links. If an event changes, students who RSVP'd should be notified. We have not decided how those notifications will be sent yet.
+\subsection{Event Filtering}
+Students will be able to filter events using tags or keywords. Our requirements also describe showing events that match details in a student's profile. We still need to decide exactly how those matches will be calculated.
+\subsection{Student Scoreboard}
+The scoreboard will show students how much of their flight plan they have completed and suggest activities based on their year in school. It will be divided into Academic Preparation, Career Development, and Leadership \& Community Engagement. The original project also mentions levels and badges, but our group has not worked out those details in the SDD yet.
+\subsection{Resources and AI Screens}
+The original Golden Eagle Flight Plan project includes a resources section and plans for an AI advisor chatbot and resume grader. We can use those ideas for future work, but they are not features our group has confirmed for this version.
+\subsection{Administrator Interface}
+Admins will need a page where they can review faculty and student organization registration requests, approve or reject them, and manage roles. We still need to design the exact page layout.
 
+\section{Backend and API}
+The group's current repository has a Node.js/Express backend and a React web frontend. The provided starter code uses PostgreSQL to count page visits. This is a working direction for the development environment, but it is not the full Golden Eagle Flight Plan feature set. The original senior project describes React Native with Expo and MongoDB Atlas; we should not describe those technologies as implemented in our group repository unless the team adopts them.
+\begin{longtable}{p{0.30\textwidth}p{0.60\textwidth}}
+\toprule Service & Responsibility \\ \midrule
+Authentication & Register accounts, verify password hashes, log in and out, reset passwords, manage sessions or tokens.\\
+Authorization & Check authenticated role and ownership on every protected operation.\\
+Profile service & Read or update permitted profile fields; prevent unauthorized student-record access.\\
+Approval service & Queue faculty/organization applications and allow administrators to approve roles.\\
+Events service & Create, read, update, cancel/delete events; manage RSVP records and tags.\\
+Notifications & Inform RSVP holders of relevant event changes (delivery mechanism to be decided).\\
+Scoreboard service & Return student tasks, progress, and suggestions (future design details to be confirmed).\\
+\bottomrule
+\end{longtable}
+\noindent\textbf{API details:} Our current documents do not list the exact API routes or request formats. We will add those after the backend structure is decided.
+
+\section{Data Model}
+The team's SDD describes planned records for users, roles, and profiles, connected through unique IDs. The SRS also requires event information. At the moment, the starter backend creates a PostgreSQL table named \texttt{visits} and does not yet implement these feature tables. The table below is a proposed data model, not a schema already present in the code.
+\begin{longtable}{p{0.25\textwidth}p{0.65\textwidth}}
+\toprule Entity & Conceptual fields and relationships \\ \midrule
+User & Unique user ID, unique username/email, password hash, role reference(s), profile reference, approval state.\\
+Role & Unique role ID, role name, associated permissions.\\
+Profile & User ID, role-specific attributes such as major or department, with access controls.\\
+Event & Event ID, host, posting user, time, location, registration details, tags, description, links/media, status.\\
+RSVP & User ID, event ID, response state; supports interest counts and change notifications.\\
+Scoreboard task/completion & Potential future entities for tasks and student progress; specific schema pending agreement.\\
+\bottomrule
+\end{longtable}
+\noindent\textbf{Security:} Our SRS requires bcrypt with salted password hashes, so passwords should never be saved as plain text. We will also need permission checks when users open profiles or make changes to events.
+
+\section{Tools, Libraries, and Docker Setup}
+The assignment asks us to list the packages and libraries needed for the project. The team repository currently contains a small Dockerized frontend, backend, and database starter. The dependencies below are copied from those existing project files; they should not be confused with the additional packages required for the planned Golden Eagle Flight Plan features.
+
+\subsection{Dependencies Present in the Repository}
+\begin{longtable}{p{0.25\textwidth}p{0.65\textwidth}}
+\toprule Component & Current packages / configuration \\ \midrule
+Frontend & React 17, React DOM 17, React Scripts 4, and Axios 0.21 (as listed in \texttt{src/frontend/package.json}). \\
+Backend & Node.js with Express 4, CORS, dotenv, and the PostgreSQL \texttt{pg} driver (as listed in \texttt{src/backend/package.json}). \\
+Development & nodemon is a development dependency for the backend. \\
+Database & PostgreSQL 16 Alpine, configured as the \texttt{db} service in \texttt{src/docker-compose.yml}. \\
+Containers & Docker Compose defines \texttt{frontend}, \texttt{backend}, and \texttt{db} services on a shared network with named volumes. \\
+Ports & The frontend publishes port 3000 and the backend publishes port 5001 on the host. \\
+Environment & The Compose file uses \texttt{STUDENT\_NAME} and \texttt{POSTGRES\_USER}, \texttt{POSTGRES\_PASSWORD}, and \texttt{POSTGRES\_DB}, which are normally supplied through a local \texttt{.env} file. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Additional Packages for Planned Features}
+\begin{longtable}{p{0.28\textwidth}p{0.62\textwidth}}
+\toprule Requirement & Proposed implementation / status \\ \midrule
+Password storage & bcrypt for salted password hashing is required by the SRS, but bcrypt is not listed in the current backend package file. \\
+Sessions and role checks & JWT with \texttt{jsonwebtoken} is one possible method. The group has not confirmed a final authentication approach in this repository. \\
+Account approval and events & New API routes, database models, and access-control checks will be needed; they are not yet in the starter backend. \\
+Event images & A file-upload package such as multer may be useful if the team decides to handle uploaded flyers through the backend. \\
+Notifications & The team needs to select a notification delivery method for changes to RSVP'd events. \\
+Original senior-design stack & The reference project used React Native/Expo, MongoDB Atlas, and Mongoose. Those are reference technologies rather than current dependencies in this group repository. \\
+\bottomrule
+\end{longtable}
+
+\subsection{Current Docker Services and Data Flow}
+The Docker setup currently starts a React frontend, an Express backend, and PostgreSQL. The frontend sends a request to the backend, which writes a visit record in PostgreSQL and responds with a message and visit count. This starter request is separate from the registration, events, and scoreboard processes planned in the SRS. For the completed design, the same frontend-to-backend-to-database pattern can support those processes once we add their routes and tables.
+
+The \texttt{src/frontend} and \texttt{src/backend} folders each have a Dockerfile and a \texttt{package.json} file. \texttt{src/docker-compose.yml} defines the services and volumes. Local passwords and other secrets should stay out of GitHub. If the team later changes to MongoDB Atlas or another database, this section and the Docker files will need to be revised together.
+
+\section{Snapshot Plan}
+The Snapshot Objectives document we have so far only explains the start of the project: setting up the website framework and account permissions. The outline below is one possible way to divide the remaining features. We should adjust it once the team agrees on the snapshot goals.
+\begin{itemize}
+\item Snapshot 1: base framework, registration, login, profile, and initial access rules.
+\item Snapshot 2: proposed event creation, RSVP, and event-management interfaces.
+\item Snapshot 3: proposed scoreboard, resources, and personalized event filtering.
+\item Snapshot 4: testing refinements, documentation updates, and future work (including AI features if not implemented).
+\end{itemize}
+After each snapshot, we will update this document to match the changes made to the SRS, SDD, Jira tasks, and Docker setup.
+
+
+\section{Supporting UML Diagrams}
+The following diagrams help explain the design described in this document. They are based on our current SRS and SDD, so some details could change when we finalize the database and the implementation.
+
+\subsection{Use Case Diagram}
+This diagram shows the main actions available to each type of user. It also shows the actions shared by registered users, such as logging in, viewing events, and submitting RSVPs. Student organizations do not have access to student profiles. The Visitor and Registered User actors are used to organize shared actions; they are not additional account roles.
+
+\subsection{Activity Diagram}
+This diagram shows how someone signs up for an account. Students can register directly, while faculty and student organization accounts require administrator approval. It also includes a path for invalid registration information. Our SDD does not yet specify the full process for rejected applications.
+
+\subsection{Class Diagram}
+This is a conceptual model of the information the system needs. The User, Role, and Profile records come from our SDD. Event information comes from the SRS, and RSVP is shown as a proposed record for tracking event responses. Exact field names and database relationships still need to be agreed on by the team.
+
+\clearpage
+\newgeometry{margin=0.35in}
+\begin{landscape}
+\thispagestyle{empty}
+\begin{center}
+\includegraphics[width=0.98\linewidth,height=0.97\textheight,keepaspectratio]{diagrams/Use_Case_Diagram.pdf}
+\end{center}
+\end{landscape}
+
+\begin{landscape}
+\thispagestyle{empty}
+\begin{center}
+\includegraphics[width=0.98\linewidth,height=0.97\textheight,keepaspectratio]{diagrams/Activity_Diagram.pdf}
+\end{center}
+\end{landscape}
+
+\begin{landscape}
+\thispagestyle{empty}
+\begin{center}
+\includegraphics[width=0.98\linewidth,height=0.97\textheight,keepaspectratio]{diagrams/Class_Diagram.pdf}
+\end{center}
+\end{landscape}
+\restoregeometry
+\clearpage
+\clearpage
+
+\section{Things We Still Need to Confirm}
+\begin{enumerate}
+\item Are we keeping React for the web frontend or planning to introduce React Native/Expo later?
+\item Which snapshot contains events, RSVPs, scoreboard, and personalized filtering?
+\item Will the group keep the current React/PostgreSQL starter or switch to the original React Native/Expo and MongoDB Atlas architecture?
+\item What student-profile information may faculty access, and under what authorization conditions?
+\item What is the finalized data schema and API route design?
+\item Have the team review the UML diagrams, and keep Juan's high-level workflow diagram as a separate deliverable?
+\end{enumerate}
+
+\section{References}
+\begin{itemize}
+\item CS 3338 Final Project assignment instructions (provided by the course).
+\item Group Software Requirements Specification for CS 3338 Final Project (provided PDF).
+\item Group Software Design Document for CS 3338 Final Project (provided PDF).
+\item Group CS 3338 Final Project Snapshot Objectives (provided PDF).
+\item Group Initial Planning (provided PDF).
+\item Current group repository, including its README, existing Design Spec placeholder, Docker Compose file, and frontend/backend source and package files.
+\item Golden Eagle Flight Plan senior design project description (provided reference).
+\end{itemize}
 \end{document}
