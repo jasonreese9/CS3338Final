@@ -1,17 +1,17 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{}%
-\contentsline {subsection}{\numberline {1.1}Purpose}{2}{}%
-\contentsline {subsection}{\numberline {1.2}Document Conventions}{2}{}%
-\contentsline {subsection}{\numberline {1.3}Intended Audience and Reading Suggestions}{2}{}%
-\contentsline {subsection}{\numberline {1.4}System Overview}{2}{}%
-\contentsline {section}{\numberline {2}Design Considerations}{2}{}%
-\contentsline {subsection}{\numberline {2.1}Assumptions and Dependencies}{2}{}%
-\contentsline {subsection}{\numberline {2.2}General Constraints}{2}{}%
-\contentsline {subsection}{\numberline {2.3}Technical Constraints}{2}{}%
-\contentsline {section}{\numberline {3}Database Design}{2}{}%
-\contentsline {subsection}{\numberline {3.1}Tables}{2}{}%
-\contentsline {section}{\numberline {4}Login Page Design}{2}{}%
-\contentsline {subsection}{\numberline {4.1}Login Page}{2}{}%
-\contentsline {subsection}{\numberline {4.2}Logging Into an Existing Account}{3}{}%
-\contentsline {subsection}{\numberline {4.3}Forgot Password}{3}{}%
-\contentsline {subsection}{\numberline {4.4}Creating a New Account}{3}{}%
-\contentsline {subsection}{\numberline {4.5}Account Validation}{4}{}%
+\contentsline {section}{\numberline {1}Introduction}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Purpose}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Document Conventions}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Intended Audience and Reading Suggestions}{3}{}%
+\contentsline {subsection}{\numberline {1.4}System Overview}{3}{}%
+\contentsline {section}{\numberline {2}Design Considerations}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Assumptions and Dependencies}{3}{}%
+\contentsline {subsection}{\numberline {2.2}General Constraints}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Technical Constraints}{3}{}%
+\contentsline {section}{\numberline {3}Database Design}{3}{}%
+\contentsline {subsection}{\numberline {3.1}Tables}{3}{}%
+\contentsline {section}{\numberline {4}Login Page Design}{3}{}%
+\contentsline {subsection}{\numberline {4.1}Login Page}{3}{}%
+\contentsline {subsection}{\numberline {4.2}Logging Into an Existing Account}{4}{}%
+\contentsline {subsection}{\numberline {4.3}Forgot Password}{4}{}%
+\contentsline {subsection}{\numberline {4.4}Creating a New Account}{4}{}%
+\contentsline {subsection}{\numberline {4.5}Account Validation}{5}{}%

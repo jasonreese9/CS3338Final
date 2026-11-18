@@ -1,19 +1,19 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{}%
-\contentsline {subsection}{\numberline {1.1}Purpose}{2}{}%
-\contentsline {subsection}{\numberline {1.2}Document Conventions}{2}{}%
-\contentsline {section}{\numberline {2}Registration}{2}{}%
-\contentsline {section}{\numberline {3}Users}{2}{}%
-\contentsline {subsection}{\numberline {3.1}User Roles}{2}{}%
-\contentsline {subsection}{\numberline {3.2}User Permissions}{3}{}%
-\contentsline {subsection}{\numberline {3.3}Student Users}{3}{}%
-\contentsline {subsection}{\numberline {3.4}Faculty Users}{3}{}%
-\contentsline {subsection}{\numberline {3.5}Student Organization Users}{3}{}%
-\contentsline {subsection}{\numberline {3.6}Admin Users}{3}{}%
-\contentsline {subsection}{\numberline {3.7}User Profiles}{3}{}%
-\contentsline {section}{\numberline {4}Home Page}{3}{}%
-\contentsline {subsection}{\numberline {4.1}Student Home Page}{3}{}%
-\contentsline {subsection}{\numberline {4.2}Faculty Home Page}{4}{}%
-\contentsline {subsection}{\numberline {4.3}Student Organization Home Page}{4}{}%
-\contentsline {subsection}{\numberline {4.4}Admin Home Page}{4}{}%
-\contentsline {section}{\numberline {5}Events}{4}{}%
-\contentsline {section}{\numberline {6}Other}{4}{}%
+\contentsline {section}{\numberline {1}Introduction}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Purpose}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Document Conventions}{3}{}%
+\contentsline {section}{\numberline {2}Registration}{3}{}%
+\contentsline {section}{\numberline {3}Users}{3}{}%
+\contentsline {subsection}{\numberline {3.1}User Roles}{3}{}%
+\contentsline {subsection}{\numberline {3.2}User Permissions}{4}{}%
+\contentsline {subsection}{\numberline {3.3}Student Users}{4}{}%
+\contentsline {subsection}{\numberline {3.4}Faculty Users}{4}{}%
+\contentsline {subsection}{\numberline {3.5}Student Organization Users}{4}{}%
+\contentsline {subsection}{\numberline {3.6}Admin Users}{4}{}%
+\contentsline {subsection}{\numberline {3.7}User Profiles}{4}{}%
+\contentsline {section}{\numberline {4}Home Page}{4}{}%
+\contentsline {subsection}{\numberline {4.1}Student Home Page}{4}{}%
+\contentsline {subsection}{\numberline {4.2}Faculty Home Page}{5}{}%
+\contentsline {subsection}{\numberline {4.3}Student Organization Home Page}{5}{}%
+\contentsline {subsection}{\numberline {4.4}Admin Home Page}{5}{}%
+\contentsline {section}{\numberline {5}Events}{5}{}%
+\contentsline {section}{\numberline {6}Other}{5}{}%
