@@ -1,13 +1,18 @@
-\documentclass{article}
-
-\usepackage{geometry}
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{longtable,booktabs,array,enumitem,hyperref,xcolor,graphicx,pdflscape}
 \usepackage{indentfirst}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{titling}
+\usepackage{enumitem}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlist[itemize]{leftmargin=*}
 
 % Automatically prefixes the section number to all first-level enumerate lists
-\usepackage{enumitem}
 % label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
 % leftmargin=3\parindent indents 3 paragraphs.
 \setlist[enumerate,1]{label=\thesubsection.\arabic*,leftmargin=\parindent}
@@ -15,29 +20,18 @@
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
 
+\newcommand{\planned}{\textit{(still to be confirmed)}}
+\newcommand{\myTitle}{Golden Eagle Flight Plan User Manual}
+
 \begin{document}
 
-\newcommand{\myTitle}{User Manual}
-
-\title{\myTitle}
-\author{
-Project Group 26\\
-\\
-Jason Reese \\
-Juan Torres Llamas \\
-Victor Hernandez
-}
-
+\title{Golden Eagle Flight Plan\\User Manual\\CS 3338 Final Project}
+\author{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
 \date{\today}
 
-\fancyhf{}
-\pagestyle{fancy}
-\fancyhead[L]{\myTitle}
-\fancyhead[R]{Page \thepage}
-\fancyfoot[C]{}
+\newpage %
+\maketitle
 
-\maketitle %
-\tableofcontents
 \newpage %
 
 \begin{table}[h!]
@@ -57,9 +51,23 @@ Project Group 26 & 11/17/2026 & First Draft & 1.0.0 \\
 \hline
 \end{tabular}
 \end{table}
+
 \newpage %
 
-This document will explain 
+\begin{center}Design draft --- November 2026\end{center}
+\tableofcontents
+\newpage %
+
+\fancyhf{}
+\pagestyle{fancy}
+\fancyhead[L]{\myTitle}
+\fancyhead[R]{Page \thepage}
+\fancyfoot[C]{}
+
+\newpage %
+
+
+\section{Introduction}
 
 \section{Section 1}
 The \textit{Section 1} .
