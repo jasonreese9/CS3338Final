@@ -78,13 +78,22 @@ Development, and Community \& Leadership; a personalized resources and events fe
 facing dashboard that allows advisors to post targeted content and monitor individual student progress. The goal is to graduate well-rounded, career-ready, and community-
 engaged students by making growth visible and actionable for both students and faculty.
 
+\subsection{Intended Audience}
+
+
 \subsection{Overview}
 This document contains the Software Requirements for The Golden Eagle Flight Plan.
 
 \subsection{Document Conventions}
 All requirements are numbered in order to easily establish which requirement is being referred to.
 
-\section{Registration}
+
+
+\newpage %
+\section{External Interface Requirements}
+
+\subsection{User Interface Requirements}
+\subsection{Registration}
 	\begin{enumerate}[leftmargin=3\parindent]
 	\item When registering, users can choose to sign up as a:
 		\begin{itemize}
@@ -95,7 +104,7 @@ All requirements are numbered in order to easily establish which requirement is 
 		\end{itemize}
 	\item If the user tries to sign up as a faculty or student organization an admin must review and approve it and assign them roles first.
 	\end{enumerate}
-\section{Users}
+\subsection{Users}
 	\subsection{User Roles}
 		\begin{enumerate}[leftmargin=3\parindent]
 			\item There will be 4 User Roles
@@ -153,7 +162,9 @@ All requirements are numbered in order to easily establish which requirement is 
 			\item The profile will contain information about the user which is only visible to certain users based on their roles.
 			\item Students will only be able to view their own profiles, and faculty or student organization profiles.
 		\end{enumerate}
-\section{Home Page}
+
+\newpage %
+\subsection{Home Page}
 		\subsection{Student Home Page}
 			\begin{enumerate}[leftmargin=3\parindent]
 				\item The students home page will show events filtered based on the identifiers associated with the student’s profile.
@@ -179,7 +190,8 @@ All requirements are numbered in order to easily establish which requirement is 
 			\begin{enumerate}[leftmargin=3\parindent]
 				\item The admin 
 			\end{enumerate}
-\section{Events}
+
+\subsection{Events}
 	\begin{enumerate}[leftmargin=3\parindent]
 		\item When creating events, faculty and student organizations will be able to give the events identifiers.
 		\item Students will be able to filter by event identifiers explicitly.
@@ -199,12 +211,30 @@ All requirements are numbered in order to easily establish which requirement is 
 			\item Who posted the event.
 		\end{enumerate}
 
-\section{Technical Requirements}
-	\begin{enumerate}
-		\item The design of our project is such that we will have a database that will store our events and our users and their permissions.
-		\item We will have a frontend, an API, a backend, and a database.
-		\item Every user will have a password, the password will be salted and use bcrypt.
-		\item A future release will support using SingleSignOn instead of storing passwords.
-	\end{enumerate}
+
+\subsection{Events}
+\subsection{Software Interface Requirements}
+	\subsection{Technical Requirements}
+		\begin{enumerate}
+			\item The design of our project is such that we will have a database that will store our events and our users and their permissions.
+			\item We will have a frontend, an API, a backend, and a database.
+			\item Every user will have a password, the password will be salted and use bcrypt.
+			\item A future release will support using SingleSignOn instead of storing passwords.
+		\end{enumerate}
+
+\newpage %
+\section{Legal and Ethical Considerations}
+	\subsection{Legal Requirements}
+		\begin{enumerate}
+			\item User data must be accessible by the minimum number of people possible.
+			\item At any time, any user can request a copy of all information stored about them.
+			\item At any time, any user can request their account to be closed, and all data deleted.
+			\item Events must not expose that a student is attending to other Students.
+			\item Events should allow Students the option to attend anonymously.
+			\item If a User closes their account, they should be able to download a copy of all information at that time.
+			\item If a User closes their account, they should be able to request all of the data about them be deleted, including information about past and upcoming event attendance.
+			\item If a Student Organization or Faculty closes their account and they are the only host for an event, the event should be cancelled.
+		\end{enumerate}
+
 
 \end{document}
