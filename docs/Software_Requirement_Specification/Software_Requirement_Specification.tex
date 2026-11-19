@@ -68,6 +68,9 @@ Development, and Community \& Leadership; a personalized resources and events fe
 facing dashboard that allows advisors to post targeted content and monitor individual student progress. The goal is to graduate well-rounded, career-ready, and community-
 engaged students by making growth visible and actionable for both students and faculty.
 
+\subsection{Overview}
+This document contains the Software Requirements for The Golden Eagle Flight Plan.
+
 \subsection{Document Conventions}
 All requirements are numbered in order to easily establish which requirement is being referred to.
 
@@ -147,6 +150,13 @@ All requirements are numbered in order to easily establish which requirement is 
 				\item Students will have access to a scoreboard page that will display how much of the flight plan they have completed, suggested activities, and what they should be doing depending on the year they are in.
 				\item Students who have RSVP’d for an event should get a notification when an event they were interested in has been adjusted.
 			\end{enumerate}
+			\subsection{Flight Plan}
+				\begin{enumerate}[leftmargin=3\parindent]
+					\item The flight plan will be split into three sections: academic preparation, career development, and leadership \& community engagement. 
+					\item Academic preparation will help the students with figuring out which classes they need to take to graduate and how they can find help with those classes.
+					\item Career development will encourage the students to attend events related to their career and will help them find jobs.
+					\item Leadership \& Community Engagement will encourage the students to attend events and interact with their community and join clubs or student organizations related to their major.
+				\end{enumerate}
 		\subsection{Faculty Home Page}
 			\begin{enumerate}[leftmargin=3\parindent]
 				\item Faculty 
@@ -160,36 +170,31 @@ All requirements are numbered in order to easily establish which requirement is 
 				\item The admin 
 			\end{enumerate}
 \section{Events}
-	\begin{enumerate}
+	\begin{enumerate}[leftmargin=3\parindent]
 		\item When creating events, faculty and student organizations will be able to give the events identifiers.
 		\item Students will be able to filter by event identifiers explicitly.
+		\item When creating events, faculty and student organizations will be able to input information related to the event.
 	\end{enumerate}
+	\subsection{Event Information}
+		\begin{enumerate}[leftmargin=3\parindent]
+			\item Who is hosting the event
+			\item The time the event takes place
+			\item If necessary, when to register and when registration opens and closes
+			\item Where to go for more information
+			\item Whether the event requires registration
+			\item The identifiers or keywords associated with the event that can be used to filter for the event.
+			\item The location of the event (including online or in-person)
+			\item Any additional information regarding the event and who to contact with questions regarding the event.
+			\item The ability to upload pictures, flyers or links for the event.
+			\item Who posted the event.
+		\end{enumerate}
 
-\section{Other}
+\section{Technical Requirements}
 	\begin{enumerate}
-	\item The flight plan will be split into three sections: academic preparation, career development, and leadership \& community engagement. 
-	\item Academic preparation will help the students with figuring out which classes they need to take to graduate and how they can find help with those classes.
-	\item Career development will encourage the students to attend events related to their career and will help them find jobs.
-	\item Leadership \& Community Engagement will encourage the students to attend events and interact with their community and join clubs or student organizations related to their major.
-	\item The design of our project is such that we will have a database that will store our events and our users and their permissions.
-	\item We will have a frontend, an API, a backend, and a database.
-
-
-	\item When creating events, faculty and student organizations will be able to input information related to the event including:
-	\item Who is hosting the event
-	\item The time the event takes place
-	\item If necessary, when to register and when registration opens and closes
-	\item Where to go for more information
-	\item Whether the event requires registration
-	\item The identifiers or keywords associated with the event that can be used to filter for the event.
-	\item The location of the event (including online or in-person)
-	\item Any additional information regarding the event and who to contact with questions regarding the event.
-	\item The ability to upload pictures, flyers or links for the event.
-	\item Who posted the event.
-	\item Every user will have a password, the password will be salted and use bcrypt.
-	\item A future release will support using SingleSignOn instead of storing passwords.
-\end{enumerate}
-
-
+		\item The design of our project is such that we will have a database that will store our events and our users and their permissions.
+		\item We will have a frontend, an API, a backend, and a database.
+		\item Every user will have a password, the password will be salted and use bcrypt.
+		\item A future release will support using SingleSignOn instead of storing passwords.
+	\end{enumerate}
 
 \end{document}
