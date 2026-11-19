@@ -4,17 +4,35 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{longtable,booktabs,array,enumitem,hyperref,xcolor,graphicx,pdflscape}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{titling}
+\usepackage{enumitem}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 \setlist[itemize]{leftmargin=*}
+
+% Automatically prefixes the section number to all first-level enumerate lists
+% label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
+% leftmargin=3\parindent indents 3 paragraphs.
+\setlist[enumerate,1]{label=\thesubsection.\arabic*,leftmargin=\parindent}
+
+\pagestyle{fancy}
+\geometry{a4paper, margin=1in}
+
 \newcommand{\planned}{\textit{(still to be confirmed)}}
+\newcommand{\myTitle}{Golden Eagle Flight Plan Project Design Specification}
+
+\begin{document}
+
 \title{Golden Eagle Flight Plan\\Project Design Specification\\CS 3338 Final Project}
 \author{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
-\date{November 2026}
-\begin{document}
+\date{\today}
+
+\newpage %
 \maketitle
-\begin{center}Design draft --- November 2026\end{center}
-\tableofcontents
-\newpage
+
+\newpage %
 
 \begin{table}[h!]
 \centering
@@ -33,7 +51,22 @@ Project Group 26 & 11/17/2026 & First Draft & 1.0.0 \\
 \hline
 \end{tabular}
 \end{table}
+
 \newpage %
+
+\begin{center}Design draft --- November 2026\end{center}
+\tableofcontents
+\newpage %
+
+\fancyhf{}
+\pagestyle{fancy}
+\fancyhead[L]{\myTitle}
+\fancyhead[R]{Page \thepage}
+\fancyfoot[C]{}
+
+\newpage %
+
+
 
 \section{Project Overview}
 This document goes over how we plan to organize the Golden Eagle Flight Plan project, including the pages users will see, how accounts and permissions will work, what information we need to store, and which tools the project will use. It follows our Software Requirements Specification (SRS) and Software Design Document (SDD). Our goal is to put student events and development resources in one place. Some features are still being planned, so this document describes the design rather than saying everything has already been built.
