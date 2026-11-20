@@ -5,19 +5,6 @@ This is our CS3338 final project, based on the
 
 Golden Eagle Flight Plan is designed to help students find campus events and resources and keep track of their academic preparation, career development, and community involvement. Faculty and student organizations will be able to share events, while students can find opportunities that match their interests.
 
-## Snapshot 1
-
-We are starting with the requirements, account design, and development environment. The goals for this snapshot are to:
-
-- Define the student, faculty, student organization, and administrator roles.
-- Design registration, login, logout, and account approval.
-- Plan the user, role, and profile tables and the permissions between them.
-- Set up the frontend, backend, and database for development.
-
-The repository currently contains a React frontend, an Express backend, and a PostgreSQL database starter. The starter records page visits and displays the total in the browser. Registration, login, and the Flight Plan features are being planned in the SRS and SDD; they are not part of the current starter application.
-
-Jira has not been set up yet.
-
 ## Pre-requisites
 
 Building the documentation requires `make` and `pdflatex`. On macOS, the repository's setup script installs Homebrew, MacTeX, and the additional LaTeX packages:
