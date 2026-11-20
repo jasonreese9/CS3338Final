@@ -1,2 +1,15 @@
 \contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
-\contentsline {section}{\numberline {2}Section 1}{4}{section.2}%
+\contentsline {subsection}{\numberline {1.1}Purpose}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Project Objectives}{4}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Getting Started}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Download the Project}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Build the Documentation}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Start the Application}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Stop the Application}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Planned Account Workflow}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Create an Account}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Sign In and Sign Out}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Profiles and Permissions}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Troubleshooting}{6}{section.4}%
+\contentsline {section}{\numberline {5}Documentation Updates}{6}{section.5}%
+\contentsline {section}{\numberline {6}References}{6}{section.6}%

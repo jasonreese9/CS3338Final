@@ -20,14 +20,13 @@
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
 
-\newcommand{\planned}{\textit{(still to be confirmed)}}
 \newcommand{\myTitle}{Golden Eagle Flight Plan User Manual}
 
 \begin{document}
 
 \title{Golden Eagle Flight Plan\\User Manual\\CS 3338 Final Project}
 \author{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
-\date{\today}
+\date{November 19, 2026}
 
 \newpage %
 \maketitle
@@ -43,11 +42,7 @@
 \hline
 Project Group 26 & 11/17/2026 & First Draft & 1.0.0 \\
 \hline
-
-\hline
-
-\hline
-
+Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\
 \hline
 \end{tabular}
 \end{table}
@@ -68,8 +63,99 @@ Project Group 26 & 11/17/2026 & First Draft & 1.0.0 \\
 
 
 \section{Introduction}
+\subsection{Purpose}
+Golden Eagle Flight Plan is our CS3338 final project. The planned website will help students find campus resources and events and follow their academic preparation, career development, and community involvement goals. Faculty and student organizations will be able to share events with students.
 
-\section{Section 1}
-The \textit{Section 1} .
+This manual covers the Snapshot 1 development environment and the planned account workflow. The code currently provides a React frontend, an Express backend, and a PostgreSQL visit counter. Registration, login, and student progress features are described in the requirements and design documents but are not available in the starter.
+
+\subsection{Project Objectives}
+\begin{itemize}
+\item Define student, faculty, student organization, and administrator roles.
+\item Design registration, login, logout, and approval of restricted roles.
+\item Plan user profiles, database tables, and access permissions.
+\item Set up the frontend, backend, database, and project documentation.
+\end{itemize}
+Jira has not been set up yet.
+
+\section{Getting Started}
+\subsection{Download the Project}
+Clone the team repository and open its root directory:
+\begin{verbatim}
+git clone https://github.com/jasonreese9/CS3338Final.git
+cd CS3338Final
+\end{verbatim}
+
+\subsection{Build the Documentation}
+The documentation requires \texttt{make} and \texttt{pdflatex}. On macOS, the repository's \texttt{setup.sh} installs Homebrew, MacTeX, and additional LaTeX packages. Run it from the repository root:
+\begin{verbatim}
+./setup.sh
+\end{verbatim}
+Build the documentation with:
+\begin{verbatim}
+make
+\end{verbatim}
+The documents are stored as \texttt{.tex} files under \texttt{docs}. Their Makefiles run LaTeX twice so that the table of contents is updated. To build this manual only, use:
+\begin{verbatim}
+make -C docs/User_Manual
+\end{verbatim}
+
+\subsection{Start the Application}
+Install Docker with Docker Compose. Create a local \texttt{src/.env} file defining \texttt{STUDENT\_NAME}, \texttt{POSTGRES\_USER}, \texttt{POSTGRES\_PASSWORD}, and \texttt{POSTGRES\_DB}. The Compose file passes these values to the database and backend. Keep the local environment file out of GitHub.
+
+From the repository root, run:
+\begin{verbatim}
+cd src
+docker compose up --build
+\end{verbatim}
+Open \url{http://localhost:3000}. The frontend calls the backend at \url{http://localhost:5001} and displays its greeting and the total page visits. Each successful request records a new visit in PostgreSQL. No account is required to use this starter page.
+
+\subsection{Stop the Application}
+Press \texttt{Ctrl+C} in the terminal running Compose. From \texttt{src}, run:
+\begin{verbatim}
+docker compose down
+\end{verbatim}
+The \texttt{db-data} volume retains the visit records between runs.
+
+\section{Planned Account Workflow}
+The following steps follow the Snapshot 1 requirements and design. These screens are planned rather than implemented in the current starter.
+
+\subsection{Create an Account}
+\begin{enumerate}[label=\arabic*.]
+\item Open the login page and choose the option to create an account.
+\item Choose Student, Faculty, or Student Organization.
+\item Enter the information requested for that account type. Student and faculty accounts use a \texttt{calstatela.edu} email address.
+\item Submit the registration. Faculty and student organization requests require administrator approval before access is granted.
+\end{enumerate}
+Administrators manage restricted roles. Choosing an account type does not grant administrator permissions.
+
+\subsection{Sign In and Sign Out}
+\begin{enumerate}[label=\arabic*.]
+\item Choose the option to log into an existing account.
+\item Enter the username and password and submit the form.
+\item If the details are incorrect, check them and try again. The design uses a general username or password error.
+\item After a successful sign-in, open the homepage and the information available to the account's role.
+\item Sign out when finished.
+\end{enumerate}
+
+\subsection{Profiles and Permissions}
+Students can view their own profiles but cannot view other students' profiles. Faculty can view student profiles as described in the SRS. Student organizations can manage their permitted activities but cannot view student profiles. Administrators manage account approvals and roles. The server must check permissions before returning or changing protected information.
+
+\section{Troubleshooting}
+If the frontend displays that it cannot reach the backend, check the services from \texttt{src}:
+\begin{verbatim}
+docker compose ps
+docker compose logs backend db
+\end{verbatim}
+Check that the local environment values match between the backend and database and that ports 3000 and 5001 are available. PostgreSQL may need a few seconds to start; the backend retries the connection during startup.
+
+\section{Documentation Updates}
+This manual will be revised at each snapshot to reflect the features and setup available at that point. Event management, personalized resources, and Flight Plan progress instructions will be added as those features are developed.
+
+\section{References}
+\begin{itemize}
+\item Team repository: \url{https://github.com/jasonreese9/CS3338Final}.
+\item Project Group 26 Software Requirement Specification, Software Design Document, and Snapshot Objectives in this repository.
+\item Reference topic: \url{https://ascent.cysun.org/project/project/view/253}.
+\end{itemize}
 
 \end{document}
