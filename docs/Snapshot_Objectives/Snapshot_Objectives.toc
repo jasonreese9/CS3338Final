@@ -5,10 +5,12 @@
 \contentsline {section}{\numberline {2}Overview}{5}{section.2}%
 \contentsline {section}{\numberline {3}Snapshot 1 (Start)}{6}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Month 1}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Week 1: Define Requirements}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Week 2: MVP Design}{6}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Week 3: MVP Basics}{7}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Week 4: }{7}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.2}Sprint 1: Define Requirements}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Sprint 2: MVP Design}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Sprint 3: MVP Basics}{7}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Sprint 4: Setting Roles}{7}{subsection.3.5}%
 \contentsline {section}{\numberline {4}Snapshot 2 (Checkpoint 1)}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Sprint 5: Homepage}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Sprint 6: }{8}{subsection.4.2}%
 \contentsline {section}{\numberline {5}Snapshot 3 (Checkpoint 3)}{9}{section.5}%
 \contentsline {section}{\numberline {6}Snapshot 4 (Original Due Date)}{10}{section.6}%
