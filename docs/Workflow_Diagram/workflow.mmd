@@ -1,0 +1,19 @@
+flowchart TD
+    A([Open the app]) --> B[Sign in or create an account]
+    B --> C{Sign-in successful?}
+    C -->|No| R[Check your details and try again]
+    R --> B
+    C -->|Yes| D[Your account opens the right dashboard]
+    D -->|Student| S0[Open your profile]
+    D -->|Faculty| F0[Open your faculty dashboard]
+    S0 --> S1[Enter your major, year, and interests]
+    S1 --> S2[Save your profile]
+    S2 --> P[App checks access and handles your request]
+    F0 --> F1[Review your account details]
+    F1 --> F2[Update your own profile]
+    F2 --> P[App checks access and handles your request]
+    P <-->|Read or save| DB[Saved information: Account details and profiles]
+    P --> V[Your updated profile appears]
+    V --> E([Sign out when finished])
+    %% Students: own records. Faculty: permitted content and authorized student progress.
+    %% All database access happens through the server.
