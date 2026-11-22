@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{titling}
 \usepackage{enumitem}
+\usepackage{amssymb}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 \setlist[itemize]{leftmargin=*}
 
@@ -19,6 +20,16 @@
 
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
+
+% Create a todo list
+\newlist{todolist}{enumerate}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
 
 \newcommand{\planned}{\textit{(still to be confirmed)}}
 \newcommand{\myTitle}{Golden Eagle Flight Plan Project Design Specification}
@@ -228,14 +239,39 @@ This is a conceptual model of the information the system needs. The User, Role, 
 \item Have the team review the UML diagrams, and keep Juan's high-level workflow diagram as a separate deliverable?
 \end{enumerate}
 
+
+\newpage %
+\section{Glossary}
+	\subsection{User Facing}
+	This section defines non-technical terms that may be used in this document.
+	\begin{enumerate}[leftmargin=3\parindent]
+		\item Student Organization -- An organization that provides support to Students, and may be compromised of Faculty, Students, or non-student members.
+	\end{enumerate}
+
+	\subsection{Technical}
+	This section defines the technical terms that may be used in this document.
+	\begin{enumerate}[leftmargin=3\parindent]
+		\item AWS -- Amazon Web Services used for hosting the software.
+		\begin{enumerate}[leftmargin=3\parindent]
+			\item EC2 -- AWS Compute for running services.
+			\item RDS -- AWS Database service for managing databases.
+			\item S3 -- AWS File Storage
+		\end{enumerate}
+		\item Backend -- The portion of the software that hosts the website and database, this is the portion that the web pages reference.
+		\item Docker -- Technology for deploying sites and reproducible builds.
+		\item Frontend -- The web site and user facing view of the software, covers the aspect o the software running in the web browser.
+	\end{enumerate}
+
+
 \section{References}
-\begin{itemize}
-\item CS 3338 Final Project assignment instructions (provided by the course).
-\item Group Software Requirements Specification for CS 3338 Final Project (provided PDF).
-\item Group Software Design Document for CS 3338 Final Project (provided PDF).
-\item Group CS 3338 Final Project Snapshot Objectives (provided PDF).
-\item Group Initial Planning (provided PDF).
-\item Current group repository, including its README, existing Design Spec placeholder, Docker Compose file, and frontend/backend source and package files.
-\item Golden Eagle Flight Plan senior design project description (https://ascent.cysun.org/project/project/view/253).
-\end{itemize}
+	\begin{itemize}
+		\item CS 3338 Final Project assignment instructions (provided by the course).
+		\item Group Software Requirements Specification for CS 3338 Final Project (provided PDF).
+		\item Group Software Design Document for CS 3338 Final Project (provided PDF).
+		\item Group CS 3338 Final Project Snapshot Objectives (provided PDF).
+		\item Group Initial Planning (provided PDF).
+		\item Current group repository, including its README, existing Design Spec placeholder, Docker Compose file, and frontend/backend source and package files.
+		\item Golden Eagle Flight Plan senior design project description (https://ascent.cysun.org/project/project/view/253).
+	\end{itemize}
+
 \end{document}

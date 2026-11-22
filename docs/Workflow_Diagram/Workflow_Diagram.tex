@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{titling}
 \usepackage{enumitem}
+\usepackage{amssymb}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 \setlist[itemize]{leftmargin=*}
 
@@ -19,6 +20,16 @@
 
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
+
+% Create a todo list
+\newlist{todolist}{enumerate}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
 
 \newcommand{\myTitle}{Golden Eagle Flight Plan Workflow Diagram}
 
@@ -97,4 +108,29 @@ Docker Compose connects the frontend, backend, and database services. The databa
 \section{Revisions at Later Snapshots}
 The diagram and this explanation will be updated when account features are implemented and when later snapshots introduce additional user actions or data flows. The Mermaid source is stored in \texttt{workflow.mmd}; PNG and SVG versions are included for the manual and GitHub README.
 
+
+
+\newpage %
+\section{Glossary}
+    \subsection{User Facing}
+    This section defines non-technical terms that may be used in this document.
+    \begin{enumerate}[leftmargin=3\parindent]
+    	\item Initial
+    \end{enumerate}
+
+    \subsection{Technical}
+    This section defines the technical terms that may be used in this document.
+    \begin{enumerate}[leftmargin=3\parindent]
+    	\item Initial
+    \end{enumerate}
+
+
+\newpage %
+\section{References}
+	\begin{itemize}
+		\item Team repository: \url{https://github.com/jasonreese9/CS3338Final}.
+		\item Project Group 26 Software Requirement Specification, Software Design Document, and Snapshot Objectives in this repository.
+		\item Reference topic: \url{https://ascent.cysun.org/project/project/view/253}.
+	\end{itemize}
 \end{document}
+

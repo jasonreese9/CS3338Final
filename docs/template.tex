@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{titling}
 \usepackage{enumitem}
+\usepackage{amssymb}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 \setlist[itemize]{leftmargin=*}
 
@@ -19,6 +20,16 @@
 
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
+
+% Create a todo list
+\newlist{todolist}{enumerate}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
 
 \newcommand{\planned}{\textit{(still to be confirmed)}}
 \newcommand{\myTitle}{Golden Eagle Flight Plan Software Requirement Specification}

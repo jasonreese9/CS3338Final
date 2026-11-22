@@ -9,6 +9,7 @@
 \usepackage{graphicx}
 \usepackage{titling}
 \usepackage{enumitem}
+\usepackage{amssymb}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 \setlist[itemize]{leftmargin=*}
 
@@ -19,6 +20,16 @@
 
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
+
+% Create a todo list
+\newlist{todolist}{enumerate}{2}
+\setlist[todolist]{label=$\square$  \thesubsection.\arabic*,leftmargin=\parindent}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
 
 \newcommand{\planned}{\textit{(still to be confirmed)}}
 \newcommand{\myTitle}{Golden Eagle Flight Plan Snapshot Objectives}
@@ -95,25 +106,26 @@ Snapshots 2-4 have a wider timeline and are not as fine grained and cover featur
 
 \newpage %
 \section{Snapshot 1 (Start)}
-Snapshot 1 fine grained and covers the first month of development towards an MVP (Minimum Viable Product), which is defined as the basic site running with users able to access it.
-
-\subsection {Month 1}
-In the first month we will be configuring development environments and designing the project.
-
+Snapshot 1 fine grained and covers the first 4 sprints of development towards an MVP (Minimum Viable Product), which is defined as the basic site running with users able to access it.
+Initial sprints will be 1 week at a time to allow for faster iteration, followed by standard 2 week sprints.
 
 \subsection {Sprint 1: Define Requirements}
-The first week we will build the requirements for the Minimum Viable Product (MVP) of the Golden Eagle Flight plan.
-This includes the most basic functionality we require:
-	\begin{enumerate}[leftmargin=3\parindent]
-		\item User Type requirements.
-		\item Login/Logout requirements.
+
+In the first sprint we will define and design the requirements for the Minimum Viable Product (MVP) of the Golden Eagle Flight plan.
+This involves determining which requirements from the \emph{SRS v1.1.0} apply to the features and developing in depth requirements and design for those features.
+
+
+At the end of the first spring we will have the requirements for our user types, login/logout and will have determined where we are hosting the site, what technology stack we are using, and have basic development environments setup.
+
+	\begin{todolist}[leftmargin=3\parindent]
+		\item User Type requirements defined and updated in \emph{SRS}.
+		\item User Type design defined and updated in \emph{SDD}.
+		\item Login/Logout requirements defined and 
 		\item User Creation requirements.
 		\item Hosting solution choice.
 		\item Technology Stack selection (Frontend/Backend/Database)
-		\item Development environments configuration and setup.
-	\end{enumerate}
-
-At the end of the first week we will have the requirements for our user types, login/logout and will have determined where we are hosting the site, what technology stack we are using, and have basic development environments setup.
+		\item Development environments configuration and setup.	
+	\end{todolist}
 
 \subsection {Sprint 2: MVP Design}
 The second week, we will begin the design for the MVP, which is a site that allows users to login, logout and can be hosted somewhere.
@@ -168,5 +180,38 @@ The first sprint we will work on the design of the homepage the user sees upon l
 \section {Snapshot 3 (Checkpoint 3)}
 \newpage %
 \section {Snapshot 4 (Original Due Date)}
+
+
+
+\newpage %
+\section{Glossary}
+	\subsection{User Facing}
+	This section defines non-technical terms that may be used in this document.
+	\begin{enumerate}[leftmargin=3\parindent]
+		\item Student Organization -- An organization that provides support to Students, and may be compromised of Faculty, Students, or non-student members.
+	\end{enumerate}
+
+	\subsection{Technical}
+	This section defines the technical terms that may be used in this document.
+	\begin{enumerate}[leftmargin=3\parindent]
+		\item AWS -- Amazon Web Services used for hosting the software.
+		\begin{enumerate}[leftmargin=3\parindent]
+			\item EC2 -- AWS Compute for running services.
+			\item RDS -- AWS Database service for managing databases.
+			\item S3 -- AWS File Storage
+		\end{enumerate}
+		\item Backend -- The portion of the software that hosts the website and database, this is the portion that the web pages reference.
+		\item Docker -- Technology for deploying sites and reproducible builds.
+		\item Frontend -- The web site and user facing view of the software, covers the aspect o the software running in the web browser.
+	\end{enumerate}
+
+
+\newpage %
+\section{References}
+	\begin{itemize}
+		\item Team repository: \url{https://github.com/jasonreese9/CS3338Final}.
+		\item Project Group 26 Software Requirement Specification, Software Design Document, and Snapshot Objectives in this repository.
+		\item Reference topic: \url{https://ascent.cysun.org/project/project/view/253}.
+	\end{itemize}
 
 \end{document}
