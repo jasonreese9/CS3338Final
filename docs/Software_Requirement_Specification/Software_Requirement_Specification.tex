@@ -16,7 +16,7 @@
 % Automatically prefixes the section number to all first-level enumerate lists
 % label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
 % leftmargin=3\parindent indents 3 paragraphs.
-\setlist[enumerate,1]{label=\thesubsection.\arabic*,leftmargin=\parindent}
+\setlist[enumerate,1]{label=\thesubsubsection.\arabic*,leftmargin=\parindent}
 
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
@@ -123,20 +123,20 @@ References to a specific section should be \emph{SRS v1.1.0 - Registration - 3.2
 
 \newpage %
 \section{User Interface Requirements}
-\subsection{Interacting with the Software}
-	\subsection{Accessibility}
-		Given the diverse needs of students, and challenges they may encounter accessiblity is a high priority for this site.
-		\begin{enumerate}[leftmargin=3\parindent]
-			\item Accessibility must be implemented for all features of the software.
-			\item Events need to allow for acommodations to be communicated
-			\item The UI must work with screen-readers, and common accessiblity tools.
-		\end{enumerate}
-	\subsection{General}
-		\begin{enumerate}[leftmargin=3\parindent]
-			\item The software must promininently display the University Policies and code of conduct.
-			\item The software must display appropriate links to report content and to connect with the various university helplines.
-			\item Some events may be sensitive in nature, and this should be communicated.
-		\end{enumerate}
+	\subsection{Interacting with the Software}
+		\subsubsection{Accessibility}
+			Given the diverse needs of students, and challenges they may encounter accessiblity is a high priority for this site.
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item Accessibility must be implemented for all features of the software.
+				\item Events need to allow for acommodations to be communicated
+				\item The UI must work with screen-readers, and common accessiblity tools.
+			\end{enumerate}
+		\subsubsection{General}
+			\begin{enumerate}[leftmargin=3\parindent]
+				\item The software must promininently display the University Policies and code of conduct.
+				\item The software must display appropriate links to report content and to connect with the various university helplines.
+				\item Some events may be sensitive in nature, and this should be communicated.
+			\end{enumerate}
 
 
 \subsection{Registration}
@@ -150,7 +150,7 @@ References to a specific section should be \emph{SRS v1.1.0 - Registration - 3.2
 	\item If the user tries to sign up as a faculty or student organization an admin must review and approve it and assign them roles first.
 	\end{enumerate}
 \subsection{Users}
-	\subsection{User Roles}
+	\subsubsection{User Roles}
 		\begin{enumerate}[leftmargin=3\parindent]
 			\item There will be 4 User Roles
 			\item Permissions will be granted based on roles.
@@ -173,30 +173,30 @@ References to a specific section should be \emph{SRS v1.1.0 - Registration - 3.2
 				\end{itemize}
 		\end{enumerate}
 
-	\subsection{User Permissions}
+	\subsubsection{User Permissions}
 		\begin{enumerate}[leftmargin=3\parindent]
 			\item Any registered user should be able to view an events page and RSVP
 			\item New users can register to be a student, student organization, or a faculty.
 			\item Student organizations and faculty must be approved by an admin.
 			\item Only admins and faculty will be able to view a student’s profile.
 		\end{enumerate}
-		\subsection{Student Users}
+		\subsubsection{Student Users}
 			\begin{enumerate}[leftmargin=3\parindent]
 				\item Students who have RSVP’d for an event should get a notification when an event they were interested in has been adjusted.
 				\item Students will be able to view their own profiles but will not have access to the profiles of other students.
 				\item Students will view a homepage upon logging into their accounts.
 			\end{enumerate}
-		\subsection{Faculty Users}
+		\subsubsection{Faculty Users}
 			\begin{enumerate}[leftmargin=3\parindent]
 				\item Faculty and student organizations should be able to create/schedule events, delete/cancel events, reschedule events, and see how many students are interested. 
 				\item Faculty should be able to look up a student by name to find their profile.
 			\end{enumerate}
-		\subsection{Student Organization Users}
+		\subsubsection{Student Organization Users}
 			\begin{enumerate}[leftmargin=3\parindent]
 				\item Faculty and student organizations should be able to create/schedule events, delete/cancel events, reschedule events, and see how many students are interested.
 				\item Student organizations are not allowed to view student profiles due to FERPA.
 			\end{enumerate}
-		\subsection{Admin Users}
+		\subsubsection{Admin Users}
 			\begin{enumerate}[leftmargin=3\parindent]
 				\item Admin users will be able to manage everything about the site.
 				\item Admin users will have all permissions.
@@ -211,31 +211,37 @@ References to a specific section should be \emph{SRS v1.1.0 - Registration - 3.2
 
 \newpage %
 \subsection{Home Page}
-		\subsection{Student Home Page}
+		\subsubsection{Student Home Page}
 			\begin{enumerate}[leftmargin=3\parindent]
 				\item The students home page will show events filtered based on the identifiers associated with the student’s profile.
 				\item Students will have access to a scoreboard page that will display how much of the flight plan they have completed, suggested activities, and what they should be doing depending on the year they are in.
 				\item Students who have RSVP’d for an event should get a notification when an event they were interested in has been adjusted.
 			\end{enumerate}
-			\subsection{Flight Plan}
-				\begin{enumerate}[leftmargin=3\parindent]
-					\item The flight plan will be split into three sections: academic preparation, career development, and leadership \& community engagement. 
-					\item Academic preparation will help the students with figuring out which classes they need to take to graduate and how they can find help with those classes.
-					\item Career development will encourage the students to attend events related to their career and will help them find jobs.
-					\item Leadership \& Community Engagement will encourage the students to attend events and interact with their community and join clubs or student organizations related to their major.
-				\end{enumerate}
-		\subsection{Faculty Home Page}
+		\subsubsection{Faculty Home Page}
 			\begin{enumerate}[leftmargin=3\parindent]
-				\item Faculty 
+				\item The faculty home page will display the upcoming events, appointments, and meetings the user is associated with.
+				\item The faculty home page will show events associated with the department the faculty is in.
+				\item The faculty home page will include a way to access the events page to create events.
 			\end{enumerate}
-		\subsection{Student Organization Home Page}
+		\subsubsection{Student Organization Home Page}
 			\begin{enumerate}[leftmargin=3\parindent]
-				\item Student Organization
+				\item The student organization homepage will allow the student organization to easily edit their profile to display information regarding the organization.
+				\item The student organization homepage should include a list of events the organization has created and allow them to create new ones.
 			\end{enumerate}
-		\subsection{Admin Home Page}
+		\subsubsection{Admin Home Page}
 			\begin{enumerate}[leftmargin=3\parindent]
-				\item The admin 
+				\item The admin homepage will include a log of recent actions related to creating, updating, or deleting accounts and events.
+				\item The admin homepage will display a notification if a user was able to access a part of the website that is not allowed by their roles.
+				\item The admin homepage will include a list of users attempting to register as a Faculty or Student Organization.
 			\end{enumerate}
+
+\subsection{Flight Plan}
+	\begin{enumerate}[leftmargin=3\parindent]
+		\item The flight plan will be split into three sections: academic preparation, career development, and leadership \& community engagement. 
+		\item Academic preparation will help the students with figuring out which classes they need to take to graduate and how they can find help with those classes.
+		\item Career development will encourage the students to attend events related to their career and will help them find jobs.
+		\item Leadership \& Community Engagement will encourage the students to attend events and interact with their community and join clubs or student organizations related to their major.
+	\end{enumerate}
 
 \subsection{Events}
 	\begin{enumerate}[leftmargin=3\parindent]

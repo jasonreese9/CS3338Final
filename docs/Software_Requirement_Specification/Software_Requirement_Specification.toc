@@ -8,26 +8,26 @@
 \contentsline {subsection}{\numberline {2.2}Mobile}{5}{subsection.2.2}%
 \contentsline {section}{\numberline {3}User Interface Requirements}{6}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Interacting with the Software}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Accessibility}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}General}{6}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Registration}{6}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Users}{6}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}User Roles}{6}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}User Permissions}{7}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Student Users}{7}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}Faculty Users}{7}{subsection.3.9}%
-\contentsline {subsection}{\numberline {3.10}Student Organization Users}{7}{subsection.3.10}%
-\contentsline {subsection}{\numberline {3.11}Admin Users}{7}{subsection.3.11}%
-\contentsline {subsection}{\numberline {3.12}User Profiles}{7}{subsection.3.12}%
-\contentsline {subsection}{\numberline {3.13}Home Page}{8}{subsection.3.13}%
-\contentsline {subsection}{\numberline {3.14}Student Home Page}{8}{subsection.3.14}%
-\contentsline {subsection}{\numberline {3.15}Flight Plan}{8}{subsection.3.15}%
-\contentsline {subsection}{\numberline {3.16}Faculty Home Page}{8}{subsection.3.16}%
-\contentsline {subsection}{\numberline {3.17}Student Organization Home Page}{8}{subsection.3.17}%
-\contentsline {subsection}{\numberline {3.18}Admin Home Page}{8}{subsection.3.18}%
-\contentsline {subsection}{\numberline {3.19}Events}{8}{subsection.3.19}%
-\contentsline {subsection}{\numberline {3.20}Event Information}{9}{subsection.3.20}%
-\contentsline {subsection}{\numberline {3.21}Replying to an event.}{9}{subsection.3.21}%
+\contentsline {subsubsection}{\numberline {3.1.1}Accessibility}{6}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}General}{6}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}Registration}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Users}{6}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}User Roles}{6}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}User Permissions}{7}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Student Users}{7}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Faculty Users}{7}{subsubsection.3.3.4}%
+\contentsline {subsubsection}{\numberline {3.3.5}Student Organization Users}{7}{subsubsection.3.3.5}%
+\contentsline {subsubsection}{\numberline {3.3.6}Admin Users}{7}{subsubsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.4}User Profiles}{7}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Home Page}{8}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Student Home Page}{8}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Faculty Home Page}{8}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}Student Organization Home Page}{8}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}Admin Home Page}{8}{subsubsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.6}Flight Plan}{8}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Events}{9}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Event Information}{9}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Replying to an event.}{9}{subsection.3.9}%
 \contentsline {section}{\numberline {4}Software Interface Requirements}{10}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Technical Requirements}{10}{subsection.4.1}%
 \contentsline {section}{\numberline {5}Legal and Ethical Considerations}{11}{section.5}%
