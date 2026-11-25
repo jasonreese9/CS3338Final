@@ -2,7 +2,8 @@
 .PHONY: all clean docs
 
 # 2. Dynamically gather all .tex files and define their matching .pdf targets
-TEX_FILES := $(wildcard *.tex)
+# Except for project_macros.tex
+TEX_FILES := $(filter-out project_macros.tex,$(wildcard *.tex))
 PDF_FILES := $(patsubst %.tex,%.pdf,$(TEX_FILES))
 
 # 3. Standard entry targets
