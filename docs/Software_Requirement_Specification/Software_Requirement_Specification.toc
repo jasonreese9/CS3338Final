@@ -36,4 +36,5 @@
 \contentsline {section}{\numberline {6}Glossary}{12}{section.6}%
 \contentsline {subsection}{\numberline {6.1}User Facing}{12}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Technical}{12}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Documents}{12}{subsection.6.3}%
 \contentsline {section}{\numberline {7}References}{13}{section.7}%

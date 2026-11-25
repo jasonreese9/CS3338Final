@@ -49,6 +49,8 @@ Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\ \hline
 \usepackage{amssymb}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 \setlist[itemize]{leftmargin=*}
+% needs sudo tlmgr install glossaries glossaries-english mfirstuc xfor datatool tracklang substr
+%\usepackage{glossaries}
 
 % Automatically prefixes the section number to all first-level enumerate lists
 % label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
@@ -120,5 +122,70 @@ Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\ \hline
 \begin{center}Design draft --- November 2026\end{center}
 \tableofcontents
 \newpage %
-
 }
+
+
+% A block to introduce our DocumentConvetions.
+\NewDocumentCommand{\documentConventionsBlock}{+m}{%
+\subsection{Document Conventions}
+#1
+
+Other documents may reference this document as \emph{\documentName v\currentVersion} or \emph{\shortDocumentName v\currentVersion} .
+
+References to a specific section should be \emph{\shortDocumentName v\currentVersion - Registration - 3.2.1} which references \textit{Section 3 (Registration)} Item \textit{3.2.1}.
+}
+
+% A block for the document references in the glossary
+\NewDocumentCommand{\documentsGlossary}{}{%
+\subsection{Documents}
+    \begin{enumerate}[leftmargin=3\parindent]
+        \item \textbf{PDS} \textit{Project Design Spec} \underline{project\_design\_spec.pdf}
+        \item \textbf{SDS} \textit{Software Design Specification} \underline{Software\_Design\_Specification.pdf}
+        \item \textbf{SO} \textit{Snapshot Objectives} \underline{Snapshot\_Objectives.pdf}
+        \item \textbf{SRS} \textit{Software Requirement Specification} \underline{Software\_Requirement\_Specification.pdf}
+        \item \textbf{TRD} \textit{TestRail Document} \underline{TestRail\_Document.pdf}
+        \item \textbf{UM} \textit{User Manual} \underline{User\_Manual.pdf}
+        \item \textbf{WD} \textit{Workflow Diagram} \underline{Workflow\_Diagram.pdf}
+    \end{enumerate}
+}
+
+% use +o to use optional items in itemize.
+\NewDocumentCommand{\referencesSection}{+o}{%
+\newpage %
+\section{References}
+    \begin{itemize}
+        \item Team repository: \url{https://github.com/jasonreese9/CS3338Final}.
+        \item Golden Eagle Flight Plan senior design project description: \url{https://ascent.cysun.org/project/project/view/253}.
+        \item CS 3338 Final Project assignment instructions (provided by the course).
+        \item Group Software Requirements Specification for CS 3338 Final Project.
+        \item Group Software Design Document for CS 3338 Final Project.
+        \item Group CS 3338 Final Project Snapshot Objectives.
+        \item Group Initial Planning.
+        \item Current group repository, including its README, existing Design Spec placeholder, Docker Compose file, and frontend/backend source and package files.
+        \IfValueT{#1}{#1}%
+    \end{itemize}
+}
+
+% iffalse will not be compiled
+% This is for a later update to make acronyms clickable.
+
+% later add glossaries
+
+% \usepackage[colorlinks]{hyperref} % Optional: makes \gls references clickable
+% \usepackage{glossaries}
+
+% \makeglossaries
+
+% % Define a glossary entry
+% \newglossaryentry{latex}{
+%     name=LaTeX,
+%     description={Is a markup language specially suited for scientific documents}
+% }
+
+% % Define an acronym (requires \usepackage[acronym]{glossaries})
+% \newacronym{gcd}{GCD}{Greatest Common Divisor}
+
+% \begin{document}
+% ...
+% \printglossaries % Prints the glossary where you want it to appear
+% \end{document}

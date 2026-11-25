@@ -1,5 +1,6 @@
 % macro for the title of this doc.
 \newcommand{\documentName}{Project Design Specification}
+\newcommand{\shortDocumentName}{PDS}
 
 % include the macros from docs/project_macros.tex
 \input{project_macros.tex}
@@ -192,16 +193,11 @@ This is a conceptual model of the information the system needs. The User, Role, 
 		\item Frontend -- The web site and user facing view of the software, covers the aspect o the software running in the web browser.
 	\end{enumerate}
 
+	% include the documents glossary
+	\documentsGlossary
 
-\section{References}
-	\begin{itemize}
-		\item CS 3338 Final Project assignment instructions (provided by the course).
-		\item Group Software Requirements Specification for CS 3338 Final Project (provided PDF).
-		\item Group Software Design Document for CS 3338 Final Project (provided PDF).
-		\item Group CS 3338 Final Project Snapshot Objectives (provided PDF).
-		\item Group Initial Planning (provided PDF).
-		\item Current group repository, including its README, existing Design Spec placeholder, Docker Compose file, and frontend/backend source and package files.
-		\item Golden Eagle Flight Plan senior design project description (https://ascent.cysun.org/project/project/view/253).
-	\end{itemize}
+% Add the references at the end
+\referencesSection{}
+
 
 \end{document}

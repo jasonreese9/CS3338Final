@@ -16,7 +16,8 @@
 \contentsline {subsection}{\numberline {6.1}Documentation Details}{9}{subsection.6.1}%
 \contentsline {subsubsection}{\numberline {6.1.1}Required Preamble}{9}{subsubsection.6.1.1}%
 \contentsline {subsubsection}{\numberline {6.1.2}Macro Explanations}{9}{subsubsection.6.1.2}%
-\contentsline {section}{\numberline {7}Glossary}{10}{section.7}%
-\contentsline {subsection}{\numberline {7.1}User Facing}{10}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Technical}{10}{subsection.7.2}%
-\contentsline {section}{\numberline {8}References}{11}{section.8}%
+\contentsline {section}{\numberline {7}Glossary}{11}{section.7}%
+\contentsline {subsection}{\numberline {7.1}User Facing}{11}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Technical}{11}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Documents}{11}{subsection.7.3}%
+\contentsline {section}{\numberline {8}References}{12}{section.8}%

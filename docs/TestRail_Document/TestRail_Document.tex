@@ -1,5 +1,6 @@
 % macro for the title of this doc.
 \newcommand{\documentName}{Test Rail Document}
+\newcommand{\shortDocumentName}{TRD}
 
 % include the macros from docs/project_macros.tex
 \input{../project_macros.tex}
@@ -38,13 +39,10 @@ The \textit{Section 1} .
 		\item Frontend -- The web site and user facing view of the software, covers the aspect o the software running in the web browser.
 	\end{enumerate}
 
+	% include the documents glossary
+	\documentsGlossary
 
-\newpage %
-\section{References}
-	\begin{itemize}
-		\item Team repository: \url{https://github.com/jasonreese9/CS3338Final}.
-		\item Project Group 26 Software Requirement Specification, Software Design Document, and Snapshot Objectives in this repository.
-		\item Reference topic: \url{https://ascent.cysun.org/project/project/view/253}.
-	\end{itemize}
+% Add the references at the end
+\referencesSection{}
 
 \end{document}
