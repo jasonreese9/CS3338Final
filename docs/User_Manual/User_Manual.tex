@@ -1,50 +1,16 @@
+% macro for the title of this doc.
+\newcommand{\documentName}{User Manual}
+
 % include the macros from docs/project_macros.tex
 \input{../project_macros.tex}
 
-% macro for the title of this doc.
-\newcommand{\myTitle}{Golden Eagle Flight Plan User Manual}
-
 \begin{document}
 
-\title{Golden Eagle Flight Plan\\User Manual\\CS 3338 Final Project}
-\author{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
-\date{November 19, 2026}
+\firstPageBlock
 
 \newpage %
-\maketitle
-
-\newpage %
-
-\begin{table}[h!]
-\centering
-\caption{\textbf{Revision History}}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Name} & \textbf{Date} & \textbf{Reasons for Changes} & \textbf{Version} \\
-\hline
-Project Group 26 & 11/17/2026 & First Draft & 1.0.0 \\
-\hline
-Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\
-\hline
-\end{tabular}
-\end{table}
-
-\newpage %
-
-\begin{center}Design draft --- November 2026\end{center}
-\tableofcontents
-\newpage %
-
-\fancyhf{}
-\pagestyle{fancy}
-\fancyhead[L]{\myTitle}
-\fancyhead[R]{Page \thepage}
-\fancyfoot[C]{}
-
-\newpage %
-
-
 \section{Introduction}
+
 \subsection{Purpose}
 Golden Eagle Flight Plan is our CS3338 final project. The planned website will help students find campus resources and events and follow their academic preparation, career development, and community involvement goals. Faculty and student organizations will be able to share events with students.
 
@@ -59,6 +25,8 @@ This manual covers the Snapshot 1 development environment and the planned accoun
 \end{itemize}
 Jira has not been set up yet.
 
+\newpage %
+
 \section{Getting Started}
 \subsection{Download the Project}
 Clone the team repository and open its root directory:
@@ -68,7 +36,8 @@ cd CS3338Final
 \end{verbatim}
 
 \subsection{Build the Documentation}
-The documentation requires \texttt{make} and \texttt{pdflatex}. On macOS, the repository's \texttt{setup.sh} installs Homebrew, MacTeX, and additional LaTeX packages. Run it from the repository root:
+The documentation requires \texttt{make} and \texttt{pdflatex}.
+On macOS, the repository's \texttt{setup.sh} installs Homebrew, MacTeX, and additional LaTeX packages. Run it from the repository root:
 \begin{verbatim}
 ./setup.sh
 \end{verbatim}
@@ -80,6 +49,7 @@ The documents are stored as \texttt{.tex} files under \texttt{docs}. Their Makef
 \begin{verbatim}
 make -C docs/User_Manual
 \end{verbatim}
+
 
 \subsection{Start the Application}
 Install Docker with Docker Compose. Create a local \texttt{src/.env} file defining \texttt{STUDENT\_NAME}, \texttt{POSTGRES\_USER}, \texttt{POSTGRES\_PASSWORD}, and \texttt{POSTGRES\_DB}. The Compose file passes these values to the database and backend. Keep the local environment file out of GitHub.
@@ -97,6 +67,8 @@ Press \texttt{Ctrl+C} in the terminal running Compose. From \texttt{src}, run:
 docker compose down
 \end{verbatim}
 The \texttt{db-data} volume retains the visit records between runs.
+
+\newpage %
 
 \section{Planned Account Workflow}
 The following steps follow the Snapshot 1 requirements and design. These screens are planned rather than implemented in the current starter.
@@ -122,6 +94,7 @@ Administrators manage restricted roles. Choosing an account type does not grant 
 \subsection{Profiles and Permissions}
 Students can view their own profiles but cannot view other students' profiles. Faculty can view student profiles as described in the SRS. Student organizations can manage their permitted activities but cannot view student profiles. Administrators manage account approvals and roles. The server must check permissions before returning or changing protected information.
 
+\newpage %
 \section{Troubleshooting}
 If the frontend displays that it cannot reach the backend, check the services from \texttt{src}:
 \begin{verbatim}
@@ -130,9 +103,63 @@ docker compose logs backend db
 \end{verbatim}
 Check that the local environment values match between the backend and database and that ports 3000 and 5001 are available. PostgreSQL may need a few seconds to start; the backend retries the connection during startup.
 
+\newpage %
 \section{Documentation Updates}
 This manual will be revised at each snapshot to reflect the features and setup available at that point. Event management, personalized resources, and Flight Plan progress instructions will be added as those features are developed.
 
+\newpage %
+\section{Editing the Documentation}
+
+Documents use \texttt{\\section}, \texttt{\\subsection}, and \texttt{\\subsubsection} for clarity and grouping.
+
+\subsection{Documentation Details}
+Look and feel for all documents is controlled by \texttt{docs/project\_macros.tex}.
+
+These macros include the \textbf{Title Page}, \textbf{Revisions Table}, and the \textbf{Table of Contents}.
+
+The \texttt{docs/template.tex} file is an example of a minimal document.
+
+\subsubsection{Required Preamble}
+The following are the required lines for a \texttt{.tex} file to have the same look and feel:
+	\begin{verbatim}
+		% macro for the title of this doc.
+		\newcommand{\documentName}{User Manual}
+
+		% include the macros from docs/project_macros.tex
+		\input{../project_macros.tex}
+
+		\begin{document}
+
+		\firstPageBlock
+
+		\newpage %
+		\section{Introduction}
+	\end{verbatim}
+
+\subsubsection{Macro Explanations}
+\begin{enumerate}[leftmargin=3\parindent]
+	\item{
+		The \texttt{documentName} macro defines the title of the document at the top of each page.
+		\begin{verbatim}
+			% macro for the title of this doc.
+			\newcommand{\documentName}{User Manual}
+		\end{verbatim}
+	}
+	\item{
+		The \texttt{\\input\{..\/project\_macros.tex\}} includes the macros:
+		\begin{verbatim}
+			% include the macros from docs/project_macros.tex
+			\input{../project_macros.tex}
+		\end{verbatim}
+	}
+	\item{
+		The \texttt{\\firstPageBlock} creates the document, Title Page, and TOC:
+		\begin{verbatim}
+			\begin{document}
+			\firstPageBlock
+		\end{verbatim}
+	}
+\end{enumerate}
 
 \newpage %
 \section{Glossary}

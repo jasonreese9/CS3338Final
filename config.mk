@@ -20,8 +20,8 @@ $(PDF_FILES): $(TEX_FILES) $(PROJECT_MACROS)
 # build twice so we always get the TOC correct.
 %.pdf:: %.tex
 	@echo "Compiling $< -> $@"
-	pdflatex -interaction=nonstopmode $<
-	pdflatex -interaction=nonstopmode $<
+	pdflatex -halt-on-error -interaction=nonstopmode $<
+	pdflatex -halt-on-error -interaction=nonstopmode $<
 
 clean::
 	-rm -f $(PDF_FILES)

@@ -1,6 +1,40 @@
 % use %input{../defines.tex} to include these.
 % This document contains all of the common macros and setup across documents.
 
+% %%%%%%%%%%%%%%%%%%%%%%% Start Update lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% These are the lines to update to change the versions in all documents.
+% currentVersion is the current version of the document.
+% longDate is the long date the documents were updated at.
+% firstDraftLine, snapshotOneLine, snapshotTwoLine, etc
+% are the revision history table lines.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Update this to update the current versions.
+\newcommand{\currentVersion}{1.1.0}
+
+% update this to change the date on the documents.
+\newcommand{\longDate}{November 19, 2026}
+
+% Update these to add each version
+% every row must end with '\\ \hline'
+\newcommand{\firstDraftLine}{%
+Project Group 26 & 11/17/2026 & First Draft & 1.0.0 \\ \hline
+}
+\newcommand{\snapshotOneLine}{%
+Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\ \hline
+}
+\newcommand{\snapshotTwoLine}{}
+\newcommand{\snapshotThreeLine}{}
+\newcommand{\snapshotFourLine}{}
+%%%%%%%%%%%%%%%%%%%%%%%% End Update lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% We expect \newcommand{\documentName}{User Manual} to define the name of this document.
+% We fill in the titles from that.
+\newcommand{\myTitle}{Golden Eagle Flight Plan \documentName}
+\newcommand{\longTitle}{Golden Eagle Flight Plan\\\documentName\\CS 3338 Final Project}
+
+
 \documentclass[11pt,letterpaper]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
@@ -37,8 +71,6 @@
 
 \newcommand{\authors}{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
 
-% Update this to update the current versions.
-\newcommand{\currentversion}{1.1.0}
 
 
 % First PageBlock.
@@ -46,7 +78,7 @@
 % Prefixing an argument with + makes it "long," 
 % it expects the 
 % allowing it to accept multi-paragraph blocks, lists, and display math.
-\NewDocumentCommand{\firstPageBlock}{ +m }{%
+\NewDocumentCommand{\firstPageBlock}{}{%
 \title{\longTitle}
 
 \fancyhf{}
@@ -59,7 +91,7 @@
 
 
 \author{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
-\date{November 19, 2026}
+\date{\longDate}
 
 \newpage %
 \maketitle
@@ -73,14 +105,11 @@
 \hline
 \textbf{Name} & \textbf{Date} & \textbf{Reasons for Changes} & \textbf{Version} \\
 \hline
-Project Group 26 & 11/17/2026 & First Draft & 1.0.0 \\
-\hline
-Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\
-\hline
-
-\hline
-
-\hline
+\firstDraftLine
+\snapshotOneLine
+\snapshotTwoLine
+\snapshotThreeLine
+\snapshotFourLine
 \end{tabular}
 \end{table}
 \newpage %
@@ -90,4 +119,3 @@ Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\
 \newpage %
 
 }
-

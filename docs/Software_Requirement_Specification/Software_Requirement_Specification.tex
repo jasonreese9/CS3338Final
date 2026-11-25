@@ -1,54 +1,14 @@
+% macro for the title of this doc.
+\newcommand{\documentName}{Software Requirement Specification}
+
 % include the macros from docs/project_macros.tex
 \input{../project_macros.tex}
 
-% macro for the title of this doc.
-\newcommand{\myTitle}{Golden Eagle Flight Plan Software Requirement Specification}
-
 \begin{document}
 
-\title{Golden Eagle Flight Plan\\Software Requirement Specification\\CS 3338 Final Project}
-\author{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
-\date{November 19, 2026}
+\firstPageBlock
 
 \newpage %
-\maketitle
-
-\newpage %
-
-\begin{table}[h!]
-\centering
-\caption{\textbf{Revision History}}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Name} & \textbf{Date} & \textbf{Reasons for Changes} & \textbf{Version} \\
-\hline
-Project Group 26 & 11/17/2026 & First Draft & 1.0.0 \\
-\hline
-Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\
-\hline
-
-\hline
-
-\hline
-\end{tabular}
-\end{table}
-
-\newpage %
-
-\begin{center}Design draft --- November 2026\end{center}
-\tableofcontents
-\newpage %
-
-\fancyhf{}
-\pagestyle{fancy}
-\fancyhead[L]{\myTitle}
-\fancyhead[R]{Page \thepage}
-\fancyfoot[C]{}
-
-\newpage %
-
-
-
 \section{Introduction}
 
 \subsection{Purpose}
@@ -72,7 +32,7 @@ These requirements are high level and non-exhaustive.
 \subsection{Document Conventions}
 All requirements are numbered in order to easily establish which requirement is being referred to.
 Other documents may reference this document as \emph{SRS v1.1.0}.
-References to a specific section should be \emph{SRS v\currentversion - Registration - 3.2.1}, this refers to version \textit{\currentversion} of this document, \textit{Section 3 (Registration)} Item \textit{3.2.1}.
+References to a specific section should be \emph{SRS v\currentVersion - Registration - 3.2.1}, this refers to version \textit{\currentVersion} of this document, \textit{Section 3 (Registration)} Item \textit{3.2.1}.
 
 
 \newpage %

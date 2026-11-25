@@ -1,18 +1,22 @@
 \contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Purpose}{4}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Project Objectives}{4}{subsection.1.2}%
-\contentsline {section}{\numberline {2}Getting Started}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Download the Project}{4}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Build the Documentation}{4}{subsection.2.2}%
+\contentsline {section}{\numberline {2}Getting Started}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Download the Project}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Build the Documentation}{5}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Start the Application}{5}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Stop the Application}{5}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Planned Account Workflow}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Create an Account}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Sign In and Sign Out}{5}{subsection.3.2}%
+\contentsline {section}{\numberline {3}Planned Account Workflow}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Create an Account}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Sign In and Sign Out}{6}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Profiles and Permissions}{6}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Troubleshooting}{6}{section.4}%
-\contentsline {section}{\numberline {5}Documentation Updates}{6}{section.5}%
-\contentsline {section}{\numberline {6}Glossary}{7}{section.6}%
-\contentsline {subsection}{\numberline {6.1}User Facing}{7}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Technical}{7}{subsection.6.2}%
-\contentsline {section}{\numberline {7}References}{8}{section.7}%
+\contentsline {section}{\numberline {4}Troubleshooting}{7}{section.4}%
+\contentsline {section}{\numberline {5}Documentation Updates}{8}{section.5}%
+\contentsline {section}{\numberline {6}Editing the Documentation}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Documentation Details}{9}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}Required Preamble}{9}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}Macro Explanations}{9}{subsubsection.6.1.2}%
+\contentsline {section}{\numberline {7}Glossary}{10}{section.7}%
+\contentsline {subsection}{\numberline {7.1}User Facing}{10}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Technical}{10}{subsection.7.2}%
+\contentsline {section}{\numberline {8}References}{11}{section.8}%
