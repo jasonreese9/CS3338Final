@@ -40,3 +40,54 @@
 % Update this to update the current versions.
 \newcommand{\currentversion}{1.1.0}
 
+
+% First PageBlock.
+% This section makes the First Page, Revision Table and TOC match across all documents.
+% Prefixing an argument with + makes it "long," 
+% it expects the 
+% allowing it to accept multi-paragraph blocks, lists, and display math.
+\NewDocumentCommand{\firstPageBlock}{ +m }{%
+\title{\longTitle}
+
+\fancyhf{}
+\pagestyle{fancy}
+\fancyhead[L]{\myTitle}
+\fancyhead[R]{Page \thepage}
+\fancyfoot[C]{}
+
+\newpage %
+
+
+\author{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
+\date{November 19, 2026}
+
+\newpage %
+\maketitle
+
+\newpage %
+
+\begin{table}[h!]
+\centering
+\caption{\textbf{Revision History}}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Name} & \textbf{Date} & \textbf{Reasons for Changes} & \textbf{Version} \\
+\hline
+Project Group 26 & 11/17/2026 & First Draft & 1.0.0 \\
+\hline
+Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\
+\hline
+
+\hline
+
+\hline
+\end{tabular}
+\end{table}
+\newpage %
+
+\begin{center}Design draft --- November 2026\end{center}
+\tableofcontents
+\newpage %
+
+}
+
