@@ -15,13 +15,13 @@ clean::
 
 $(TEX_FILES): $(PROJECT_MACROS)
 
-$(PDF_FILES): $(TEX_FILES)
+$(PDF_FILES): $(PROJECT_MACROS) $(TEX_FILES)
 
 # build twice so we always get the TOC correct.
 %.pdf:: %.tex
 	@echo "Compiling $< -> $@"
-	pdflatex -halt-on-error -interaction=nonstopmode $<
-	pdflatex -halt-on-error -interaction=nonstopmode $<
+	pdflatex -halt-on-error -interaction=nonstopmode $< | grep -v /usr/local/texlive
+	pdflatex -halt-on-error -interaction=nonstopmode $< | grep -v /usr/local/texlive
 
 clean::
 	-rm -f $(PDF_FILES)

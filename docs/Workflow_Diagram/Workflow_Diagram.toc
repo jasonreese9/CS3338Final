@@ -1,12 +1,12 @@
 \contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
-\contentsline {section}{\numberline {2}Snapshot 1 Workflow}{4}{section.2}%
-\contentsline {section}{\numberline {3}How the Workflow Works}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Account Types}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Saved Information and Access}{5}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Current Starter Data Flow}{5}{section.4}%
-\contentsline {section}{\numberline {5}Revisions at Later Snapshots}{5}{section.5}%
-\contentsline {section}{\numberline {6}Glossary}{6}{section.6}%
-\contentsline {subsection}{\numberline {6.1}User Facing}{6}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Technical}{6}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Documents}{6}{subsection.6.3}%
-\contentsline {section}{\numberline {7}References}{7}{section.7}%
+\contentsline {section}{\numberline {2}Snapshot 1 Workflow}{5}{section.2}%
+\contentsline {section}{\numberline {3}How the Workflow Works}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Account Types}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Saved Information and Access}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Current Starter Data Flow}{7}{section.4}%
+\contentsline {section}{\numberline {5}Revisions at Later Snapshots}{8}{section.5}%
+\contentsline {section}{\numberline {6}Glossary}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}User Facing}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Technical}{9}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Documents}{9}{subsection.6.3}%
+\contentsline {section}{\numberline {7}References}{10}{section.7}%

@@ -62,6 +62,10 @@ Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\ \hline
 
 \pagestyle{fancy}
 \geometry{a4paper, margin=1in}
+% fancyhdr: header is taller than the 12pt default.
+\setlength{\headheight}{14pt}
+% Ragged-right paragraph column: avoids underfull boxes in narrow table cells.
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 % Create a todo list
 \newlist{todolist}{enumerate}{2}
@@ -130,9 +134,10 @@ Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\ \hline
 \subsection{Document Conventions}
 #1
 
-Other documents may reference this document as \emph{\documentName v\currentVersion} or \emph{\shortDocumentName v\currentVersion} .
+% latex loses the space after \shortDocumentName v, so use \shortDocumentName{} v instead.
+Other documents may reference this document as \emph{\documentName{} v\currentVersion{}} or \emph{\shortDocumentName{} v\currentVersion{}}.
 
-References to a specific section should be \emph{\shortDocumentName v\currentVersion - Registration - 3.2.1} which references \textit{Section 3 (Registration)} Item \textit{3.2.1}.
+References to a specific section should be \emph{\shortDocumentName{} v\currentVersion{} - Registration - 3.2.1} which references \textit{Section 3 (Registration)} Item \textit{3.2.1}.
 }
 
 % A block for the document references in the glossary

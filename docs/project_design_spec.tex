@@ -13,9 +13,10 @@
 \section{Project Overview}
 This document goes over how we plan to organize the Golden Eagle Flight Plan project, including the pages users will see, how accounts and permissions will work, what information we need to store, and which tools the project will use. It follows our Software Requirements Specification (SRS) and Software Design Document (SDD). Our goal is to put student events and development resources in one place. Some features are still being planned, so this document describes the design rather than saying everything has already been built.
 
+\newpage %
 \section{Users and Permissions}
 Our SRS lists four user roles: student, faculty, student organization, and administrator. Each role will have different permissions. The backend will need to check these permissions so users cannot access restricted information just by going directly to a page.
-\begin{longtable}{p{0.27\textwidth}p{0.63\textwidth}}
+\begin{longtable}{L{0.27\textwidth}L{0.63\textwidth}}
 \toprule Role & Intended access \\ \midrule
 Student & Register without administrative role approval; view own profile, home page, events, RSVP, and flight-plan scoreboard; cannot view other students' profiles.\\
 Faculty & Register pending administrator approval; manage events, view and search student profiles according to approved access rules.\\
@@ -25,6 +26,7 @@ Administrator & Review faculty/organization registrations, assign roles, and adm
 \end{longtable}
 \noindent\textbf{Student privacy:} Our requirements mention FERPA when explaining why student organizations cannot view student profiles. Before building this part, we still need to confirm which student information faculty should be allowed to see.
 
+\newpage %
 \section{Page and Screen Designs}
 \subsection{Login Landing Screen}
 If someone tries to open a page without being logged in, they will be sent to the login page. From there, they can either sign in or create a new account.
@@ -49,9 +51,10 @@ The original Golden Eagle Flight Plan project includes a resources section and p
 \subsection{Administrator Interface}
 Admins will need a page where they can review faculty and student organization registration requests, approve or reject them, and manage roles. We still need to design the exact page layout.
 
+\newpage %
 \section{Backend and API}
 The group's current repository has a Node.js/Express backend and a React web frontend. The provided starter code uses PostgreSQL to count page visits. This is a working direction for the development environment, but it is not the full Golden Eagle Flight Plan feature set. The original senior project describes React Native with Expo and MongoDB Atlas; we should not describe those technologies as implemented in our group repository unless the team adopts them.
-\begin{longtable}{p{0.30\textwidth}p{0.60\textwidth}}
+\begin{longtable}{L{0.30\textwidth}L{0.60\textwidth}}
 \toprule Service & Responsibility \\ \midrule
 Authentication & Register accounts, verify password hashes, log in and out, reset passwords, manage sessions or tokens.\\
 Authorization & Check authenticated role and ownership on every protected operation.\\
@@ -64,9 +67,10 @@ Scoreboard service & Return student tasks, progress, and suggestions (future des
 \end{longtable}
 \noindent\textbf{API details:} Our current documents do not list the exact API routes or request formats. We will add those after the backend structure is decided.
 
+\newpage %
 \section{Data Model}
 The team's SDD describes planned records for users, roles, and profiles, connected through unique IDs. The SRS also requires event information. At the moment, the starter backend creates a PostgreSQL table named \texttt{visits} and does not yet implement these feature tables. The table below is a proposed data model, not a schema already present in the code.
-\begin{longtable}{p{0.25\textwidth}p{0.65\textwidth}}
+\begin{longtable}{L{0.25\textwidth}L{0.65\textwidth}}
 \toprule Entity & Conceptual fields and relationships \\ \midrule
 User & Unique user ID, unique username/email, password hash, role reference(s), profile reference, approval state.\\
 Role & Unique role ID, role name, associated permissions.\\
@@ -78,11 +82,12 @@ Scoreboard task/completion & Potential future entities for tasks and student pro
 \end{longtable}
 \noindent\textbf{Security:} Our SRS requires bcrypt with salted password hashes, so passwords should never be saved as plain text. We will also need permission checks when users open profiles or make changes to events.
 
+\newpage %
 \section{Tools, Libraries, and Docker Setup}
 The assignment asks us to list the packages and libraries needed for the project. The team repository currently contains a small Dockerized frontend, backend, and database starter. The dependencies below are copied from those existing project files; they should not be confused with the additional packages required for the planned Golden Eagle Flight Plan features.
 
 \subsection{Dependencies Present in the Repository}
-\begin{longtable}{p{0.25\textwidth}p{0.65\textwidth}}
+\begin{longtable}{L{0.25\textwidth}L{0.65\textwidth}}
 \toprule Component & Current packages / configuration \\ \midrule
 Frontend & React 17, React DOM 17, React Scripts 4, and Axios 0.21 (as listed in \texttt{src/frontend/package.json}). \\
 Backend & Node.js with Express 4, CORS, dotenv, and the PostgreSQL \texttt{pg} driver (as listed in \texttt{src/backend/package.json}). \\
@@ -95,7 +100,7 @@ Environment & The Compose file uses \texttt{STUDENT\_NAME} and \texttt{POSTGRES\
 \end{longtable}
 
 \subsection{Additional Packages for Planned Features}
-\begin{longtable}{p{0.28\textwidth}p{0.62\textwidth}}
+\begin{longtable}{L{0.28\textwidth}L{0.62\textwidth}}
 \toprule Requirement & Proposed implementation / status \\ \midrule
 Password storage & bcrypt for salted password hashing is required by the SRS, but bcrypt is not listed in the current backend package file. \\
 Sessions and role checks & JWT with \texttt{jsonwebtoken} is one possible method. The group has not confirmed a final authentication approach in this repository. \\
@@ -111,6 +116,7 @@ The Docker setup currently starts a React frontend, an Express backend, and Post
 
 The \texttt{src/frontend} and \texttt{src/backend} folders each have a Dockerfile and a \texttt{package.json} file. \texttt{src/docker-compose.yml} defines the services and volumes. Local passwords and other secrets should stay out of GitHub. If the team later changes to MongoDB Atlas or another database, this section and the Docker files will need to be revised together.
 
+\newpage %
 \section{Snapshot Plan}
 The Snapshot Objectives document we have so far only explains the start of the project: setting up the website framework and account permissions. The outline below is one possible way to divide the remaining features. We should adjust it once the team agrees on the snapshot goals.
 \begin{itemize}
@@ -122,6 +128,7 @@ The Snapshot Objectives document we have so far only explains the start of the p
 After each snapshot, we will update this document to match the changes made to the SRS, SDD, Jira tasks, and Docker setup.
 
 
+\newpage %
 \section{Supporting UML Diagrams}
 The following diagrams help explain the design described in this document. They are based on our current SRS and SDD, so some details could change when we finalize the database and the implementation.
 
@@ -160,6 +167,7 @@ This is a conceptual model of the information the system needs. The User, Role, 
 \clearpage
 \clearpage
 
+\newpage %
 \section{Things We Still Need to Confirm}
 \begin{todolist}[leftmargin=3\parindent]
 \item \done Are we keeping React for the web frontend or planning to introduce React Native/Expo later? \textit{React Native/Expo will be added in a later snapshot.}
