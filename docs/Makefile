@@ -1,4 +1,8 @@
 # -*- mode: makefile -*-
+# this has to be set before the include so we can find project_macros.tex
+# for project_design_spec.pdf.
+PROJECT_MACROS = project_macros.tex
+
 # Relative include so this works in paths containing spaces.
 include ../config.mk
 
@@ -9,6 +13,7 @@ SUBDIRS := Software_Requirement_Specification \
            Workflow_Diagram \
            User_Manual \
            Snapshot_Objectives
+
 
 all:: project_design_spec.pdf
 	@for dir in $(SUBDIRS); do $(MAKE) -C $$dir all; done

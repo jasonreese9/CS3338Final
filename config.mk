@@ -5,11 +5,17 @@
 # Except for project_macros.tex
 TEX_FILES := $(filter-out project_macros.tex,$(wildcard *.tex))
 PDF_FILES := $(patsubst %.tex,%.pdf,$(TEX_FILES))
+PROJECT_MACROS ?= ../project_macros.tex
 
 # 3. Standard entry targets
 all:: $(PDF_FILES)
 
 clean::
+
+
+$(TEX_FILES): $(PROJECT_MACROS)
+
+$(PDF_FILES): $(TEX_FILES) $(PROJECT_MACROS)
 
 # build twice so we always get the TOC correct.
 %.pdf:: %.tex
