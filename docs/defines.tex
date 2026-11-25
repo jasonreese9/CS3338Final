@@ -1,0 +1,42 @@
+% use %input{../defines.tex} to include these.
+% This document contains all of the common macros and setup across documents.
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{longtable,booktabs,array,enumitem,hyperref,xcolor,graphicx,pdflscape}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{titling}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlist[itemize]{leftmargin=*}
+
+% Automatically prefixes the section number to all first-level enumerate lists
+% label=\thesubsection.\arabic* pulls "1.1" and adds the list item number
+% leftmargin=3\parindent indents 3 paragraphs.
+\setlist[enumerate,1]{label=\thesubsection.\arabic*,leftmargin=\parindent}
+
+\pagestyle{fancy}
+\geometry{a4paper, margin=1in}
+
+% Create a todo list
+\newlist{todolist}{enumerate}{2}
+\setlist[todolist]{label=$\square$  \thesubsection.\arabic*,leftmargin=\parindent}
+\usepackage{pifont}
+\newcommand{\planned}{\textit{(still to be confirmed)}}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+\newcommand{\authors}{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
+
+% Update this to update the current versions.
+\newcommand{\currentversion}{1.1.0}
+
