@@ -13,9 +13,9 @@
 \contentsline {subsection}{\numberline {4.1}Login Page}{5}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Logging Into an Existing Account}{5}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Forgot Password}{5}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Creating a New Account}{5}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Account Validation}{6}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Glossary}{7}{section.5}%
-\contentsline {subsection}{\numberline {5.1}User Facing}{7}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Technical}{7}{subsection.5.2}%
-\contentsline {section}{\numberline {6}References}{8}{section.6}%
+\contentsline {subsection}{\numberline {4.4}Creating a New Account}{6}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Account Validation}{7}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Glossary}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}User Facing}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Technical}{8}{subsection.5.2}%
+\contentsline {section}{\numberline {6}References}{9}{section.6}%

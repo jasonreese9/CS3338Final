@@ -15,7 +15,7 @@ clean::
 
 $(TEX_FILES): $(PROJECT_MACROS)
 
-$(PDF_FILES): $(TEX_FILES) $(PROJECT_MACROS)
+$(PDF_FILES): $(TEX_FILES)
 
 # build twice so we always get the TOC correct.
 %.pdf:: %.tex

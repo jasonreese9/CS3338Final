@@ -63,14 +63,14 @@ Project Group 26 & 11/19/2026 & Snapshot 1 update & 1.1.0 \\ \hline
 
 % Create a todo list
 \newlist{todolist}{enumerate}{2}
-\setlist[todolist]{label=$\square$  \thesubsection.\arabic*,leftmargin=\parindent}
+\setlist[todolist]{label=\thesection.\arabic*,leftmargin=\parindent}
 \usepackage{pifont}
-\newcommand{\planned}{\textit{(still to be confirmed)}}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
-\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
-\hspace{-2.5pt}}
-\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+% Each marker draws the single checkbox for its item.
+\newcommand{\planned}{\leavevmode$\square$\ \textit{(still to be confirmed)}\ }
+\newcommand{\done}{\leavevmode\rlap{$\square$}\hspace{1pt}\cmark\ \ }
+\newcommand{\wontfix}{\leavevmode\rlap{$\square$}\hspace{1pt}\xmark\ \ }
 
 \newcommand{\authors}{Project Group 26\\Jason Reese \\ Juan Torres Llamas \\ Victor Hernandez}
 
