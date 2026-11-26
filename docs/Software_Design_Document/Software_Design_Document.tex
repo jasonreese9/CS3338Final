@@ -26,6 +26,18 @@ engaged students by making growth visible and actionable for both students and f
 Readers of this document should be familiar with the overall project design \emph{Project Design Specification v\currentVersion} and the project requirements\emph{SRS v\currentVersion}.
 
 \subsection{System Overview}
+The System is comprised of a Front End which is the website that the users interact with, a Back End which the Front End accesses in order to update and retrieve details and a Database that stores all of the relevant information.
+
+\subsubsection{Front End}
+The front end is written in JavaScript, CSS, and HTML and displayed in the users browser.
+It makes API calls to the back end in order to authenticate, and display details to the user for any page they wish to visit.
+
+\subsubsection{Back End}
+The back end is written in JavaScript running on Node.js, and interacts with the Postgres Database for storage. It contains all of the business logic for the application.
+
+All api calls to the backend must be authenticated.
+
+The only unauthicated call allowed is login.
 
 \newpage %
 \section{Design Considerations}
@@ -35,24 +47,32 @@ Readers of this document should be familiar with the overall project design \emp
             \item Users have a working internet connection.
             \item The software will change as features are added.
         \end{itemize}
+
     \subsection{General Constraints}
+    Security and Privacy constraints require that all calls be authenticated, and that passwords are not transmitted.
+
+    The site must be accessible on limited bandwidth and screen size constrained devices.
+
     \subsection{Technical Constraints}
+    All API calls must be authenticated, which will require the login process to store limited data on in the browser in order for the site to function.
+
+    The passwords must not be transmitted to the backend.
+
+    In order to leverage the Cal State LA Single Sign On, there will be changes made depending on the technologies Cal State SSO leverages.
 
 \newpage %
-\section{Database Design}
-    \subsection{Tables}
-        \begin{enumerate}[leftmargin=3\parindent]
-            \item There will be a users table and a roles table.
-            \item Each role will have a name, permissions, and a unique ID.
-            \item A user will have a list of roles and a profile.
-            \item The profile will be stored in a separate table.
-            \item The users table contains a list of usernames, unique user IDs, and unique role IDs, which are used to look up the roles and profiles in their appropriate tables.
-            \item The profile table associates the profiles with the unique user IDs.
-        \end{enumerate}
+\section{Front End Design}
+The front end consists of the user visible web pages.
+The content of all pages will be fetched from the backend and displayed to the user.
 
-\newpage %
-\section{Login Page Design}
-    \subsection{Login Page}
+All requests to the backend must contain an authorization cookie that can be linked back to the user request.
+
+Upon a sucessful login the backend will return a JWT to the user that can be used to authenticate all future back end calls, and can be refreshed.
+
+Security best practices will be followed including leveraging CORS, CSRF and anti-replay.
+
+\subsection{Login Page Design}
+    \subsubsection{Login Page}
         \begin{enumerate}[leftmargin=3\parindent]
             \item If the user is not logged in they will be redirected to a login page upon attempting to access any part of the site.
             \item The login page will have two buttons:
@@ -61,7 +81,7 @@ Readers of this document should be familiar with the overall project design \emp
                     \item A button for creating a new account.
                 \end{itemize}
         \end{enumerate}
-    \subsection{Logging Into an Existing Account}
+    \subsubsection{Logging Into an Existing Account}
         \begin{enumerate}[leftmargin=3\parindent]
             \item If the user decides to log into an existing account, they will be redirected to a page where they can enter their username and password in two different text fields.
             \item The username field will be above the password field and both fields will be labeled.
@@ -73,13 +93,14 @@ Readers of this document should be familiar with the overall project design \emp
             \item The error will not tell the user which was incorrect, only that one of the two was incorrect.
             \item If the user is able to successfully login, they will be redirected to the homepage.
         \end{enumerate}
-    \subsection{Forgot Password}
+    \subsubsection{Forgot Password}
         \begin{enumerate}[leftmargin=3\parindent]
             \item If the user clicks the forgot password button, they will be redirected to a screen that tells the user a link to reset the password has been sent to the email associated with the account.
             \item The confirmation screen should not tell the user what email it was sent to.
             \item The link in the email will redirect the user to a reset password screen in which they will enter their new password and confirm their new password.
+            \item A Forgot Password request should expire all existing JWTs.
         \end{enumerate}
-    \subsection{Creating a New Account}
+    \subsubsection{Creating a New Account}
         \begin{enumerate}[leftmargin=3\parindent]
             \item If the user decides to create a new account, they will be redirected to a page in which they click on one of three buttons that determine whether they are trying to create a Student, Faculty, or Student Organization account.
             \item If the user clicks the student option they will be asked to enter the following information in different text fields:
@@ -117,14 +138,109 @@ Readers of this document should be familiar with the overall project design \emp
                 \end{itemize}
             \item The password and confirm password text fields will be censored and each character the user enters into the field will appear as a \textbullet\ to the user.
         \end{enumerate}
-    \subsection{Account Validation}
+    \subsubsection{Account Validation}
         \begin{enumerate}[leftmargin=3\parindent]
             \item The user will not be able to create an account using an email that is already present in the system.
-            \item The system will reject any email addresses that are entered and do not end in @calstatela.edu for students or faculty.
-            \item The system will accept any email address for student organizations.
-            \item If the user claims to be a Faculty or Student Organization, they will be redirected to a site telling them their account will be created once an Administrator verifies it.
-            \item After it is verified, the user will get a notification through their email telling them their account has been verified and they can now log in.
+            \item The system will reject any email addresses that are entered and do not end in \emph{@calstatela.edu} for \emph{Student} or \emph{Faculty}.
+            \item The system will accept any email address for \emph{Student Organization}.
+            \item If the user claims to be a \emph{Faculty} or \emph{Student Organization}, they will be redirected to a site telling them their account will be created once an Administrator verifies it.
+            \item After an account is verified, the user will get a notification through their email telling them their account has been verified and they can now login.
         \end{enumerate}
+    \subsection{Authentication}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item The password will be hashed on the client, and will not be transmitted to the server.
+            \item Upon a successful login, a Javascript Web Token (JWT) will be returned. This JWT will last 8 hours, and then will expire.
+            \item The JWT can be refreshed until expiry, then the user will be required to login again.  The expiry time will start out at 7 days, and be configurable by the admin.
+            \item The JWT will be signed to prevent forgery, and will contain a userid-hash that is stored in the database to identify the user it belongs to.
+            \item The userid-hash must be deleted from the database upon expiry of the JWT, a forgot-password, or logout request.
+            \item The contents of the JWT must not identify the user, and must not contain any data that is not required.
+            \item The JWT should be deleted from the browser upon logout.
+        \end{enumerate}
+
+\newpage %
+\section{Back End Design}
+The back end will host all of the APIs to provide data to the front end.
+All APIs will be documented using OAS (OpenAPI Specification).
+
+This section covers general endpoints that are known at the time of design, the exhaustive list as well as the full specification will be written as OAS.
+
+    \subsection{Well Known Endpoints}
+        These endpoints are well defined and exist to allow for programattic development of the front end or new clients.
+
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item \textbf{/api/spec/openapi-v1.yaml} OpenAPI Specification: API Version 1.
+            \item \textbf{/AGENTS.md} AI Agent Guide Capabilities: API workflow, response fields, attribution, and responsible-use guidance.
+            \item \textbf{/SKILLS.md} AI Skill: Reusable instructions for finding, checking, and presenting meal data accurately.
+        \end{enumerate}
+
+    \subsection{Unauthenticated Endpoints}
+        These are the endpoints that take an optional JWT for authentication.
+        All other endpoints require authentication
+
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item \textbf{/whoami}: This returns no-one if the user is not logged in, otherwise profile information.
+            \item \textbf{/login}: This endpoint will process a login request and return a JWT for future calls..
+            \item \textbf{/logout}: This endpoint will process a logout request and invalidate existing JWT mappings.
+            \item \textbf{/account/create}: This endpoint will process account creation.
+            \item \textbf{/account/forgot}: This endpoint will process forgot account password.
+        \end{enumerate}
+
+    \subsection{Endpoints}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item \textbf{/user/profile}: This returns the current users profile, or the profile of another user.
+        \end{enumerate}
+
+\newpage %
+\section{Database Design}
+    All tables use UUIDs for the ID column.
+
+    \subsection{Tables}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item There will be a users table and a roles table.
+            \item Each role will have a name, permissions, and a unique ID.
+            \item A user will have a list of roles and a profile.
+            \item The profile will be stored in a separate table.
+            \item The users table contains a list of usernames, unique user IDs, and unique role IDs, which are used to look up the roles and profiles in their appropriate tables.
+            \item The profile table associates the profiles with the unique user IDs.
+            \item There will be an authentication table. Since all backend calls leverage a JWT, there must be a value that can be used to find the user for a given JWT without exposing any user information in the JWT.
+        \end{enumerate}
+
+        \subsubsection{User Table}
+            \begin{enumerate}[leftmargin=3\parindent]
+                \item \textbf{UserUUID} \textit{Key} Unique UUID for the user.
+                \item \textbf{Username} \textit{Key} Username of the user.
+                \item \textbf{HashedPassword} Hashed password for the user.
+                \item \textbf{Email} Primary email address of the user.
+                \item \textbf{Roles} List of RoleIDs the user is part of.
+                \item \textbf{UserActive} Can be set to false to disable a user.
+                \item \textbf{CreatedDate} Date this entry was created.
+                \item \textbf{LastUpdatedDate} Date this entry was created.
+            \end{enumerate}
+
+        \subsubsection{Roles Table}
+            \begin{enumerate}[leftmargin=3\parindent]
+                \item \textbf{RoleUUID} \textit{Key} Unique UUID for the role.
+                \item \textbf{RoleName} Name of the role for display.
+                \item \textbf{PermissionIDs} List of Permission IDs that the role has.
+                \item \textbf{RoleActive} Can be set to false to disable a role.
+                \item \textbf{CreatedDate} Date this entry was created.
+                \item \textbf{LastUpdatedDate} Date this entry was created.
+            \end{enumerate}
+
+        \subsubsection{Profiles Table}
+            \begin{enumerate}[leftmargin=3\parindent]
+                \item \textbf{UserUUID} \textit{Key} UUID of the user that the role belongs to.
+                \item \textbf{CreatedDate} Date this entry was created.
+                \item \textbf{LastUpdatedDate} Date this entry was created.
+            \end{enumerate}
+
+        \subsubsection{Authentication Table}
+        The authentication table will contain at a minimum:
+            \begin{enumerate}[leftmargin=3\parindent]
+                \item \textbf{AuthUUID} \textit{Primary Key} Unique UUID that was generated and stored in the JWT, this is the lookup key to convert a JWT into a user.
+                \item \textbf{UserUUID} \textit{Key} UUID of the user that the role belongs to.
+                \item \textbf{CreatedDate} Date this entry was created.
+            \end{enumerate}
 
 \newpage %
 \section{Glossary}
@@ -146,12 +262,23 @@ Readers of this document should be familiar with the overall project design \emp
         \item Backend -- The portion of the software that hosts the website and database, this is the portion that the web pages reference.
         \item Docker -- Technology for deploying sites and reproducible builds.
         \item Frontend -- The web site and user facing view of the software, covers the aspect o the software running in the web browser.
+        \item UUID: Universally Unique Identifier
     \end{enumerate}
 
+    \subsection{Front End}
+    \begin{enumerate}[leftmargin=3\parindent]
+        \item anti-replay: anti-replay is a method of ensuring that data sent to the server cannot be sent more than once by including a token that must be sent with each request that changes.
+        \item CORS: Cross-Origin Resource Sharing, this ensures that all resources served by the front-end only come from trusted domains to avoid security concerns.
+        \item CSRF: Cross Site Request Forgery, this is a method of ensuring that other sites cannot impersonate the front end.
+        \item JWT: Javascript Web Token, used as an authentication token.
+    \end{enumerate}
+    \subsection{Database}
     % include the documents glossary
     \documentsGlossary
 
 % Add the references at the end
-\referencesSection{}
+\referencesSection[
+    \item OpenAPI Specification \url{https://openapis.org}
+]
 
 \end{document}
