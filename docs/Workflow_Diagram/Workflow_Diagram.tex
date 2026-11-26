@@ -21,15 +21,18 @@ This document shows the planned Snapshot 1 account workflow and the data flow in
 
 \newpage
 \section{How the Workflow Works}
-A student or faculty member opens the application and signs in or creates an account. If sign-in fails, the user checks their details and tries again. A successful sign-in opens the homepage for that account. The diagram uses the student and faculty paths to show the main profile workflow.
+A user opens the application and signs in or creates an account. If sign-in fails, the user checks their details and tries again. A successful sign-in opens the dashboard for that account's role. The diagram shows the profile workflow for each of the four account types.
 
 \subsection{Account Types}
-The full account design includes students, faculty, student organizations, and administrators. Faculty and student organization registrations require administrator approval. Administrators also control the assignment of restricted roles. Those approval steps are defined in the SRS and SDD; the diagram summarizes the main account journey.
+The account design includes students, faculty, student organizations, and administrators. Students receive the student role automatically. Faculty and student organization registrations wait for an administrator to approve them and assign roles, and the user is then emailed that the account is verified. Those approval steps are defined in the SRS and SDD.
+
+\subsection{Lockout and Password Recovery}
+Five failed sign-ins lock the account. A locked account is unlocked by using Forgot Password, which emails a reset link that expires after being clicked or after 4 hours. Completing a reset signs out all other sessions. Resets are limited to one every 10 minutes. Five or more resets within 24 hours lock the account and notify an administrator, and only an administrator can unlock it. A reset requested for an unknown account also notifies an administrator, but the user sees the same confirmation either way.
 
 \subsection{Saved Information and Access}
 The server checks account permissions before reading or saving protected information. Students can access their own profiles, while faculty and administrators can access student profiles according to the requirements. Student organizations cannot view student profiles. Database access is handled by the server rather than directly by the browser.
 
-The planned database separates users, roles, and profiles. After an allowed operation, the application displays the result. Users sign out when finished.
+The planned database separates users, roles, profiles, authentication sessions, password resets, and security events. After an allowed operation, the application displays the result. Users sign out when finished.
 
 \newpage %
 \section{Current Starter Data Flow}

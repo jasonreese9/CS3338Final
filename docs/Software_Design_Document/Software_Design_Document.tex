@@ -149,10 +149,10 @@ Security best practices will be followed including leveraging CORS, CSRF and ant
     \subsection{Authentication}
         \begin{enumerate}[leftmargin=3\parindent]
             \item The password will be hashed on the client, and will not be transmitted to the server.
-            \item Upon a successful login, a Javascript Web Token (JWT) will be returned. This JWT will last 8 hours, and then will expire.
-            \item The JWT can be refreshed until expiry, then the user will be required to login again.  The expiry time will start out at 7 days, and be configurable by the admin.
+            \item Upon a successful login, a Javascript Web Token (JWT) will be returned. Each JWT will last 8 hours, and then will expire.
+            \item The login itself lasts longer than a single JWT. Before a JWT expires it can be refreshed to receive a new 8 hour JWT, until the login session expires. Once the login session expires the user will be required to login again. The login session lifetime will start out at 7 days, and be configurable by the admin.
             \item The JWT will be signed to prevent forgery, and will contain a userid-hash that is stored in the database to identify the user it belongs to.
-            \item The userid-hash must be deleted from the database upon expiry of the JWT, a forgot-password, or logout request.
+            \item The userid-hash must be deleted from the database upon expiry of the login session, a forgot-password, or logout request.
             \item The contents of the JWT must not identify the user, and must not contain any data that is not required.
             \item The JWT should be deleted from the browser upon logout.
             \item Password Reset links must expire after being clicked or after 4 hours.
@@ -268,7 +268,7 @@ This section covers general endpoints that are known at the time of design, the 
                 \item \textbf{CreatedDate} Date this entry was created.
                 \item \textbf{LastPasswordReset} Last time the password was reset.
             \end{enumerate}
-            All entries for a user must be deleted on logout, JWT expiry, or a forgot password reset, which invalidates all of their other login sessions.
+            All entries for a user must be deleted on logout, login session expiry, or a forgot password reset, which invalidates all of their other login sessions.
 
         \subsubsection{Password Reset Table}
         Every password reset request creates an entry, whether or not an email was sent, so that the reset limits can be enforced without exposing them to the user.
