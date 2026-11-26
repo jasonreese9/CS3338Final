@@ -22,17 +22,18 @@
 \contentsline {subsection}{\numberline {4.2}Unauthenticated Endpoints}{9}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Endpoints}{9}{subsection.4.3}%
 \contentsline {section}{\numberline {5}Database Design}{10}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Tables}{10}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}User Table}{10}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Roles Table}{11}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}Profiles Table}{11}{subsubsection.5.1.3}%
-\contentsline {subsubsection}{\numberline {5.1.4}Authentication Table}{11}{subsubsection.5.1.4}%
-\contentsline {subsubsection}{\numberline {5.1.5}Password Reset Table}{11}{subsubsection.5.1.5}%
-\contentsline {subsubsection}{\numberline {5.1.6}Security Event Table}{12}{subsubsection.5.1.6}%
-\contentsline {section}{\numberline {6}Glossary}{13}{section.6}%
-\contentsline {subsection}{\numberline {6.1}User Facing}{13}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Technical}{13}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Front End}{13}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Database}{13}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Documents}{13}{subsection.6.5}%
-\contentsline {section}{\numberline {7}References}{15}{section.7}%
+\contentsline {subsection}{\numberline {5.1}Entity Relationship Diagram}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Tables}{12}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}User Table}{12}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Roles Table}{13}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Profiles Table}{13}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Authentication Table}{13}{subsubsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.5}Password Reset Table}{13}{subsubsection.5.2.5}%
+\contentsline {subsubsection}{\numberline {5.2.6}Security Event Table}{14}{subsubsection.5.2.6}%
+\contentsline {section}{\numberline {6}Glossary}{15}{section.6}%
+\contentsline {subsection}{\numberline {6.1}User Facing}{15}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Technical}{15}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Front End}{15}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Database}{15}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Documents}{15}{subsection.6.5}%
+\contentsline {section}{\numberline {7}References}{17}{section.7}%

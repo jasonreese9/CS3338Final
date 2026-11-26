@@ -1,0 +1,61 @@
+erDiagram
+    direction TB
+
+    USERS {
+        uuid UserUUID PK
+        string Username UK
+        string HashedPassword
+        string Email
+        uuid[] Roles FK
+        boolean UserActive
+        boolean AccountLocked
+        string LockReason
+        int FailedLoginCount
+        datetime CreatedDate
+        datetime LastUpdatedDate
+    }
+
+    ROLES {
+        uuid RoleUUID PK
+        string RoleName
+        uuid[] PermissionIDs
+        boolean RoleActive
+        datetime CreatedDate
+        datetime LastUpdatedDate
+    }
+
+    PROFILES {
+        uuid UserUUID PK, FK
+        datetime CreatedDate
+        datetime LastUpdatedDate
+    }
+
+    AUTHENTICATION {
+        uuid AuthUUID PK
+        uuid UserUUID FK
+        datetime CreatedDate
+        datetime LastPasswordReset
+    }
+
+    PASSWORD_RESET {
+        uuid ResetUUID PK
+        uuid UserUUID FK
+        datetime RequestedDate
+        datetime ExpiresDate
+        datetime UsedDate
+    }
+
+    SECURITY_EVENT {
+        uuid EventUUID PK
+        string EventType
+        uuid UserUUID FK
+        string Email
+        boolean AdminNotified
+        datetime CreatedDate
+    }
+
+    USERS }o--o{ ROLES : "has roles"
+    USERS ||--|| PROFILES : "has profile"
+    USERS ||--o{ AUTHENTICATION : "authenticates via"
+    USERS ||--o{ PASSWORD_RESET : "requests"
+    USERS |o--o{ SECURITY_EVENT : "triggers"

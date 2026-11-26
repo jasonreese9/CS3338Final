@@ -198,6 +198,23 @@ This section covers general endpoints that are known at the time of design, the 
 \section{Database Design}
     All tables use UUIDs for the ID column.
 
+    \newpage %
+    \begin{landscape}
+    \thispagestyle{empty}
+    % The fancyhdr header stays in portrait inside a landscape page, so draw it in the rotated body instead.
+    \noindent\myTitle\hfill Page \thepage\\[-0.5em]
+    \rule{\linewidth}{0.4pt}
+    \subsection{Entity Relationship Diagram}
+    The diagram below shows the tables, their keys, and how they relate to each other.
+    PK is a primary key, UK is a unique key, and FK is a foreign key.
+    Column descriptions are listed with each table in the following sections.
+    The source for this diagram is \texttt{database.mmd}.
+    \begin{center}
+    \includegraphics[width=\paperwidth]{database.png}
+    \end{center}
+    \end{landscape}
+
+
     \subsection{Tables}
         \begin{enumerate}[leftmargin=3\parindent]
             \item There will be a users table and a roles table.
