@@ -122,7 +122,6 @@ Security best practices will be followed including leveraging CORS, CSRF and ant
                     \item Password
                     \item Confirm password
                     \item University Email Address
-                    \item Major
                     \item Phone number
                     \item Department
                     \item Job Title
@@ -143,8 +142,12 @@ Security best practices will be followed including leveraging CORS, CSRF and ant
             \item The user will not be able to create an account using an email that is already present in the system.
             \item The system will reject any email addresses that are entered and do not end in \emph{@calstatela.edu} for \emph{Student} or \emph{Faculty}.
             \item The system will accept any email address for \emph{Student Organization}.
-            \item If the user claims to be a \emph{Faculty} or \emph{Student Organization}, they will be redirected to a site telling them their account will be created once an Administrator verifies it.
-            \item After an account is verified, the user will get a notification through their email telling them their account has been verified and they can now login.
+            \item If the user claims to be a \emph{Faculty} or \emph{Student Organization}, the account will be created as pending and inactive, and they will be redirected to a site telling them their account will be activated once an Administrator approves it.
+            \item A pending account cannot login. It is listed on the Administrator homepage, where an Administrator will either approve or reject it. Pending and rejected accounts have \textbf{UserActive} set to false.
+            \item To approve an account the Administrator assigns the roles for the account, and \textbf{UserActive} is set to true. The user will get a notification through their email telling them their account has been approved and they can now login.
+            \item To reject an account the Administrator may enter a reason. The account stays inactive, and the user will get a notification through their email telling them their request was not approved, including the reason if one was entered.
+            \item A rejected user cannot login or appeal within the system. They may submit a new registration with the same details, and a rejected registration does not block the email address from being used again.
+            \item Approvals and rejections are recorded in the Administrator log of recent actions.
         \end{enumerate}
     \subsection{Authentication}
         \begin{enumerate}[leftmargin=3\parindent]
@@ -187,6 +190,18 @@ This section covers general endpoints that are known at the time of design, the 
             \item \textbf{/logout}: This endpoint will process a logout request and invalidate existing JWT mappings.
             \item \textbf{/account/create}: This endpoint will process account creation.
             \item \textbf{/account/forgot}: This endpoint will process forgot account password.
+        \end{enumerate}
+
+    \subsection{Profile Access}
+        Profile access is enforced by the back end on every request, following the user permissions in the SRS. Hiding a link in the front end is not sufficient.
+
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item A user can always view their own profile.
+            \item A \emph{Student} can view their own profile and the profiles of \emph{Faculty} and \emph{Student Organization} accounts, but not the profiles of other students.
+            \item \emph{Faculty} can search for students by name and view student profiles.
+            \item \emph{Student Organization} accounts cannot view student profiles, or search for students, due to FERPA.
+            \item An \emph{Admin} has all permissions, and can view any profile.
+            \item A request for a profile that the user is not allowed to view must be rejected with a forbidden response, must not return any profile data, and must be recorded so that it can be shown on the Administrator homepage.
         \end{enumerate}
 
     \subsection{Endpoints}

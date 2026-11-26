@@ -7,7 +7,7 @@
 \contentsline {subsection}{\numberline {3.4}Account Type Selection and Registration}{6}{subsection.3.4}%
 \contentsline {subsection}{\numberline {3.5}Home Page}{6}{subsection.3.5}%
 \contentsline {subsection}{\numberline {3.6}Profile Pages}{6}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Events Page and Event Detail}{6}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.7}Events Page and Event Detail}{7}{subsection.3.7}%
 \contentsline {subsection}{\numberline {3.8}Event Filtering}{7}{subsection.3.8}%
 \contentsline {subsection}{\numberline {3.9}Student Scoreboard}{7}{subsection.3.9}%
 \contentsline {subsection}{\numberline {3.10}Resources and AI Screens}{7}{subsection.3.10}%

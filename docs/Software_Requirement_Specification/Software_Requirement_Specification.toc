@@ -17,27 +17,27 @@
 \contentsline {subsubsection}{\numberline {3.4.4}Faculty Users}{8}{subsubsection.3.4.4}%
 \contentsline {subsubsection}{\numberline {3.4.5}Student Organization Users}{8}{subsubsection.3.4.5}%
 \contentsline {subsubsection}{\numberline {3.4.6}Admin Users}{8}{subsubsection.3.4.6}%
-\contentsline {subsection}{\numberline {3.5}User Profiles}{8}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Home Page}{9}{subsection.3.6}%
-\contentsline {subsubsection}{\numberline {3.6.1}Student Home Page}{9}{subsubsection.3.6.1}%
-\contentsline {subsubsection}{\numberline {3.6.2}Faculty Home Page}{9}{subsubsection.3.6.2}%
-\contentsline {subsubsection}{\numberline {3.6.3}Student Organization Home Page}{9}{subsubsection.3.6.3}%
-\contentsline {subsubsection}{\numberline {3.6.4}Admin Home Page}{9}{subsubsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.7}Flight Plan}{10}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Events}{10}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}Event Information}{10}{subsection.3.9}%
-\contentsline {subsection}{\numberline {3.10}Replying to an event.}{10}{subsection.3.10}%
-\contentsline {section}{\numberline {4}Authentication and Security}{11}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Login}{11}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Password Recovery}{11}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Software Interface Requirements}{12}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Technical Requirements}{12}{subsection.5.1}%
-\contentsline {section}{\numberline {6}Legal and Ethical Considerations}{13}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Legal Requirements}{13}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Accessibility}{13}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Ethics}{13}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Glossary}{14}{section.7}%
-\contentsline {subsection}{\numberline {7.1}User Facing}{14}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Technical}{14}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Documents}{14}{subsection.7.3}%
-\contentsline {section}{\numberline {8}References}{15}{section.8}%
+\contentsline {subsection}{\numberline {3.5}User Profiles}{9}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Home Page}{10}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Student Home Page}{10}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Faculty Home Page}{10}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Student Organization Home Page}{10}{subsubsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.4}Admin Home Page}{10}{subsubsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.7}Flight Plan}{11}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Events}{11}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Event Information}{11}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Replying to an event.}{11}{subsection.3.10}%
+\contentsline {section}{\numberline {4}Authentication and Security}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Login}{12}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Password Recovery}{12}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Software Interface Requirements}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Technical Requirements}{13}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Legal and Ethical Considerations}{14}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Legal Requirements}{14}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Accessibility}{14}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Ethics}{14}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Glossary}{15}{section.7}%
+\contentsline {subsection}{\numberline {7.1}User Facing}{15}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Technical}{15}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Documents}{15}{subsection.7.3}%
+\contentsline {section}{\numberline {8}References}{16}{section.8}%
