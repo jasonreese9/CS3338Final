@@ -8,11 +8,16 @@ info:
     accept an optional JWT. Passwords are only sent over HTTPS.
 servers:
   - url: /
+# x-diagram-notes on an operation adds a dotted line to the generated diagram (api.mmd).
+# `to` is client, database, or email, and `label` is the text on the line.
 tags:
   - name: Well Known
   - name: Unauthenticated
   - name: User
   - name: Admin
+# Every operation requires a JWT unless it sets its own security.
+security:
+  - bearerAuth: []
 paths:
   /api/spec/openapi-v1.yaml:
     get:
@@ -44,6 +49,9 @@ paths:
     post:
       tags: [Unauthenticated]
       summary: Log in and receive a JWT
+      x-diagram-notes:
+        - to: client
+          label: returns a JWT
       description: |
         Failures must not reveal whether the username or the password was wrong.
         Five failed logins lock the account, and the endpoint includes a delay.
@@ -101,6 +109,9 @@ paths:
     post:
       tags: [Unauthenticated]
       summary: Request a password reset link
+      x-diagram-notes:
+        - to: email
+          label: emails a reset link
       description: |
         Always returns success, even if no email was sent, so the limits
         and the existence of the account are not exposed.
@@ -123,6 +134,9 @@ paths:
     get:
       tags: [User]
       summary: Get the current user's profile, or another user's profile
+      x-diagram-notes:
+        - to: client
+          label: 403 if the role cannot view the profile
       parameters:
         - name: userUUID
           in: query
@@ -146,6 +160,9 @@ paths:
     post:
       tags: [Admin]
       summary: Create an active account of any type
+      x-diagram-notes:
+        - to: email
+          label: emails a set-password link
       description: Requires the Admin role. The user is emailed a link to set their password.
       requestBody:
         required: true
@@ -182,6 +199,9 @@ paths:
     post:
       tags: [Admin]
       summary: Unlock an account
+      x-diagram-notes:
+        - to: database
+          label: records a Security Event
       description: |
         Requires the Admin role. Clears AccountLocked, LockReason, and
         FailedLoginCount, and records the action in the Security Event table.
