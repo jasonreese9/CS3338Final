@@ -1,0 +1,51 @@
+---
+title: "Golden Eagle Flight Plan: API Endpoints (v1)"
+---
+%% Generated from the SDD Back End Design section. See openapi-v1.yaml for the full specification.
+flowchart LR
+    C(["Front End<br/>(browser)"])
+
+    subgraph WK ["Well Known (no JWT)"]
+        W1["GET /api/spec/openapi-v1.yaml"]
+    end
+
+    subgraph UN ["Unauthenticated (JWT optional)"]
+        U1["GET /whoami"]
+        U2["POST /login"]
+        U3["POST /logout"]
+        U4["POST /account/create"]
+        U5["POST /account/forgot"]
+    end
+
+    subgraph AU ["Authenticated (JWT required)"]
+        P1["GET /user/profile"]
+    end
+
+    subgraph AD ["Admin role required"]
+        A1["POST /admin/users/create"]
+        A2["GET /admin/users/locked"]
+        A3["POST /admin/users/unlock"]
+    end
+
+    C --> W1
+    C --> U1 & U2 & U3 & U4 & U5
+    C -->|"Bearer JWT"| P1
+    C -->|"Bearer JWT"| A1 & A2 & A3
+
+    U2 -->|"returns JWT"| C
+    P1 -.->|"403 if the role cannot view the profile"| C
+    A3 -.->|"records a Security Event"| DB[("Database")]
+    A1 -.->|"emails a set-password link"| EM(["Email service"])
+    U5 -.->|"emails a reset link"| EM
+
+    classDef client fill:#dff1e6,stroke:#92b69e,stroke-width:1.4px,color:#253047
+    classDef open fill:#e0edfc,stroke:#9bb7da,stroke-width:1.4px,color:#253047
+    classDef auth fill:#eee3f6,stroke:#bba2cc,stroke-width:1.4px,color:#253047
+    classDef admin fill:#fff3ce,stroke:#d7be78,stroke-width:1.4px,color:#253047
+    classDef store fill:#fff5d9,stroke:#ccb77e,stroke-width:1.4px,color:#253047
+    class C,EM client
+    class W1,U1,U2,U3,U4,U5 open
+    class P1 auth
+    class A1,A2,A3 admin
+    class DB store
+    linkStyle default stroke:#667085,stroke-width:2px

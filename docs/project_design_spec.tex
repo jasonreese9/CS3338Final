@@ -124,8 +124,8 @@ The \texttt{src/frontend} and \texttt{src/backend} folders each have a Dockerfil
 The Snapshot Objectives document defines Snapshot 1 in detail and leaves Snapshots 2 to 4 to be filled in. The outline below follows Snapshot 1 in that document, and is a proposal for the remaining snapshots that we should adjust once the team agrees on their goals.
 \begin{itemize}
 \item Snapshot 1 (first 2 months, 6 sprints): base framework, registration, login and logout, roles and permissions, the homepage, and a first version of events that all users can see and that faculty and student organizations can create and cancel. RSVPs are not part of this snapshot.
-\item Snapshot 2: proposed RSVPs, rescheduling events, event interest counts, event update notifications, and accommodation requests.
-\item Snapshot 3: proposed scoreboard, resources, and personalized event filtering.
+\item Snapshot 2: RSVPs, rescheduling events, event interest counts, event update notifications, accommodation requests, and the student scoreboard.
+\item Snapshot 3: proposed resources and personalized event filtering.
 \item Snapshot 4: testing refinements, documentation updates, and future work (including AI features and anonymous event attendance, if not implemented).
 \end{itemize}
 After each snapshot, we will update this document to match the changes made to the SRS, SDD, Jira tasks, and Docker setup.
@@ -173,8 +173,7 @@ This is a conceptual model of the information the system needs. The User, Role, 
 \section{Things We Still Need to Confirm}
 \begin{todolist}[leftmargin=3\parindent]
 \item \done Are we keeping React for the web frontend or planning to introduce React Native/Expo later? \textit{React Native/Expo will be added in a later snapshot.}
-\item \done Which snapshot contains events, RSVPs, scoreboard, and personalized filtering? \textit{Basic events are in Snapshot 1 (Sprint 6) and RSVPs are proposed for Snapshot 2, as described in the Snapshot Objectives.}
-\item \planned Which snapshot contains the scoreboard and personalized event filtering? \textit{Proposed for Snapshot 3, to be confirmed in the Snapshot Objectives.}
+\item \done Which snapshot contains events, RSVPs, scoreboard, and personalized filtering? \textit{Basic events are in Snapshot 1 (Sprint 6), and RSVPs and the scoreboard are in Snapshot 2, as described in the Snapshot Objectives. Personalized event filtering and resources are proposed for Snapshot 3.}
 \item \done Will the group keep the current React/PostgreSQL starter or switch to the original React Native/Expo and MongoDB Atlas architecture? \textit{React/PostgreSQL and React Native/Expo PostgreSQL will be added in a later snapshot.}
 \item \done What student-profile information may faculty access, and under what authorization conditions? \textit{The SDD Profile Access section says faculty and admins can search for and view student profiles and student organizations cannot. Which individual profile fields are visible will be decided when the profile contents are designed.}
 \item \done What is the finalized data schema and API route design? \textit{For Snapshot 1, the SDD defines the account tables (users, roles, profiles, authentication, password reset, and security event) and the account endpoints. The event and RSVP tables, and the full OpenAPI specification, will be added in later snapshots.}

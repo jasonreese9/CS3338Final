@@ -10,6 +10,7 @@ include ../config.mk
 
 # Define all subdirectories in one clean list
 SUBDIRS := diagrams \
+           openapi \
            Software_Requirement_Specification \
            Software_Design_Document \
            TestRail_Document \

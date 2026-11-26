@@ -12,7 +12,8 @@
 \contentsline {subsection}{\numberline {3.6}Sprint 6: Events}{8}{subsection.3.6}%
 \contentsline {section}{\numberline {4}Snapshot 2 (Checkpoint 1)}{9}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Event Responses}{9}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Snapshot 2 Deliverables}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.2}Student Scoreboard}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Snapshot 2 Deliverables}{9}{subsection.4.3}%
 \contentsline {section}{\numberline {5}Snapshot 3 (Checkpoint 3)}{10}{section.5}%
 \contentsline {section}{\numberline {6}Snapshot 4 (Original Due Date)}{11}{section.6}%
 \contentsline {section}{\numberline {7}Glossary}{12}{section.7}%

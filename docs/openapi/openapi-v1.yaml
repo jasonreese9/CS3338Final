@@ -1,0 +1,321 @@
+openapi: 3.0.3
+info:
+  title: Golden Eagle Flight Plan API
+  version: 1.0.0
+  description: |
+    Minimal API specification for Snapshot 1, generated from the SDD and SRS.
+    All endpoints require a JWT except the ones tagged Unauthenticated, which
+    accept an optional JWT. Passwords are only sent over HTTPS.
+servers:
+  - url: /
+tags:
+  - name: Well Known
+  - name: Unauthenticated
+  - name: User
+  - name: Admin
+paths:
+  /api/spec/openapi-v1.yaml:
+    get:
+      tags: [Well Known]
+      summary: OpenAPI Specification, API Version 1
+      security: []
+      responses:
+        '200':
+          description: This specification.
+          content:
+            application/yaml:
+              schema:
+                type: string
+  /whoami:
+    get:
+      tags: [Unauthenticated]
+      summary: Return the current user's profile, or no one if not logged in
+      security:
+        - {}
+        - bearerAuth: []
+      responses:
+        '200':
+          description: The current user, or an empty body if no one is logged in.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+  /login:
+    post:
+      tags: [Unauthenticated]
+      summary: Log in and receive a JWT
+      description: |
+        Failures must not reveal whether the username or the password was wrong.
+        Five failed logins lock the account, and the endpoint includes a delay.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login succeeded. The JWT lasts 8 hours and can be refreshed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          $ref: '#/components/responses/IncorrectLogin'
+  /logout:
+    post:
+      tags: [Unauthenticated]
+      summary: Log out and invalidate the JWT mappings
+      security:
+        - {}
+        - bearerAuth: []
+      responses:
+        '204':
+          description: Logged out.
+  /account/create:
+    post:
+      tags: [Unauthenticated]
+      summary: Create an account
+      description: |
+        Students are active immediately. Faculty and student organization
+        accounts are created pending until an administrator approves them.
+        The first account created when no users exist becomes the Admin.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCreateRequest'
+      responses:
+        '201':
+          description: Account created, or pending administrator approval.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountCreateResponse'
+        '400':
+          description: Invalid details, or the email is already in use.
+  /account/forgot:
+    post:
+      tags: [Unauthenticated]
+      summary: Request a password reset link
+      description: |
+        Always returns success, even if no email was sent, so the limits
+        and the existence of the account are not exposed.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: A reset link was sent if the account exists.
+  /user/profile:
+    get:
+      tags: [User]
+      summary: Get the current user's profile, or another user's profile
+      parameters:
+        - name: userUUID
+          in: query
+          required: false
+          description: Profile to return. Defaults to the current user.
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: The profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        '401':
+          description: Not logged in.
+        '403':
+          description: The user is not allowed to view this profile.
+  /admin/users/create:
+    post:
+      tags: [Admin]
+      summary: Create an active account of any type
+      description: Requires the Admin role. The user is emailed a link to set their password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminCreateUserRequest'
+      responses:
+        '201':
+          description: Account created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountCreateResponse'
+        '403':
+          description: Requires the Admin role.
+  /admin/users/locked:
+    get:
+      tags: [Admin]
+      summary: List locked accounts and the reason each was locked
+      description: Requires the Admin role.
+      responses:
+        '200':
+          description: The locked accounts.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LockedUser'
+        '403':
+          description: Requires the Admin role.
+  /admin/users/unlock:
+    post:
+      tags: [Admin]
+      summary: Unlock an account
+      description: |
+        Requires the Admin role. Clears AccountLocked, LockReason, and
+        FailedLoginCount, and records the action in the Security Event table.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [userUUID]
+              properties:
+                userUUID:
+                  type: string
+                  format: uuid
+      responses:
+        '204':
+          description: The account was unlocked.
+        '403':
+          description: Requires the Admin role.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    IncorrectLogin:
+      description: Incorrect Username/Password. Does not say which was wrong.
+  schemas:
+    LoginRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          format: password
+          maxLength: 72
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Signed JWT containing only the lookup key, not user details.
+    AccountType:
+      type: string
+      enum: [student, faculty, studentOrganization, admin]
+    AccountCreateRequest:
+      type: object
+      required: [accountType, username, password, email]
+      properties:
+        accountType:
+          type: string
+          enum: [student, faculty, studentOrganization]
+        username:
+          type: string
+        password:
+          type: string
+          format: password
+          maxLength: 72
+        email:
+          type: string
+          format: email
+        firstName:
+          type: string
+        lastName:
+          type: string
+        organizationName:
+          type: string
+        description:
+          type: string
+        major:
+          type: string
+        phoneNumber:
+          type: string
+        department:
+          type: string
+        jobTitle:
+          type: string
+    AdminCreateUserRequest:
+      type: object
+      required: [accountType, username, email, roles]
+      properties:
+        accountType:
+          $ref: '#/components/schemas/AccountType'
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        roles:
+          type: array
+          items:
+            type: string
+            format: uuid
+        firstName:
+          type: string
+        lastName:
+          type: string
+        organizationName:
+          type: string
+    AccountCreateResponse:
+      type: object
+      properties:
+        userUUID:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [active, pendingApproval]
+    Profile:
+      type: object
+      properties:
+        userUUID:
+          type: string
+          format: uuid
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        roles:
+          type: array
+          items:
+            type: string
+    LockedUser:
+      type: object
+      properties:
+        userUUID:
+          type: string
+          format: uuid
+        username:
+          type: string
+        lockReason:
+          type: string
+          description: For example failed logins or frequent resets.
