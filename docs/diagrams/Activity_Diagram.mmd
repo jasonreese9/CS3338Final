@@ -1,0 +1,52 @@
+---
+title: "Golden Eagle Flight Plan: Account Registration and Approval (UML Activity Diagram)"
+---
+flowchart TD
+    Start([Start]) --> A[Open registration page]
+    A --> B[Choose account type]
+    B --> C["Enter required details<br/>for selected account type"]
+    C --> D["Validate email, fields,<br/>and account information"]
+    D --> V{Valid?}
+    V -->|No| X["Show error and<br/>correct registration details"]
+    X --> C
+    V -->|Yes| S{Student?}
+
+    subgraph STU ["STUDENT: AUTOMATIC ACCESS"]
+        S1["Assign student role<br/>and activate account"] --> S2[Show registration confirmation]
+        S2 --> E1([End])
+    end
+
+    subgraph FAC ["FACULTY / STUDENT ORGANIZATION: ADMIN APPROVAL"]
+        F1["Create pending faculty / organization<br/>registration request"] --> F2[Administrator reviews request]
+        F2 --> AP{Approved?}
+        AP -->|Yes| F3["Assign approved role and<br/>activate account"]
+        F3 --> F4["Send approval email<br/>to registered user"]
+        F4 --> E2([End])
+        AP -->|No| R["Remain inactive<br/>(no account access)"]
+        R --> E3([End])
+    end
+
+    S -->|Yes| S1
+    S -->|No| F1
+
+    RULES["<b>EMAIL RULES</b><br/>Student / faculty: @calstatela.edu<br/>Student organizations: any email domain<br/>Every email address must be unique"]
+    RULES -.-> D
+
+    NOTE["Note: The supplied SDD does not define rejection notifications<br/>or an appeal / reapplication process."]
+    R -.-> NOTE
+
+    classDef startEnd fill:#dff1e6,stroke:#92b69e,stroke-width:1.4px,color:#253047
+    classDef step fill:#f5f6f8,stroke:#c6ccd5,stroke-width:1.4px,color:#253047
+    classDef decision fill:#fff3ce,stroke:#d7be78,stroke-width:1.4px,color:#253047
+    classDef retry fill:#fff5ed,stroke:#dfbea3,stroke-width:1.4px,color:#253047
+    classDef student fill:#e0edfc,stroke:#9bb7da,stroke-width:1.4px,color:#253047
+    classDef faculty fill:#eee3f6,stroke:#bba2cc,stroke-width:1.4px,color:#253047
+    classDef note fill:#fff5d9,stroke:#ccb77e,stroke-width:1.4px,color:#253047
+    class Start,E1,E2,E3 startEnd
+    class A,B,C,D step
+    class V,S,AP decision
+    class X,R retry
+    class S1,S2 student
+    class F1,F2,F3,F4 faculty
+    class RULES,NOTE note
+    linkStyle default stroke:#42617b,stroke-width:2px

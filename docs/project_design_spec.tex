@@ -33,7 +33,7 @@ If someone tries to open a page without being logged in, they will be sent to th
 \subsection{Login Form}
 The login form will have a username field, a password field, a forgot-password option, and a login button. The password will be hidden while the user types. If the login fails, the page will say ``Incorrect Username/Password'' instead of telling the user which part was wrong. A successful login will take the user to the homepage.
 \subsection{Password Recovery Screens}
-If a user forgets their password, they can request a reset link. The confirmation page will say that the email was sent, but it will not show the email address. The reset page will ask the user to enter and confirm a new password. We still need to decide how reset links will expire and how to prevent repeated requests.
+If a user forgets their password, they can request a reset link. The confirmation page will say that the email was sent, but it will not show the email address. The reset page will ask the user to enter and confirm a new password. Reset links expire after being clicked or after 4 hours, and a user can request no more than one reset every 10 minutes. The pages do not reveal these limits, and every request appears successful even if no email was sent. Completing a reset signs out all other sessions. Five failed logins lock an account until a reset is completed. Five or more reset requests within 24 hours lock the account and notify an administrator, and only an administrator can unlock it. A reset requested for an unknown account also notifies an administrator.
 \subsection{Account Type Selection and Registration}
 Users select student, faculty, or student organization. Student registration collects first and last name, username, password and confirmation, university email, major, and phone number. Faculty registration also collects department and job title. Organization registration collects organization name, username, password and confirmation, email, and description. The SDD requires unique emails; student/faculty addresses must end in \texttt{@calstatela.edu}, while organization addresses are not restricted to that domain. Password entries are masked. Faculty and organization applications enter an administrator approval flow; students receive the student role automatically.
 \subsection{Home Page}
@@ -49,7 +49,7 @@ The scoreboard will show students how much of their flight plan they have comple
 \subsection{Resources and AI Screens}
 The original Golden Eagle Flight Plan project includes a resources section and plans for an AI advisor chatbot and resume grader. We can use those ideas for future work, but they are not features our group has confirmed for this version.
 \subsection{Administrator Interface}
-Admins will need a page where they can review faculty and student organization registration requests, approve or reject them, and manage roles. We still need to design the exact page layout.
+Admins will need a page where they can review faculty and student organization registration requests, approve or reject them, and manage roles. The admin home page will also list locked accounts with the reason each was locked, and admins can unlock an account from there. Admins are notified when an account is locked by frequent password resets or when a reset is requested for an unknown account, and each unlock is recorded in the log of recent actions. We still need to design the exact page layout.
 
 \newpage %
 \section{Backend and API}
@@ -69,11 +69,14 @@ Scoreboard service & Return student tasks, progress, and suggestions (future des
 
 \newpage %
 \section{Data Model}
-The team's SDD describes planned records for users, roles, and profiles, connected through unique IDs. The SRS also requires event information. At the moment, the starter backend creates a PostgreSQL table named \texttt{visits} and does not yet implement these feature tables. The table below is a proposed data model, not a schema already present in the code.
+The team's SDD describes planned records for users, roles, profiles, authentication sessions, password resets, and security events, connected through unique IDs. The SRS also requires event information. At the moment, the starter backend creates a PostgreSQL table named \texttt{visits} and does not yet implement these feature tables. The table below is a proposed data model, not a schema already present in the code.
 \begin{longtable}{L{0.25\textwidth}L{0.65\textwidth}}
 \toprule Entity & Conceptual fields and relationships \\ \midrule
-User & Unique user ID, unique username/email, password hash, role reference(s), profile reference, approval state.\\
+User & Unique user ID, unique username/email, password hash, role reference(s), profile reference, approval state, active flag, and lock fields (account locked, lock reason, failed login count).\\
 Role & Unique role ID, role name, associated permissions.\\
+Authentication & Unique ID stored in the login token, user ID, created date, last password reset; deleted on logout, login session expiry, or password reset.\\
+Password reset & Unique ID in the reset link, user ID, requested, expiry (4 hours), and used dates; supports the 10 minute limit and the 5 in 24 hours lockout.\\
+Security event & Unique event ID, event type, optional user ID, submitted email, administrator-notified flag, created date; records locks, unlocks, and resets for unknown accounts.\\
 Profile & User ID, role-specific attributes such as major or department, with access controls.\\
 Event & Event ID, host, posting user, time, location, registration details, tags, description, links/media, status.\\
 RSVP & User ID, event ID, response state; supports interest counts and change notifications.\\

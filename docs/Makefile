@@ -9,7 +9,8 @@ include ../config.mk
 .PHONY: mermaid
 
 # Define all subdirectories in one clean list
-SUBDIRS := Software_Requirement_Specification \
+SUBDIRS := diagrams \
+           Software_Requirement_Specification \
            Software_Design_Document \
            TestRail_Document \
            Workflow_Diagram \

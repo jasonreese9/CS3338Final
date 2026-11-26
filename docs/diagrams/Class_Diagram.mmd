@@ -1,0 +1,57 @@
+---
+title: "Golden Eagle Flight Plan: Conceptual Data Model (UML Class Diagram)"
+---
+%% 1 = exactly one, 0..* = zero or more. Line labels describe relationships.
+%% Event posting is limited to faculty, student organizations, and admins by the SRS permissions.
+%% Planned design only. Scoreboard tasks/completions and exact database fields need agreement with the team.
+classDiagram
+    direction LR
+
+    class Role {
+        <<SDD core>>
+        +roleId : unique ID
+        +name : role name
+        +permissions : list / set
+    }
+    class User {
+        <<SDD core>>
+        +userId : unique ID
+        +username : unique
+        +email : unique
+        +passwordHash : bcrypt
+        +approvalStatus : proposed
+    }
+    class Profile {
+        <<SDD core>>
+        +userId : user reference
+        +profileType : role-specific
+        +profileDetails : vary by role
+    }
+    class Event {
+        <<SRS feature>>
+        +eventId : proposed ID
+        +host / postedBy : user + host
+        +eventTime : date / time
+        +location : online / in person
+        +identifiers : keywords / tags
+        +registrationInfo : dates + links
+    }
+    class RSVP {
+        <<proposed entity>>
+        +userId : user reference
+        +eventId : event reference
+        +response : RSVP state, proposed
+        +createdAt : timestamp, proposed
+    }
+
+    User "0..*" -- "0..*" Role : assigned roles
+    User "1" -- "1" Profile : owns
+    User "1" -- "0..*" Event : posts events
+    User "1" -- "0..*" RSVP : submits
+    Event "1" -- "0..*" RSVP : has RSVPs
+
+    style Role fill:#f8f3fb,stroke:#bba2cc
+    style User fill:#e0edfc,stroke:#9bb7da
+    style Profile fill:#eee3f6,stroke:#bba2cc
+    style Event fill:#dff1e6,stroke:#92b69e
+    style RSVP fill:#fff5d9,stroke:#ccb77e

@@ -47,13 +47,18 @@ Registration, login, and student progress features are described in the requirem
 		\begin{enumerate}[label=\arabic*.]
 			\item Choose the option to log into an existing account.
 			\item Enter the username and password and submit the form.
-			\item If the details are incorrect, check them and try again. The design uses a general username or password error.
+			\item If the details are incorrect, check them and try again. The design uses a general username or password error. Five failed sign-ins lock the account.
+		\item If you forget your password or your account is locked, choose Forgot Password. A reset link is emailed to you and expires after you click it or after 4 hours. You can request a reset only once every 10 minutes, and completing a reset signs out your other sessions.
+		\item If you request five or more resets within 24 hours, your account is locked and only an administrator can unlock it.
 			\item After a successful sign-in, open the homepage and the information available to the account's role.
 			\item Sign out when finished.
 		\end{enumerate}
 
 	\subsubsection{Profiles and Permissions}
 	Students can view their own profiles but cannot view other students' profiles. Faculty can view student profiles as described in the SRS. Student organizations can manage their permitted activities but cannot view student profiles. Administrators manage account approvals and roles. The server must check permissions before returning or changing protected information.
+
+	\subsubsection{Locked Accounts (Administrators)}
+	The administrator home page lists locked accounts and the reason each was locked. Administrators are notified when an account is locked by frequent password resets, or when a reset is requested for an unknown account. To unlock an account, select it in the locked accounts list and choose unlock. The unlock is recorded in the log of recent actions.
 
 \newpage %
 \section{Development Documentation}

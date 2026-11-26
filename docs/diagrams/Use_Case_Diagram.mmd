@@ -1,0 +1,67 @@
+---
+title: "Golden Eagle Flight Plan: Use Case Diagram"
+---
+%% Mermaid has no native use case diagram, so this is a flowchart.
+%% Actors are rounded boxes, use cases are ovals, and "inherits" edges show role inheritance.
+%% Student organizations are not connected to student-profile access.
+flowchart LR
+    Visitor(["Visitor"])
+    Reg(["Registered User<br/>(shared actions)"])
+    Student(["Student"])
+    Faculty(["Faculty"])
+    Org(["Student Organization"])
+    Admin(["Administrator"])
+
+    Student -.->|inherits| Reg
+    Faculty -.->|inherits| Reg
+    Org -.->|inherits| Reg
+    Admin -.->|inherits| Reg
+
+    subgraph SYS ["GOLDEN EAGLE FLIGHT PLAN SYSTEM"]
+        direction LR
+        subgraph ACC ["ACCOUNT CREATION"]
+            UC1(["Register account"])
+        end
+        subgraph SHR ["SHARED ACCOUNT ACTIONS"]
+            UC2(["Log in / log out"])
+            UC3(["View events"])
+            UC4(["RSVP to events"])
+            UC5(["View own profile"])
+        end
+        subgraph STU ["STUDENT FEATURES"]
+            UC6(["View student homepage"])
+            UC7(["View flight-plan scoreboard"])
+            UC8(["Filter events by identifiers"])
+            UC9(["Receive event-update notifications"])
+        end
+        subgraph FAC ["FACULTY & ORGANIZERS"]
+            UC10(["Search students by name"])
+            UC11(["View student profiles"])
+            UC12(["Create / reschedule / cancel events"])
+            UC13(["View event RSVP totals"])
+        end
+        subgraph ADM ["ADMINISTRATION"]
+            UC14(["Approve faculty / organization accounts"])
+            UC15(["Manage users and roles"])
+            UC16(["Manage system permissions"])
+        end
+    end
+
+    Visitor --> UC1
+    Reg --> UC2 & UC3 & UC4 & UC5
+    Student --> UC6 & UC7 & UC8 & UC9
+    Faculty --> UC10 & UC11
+    Faculty --> UC12 & UC13
+    Org --> UC12 & UC13
+    Admin --> UC14 & UC15 & UC16
+
+    N1["Student accounts activate directly.<br/>Faculty / organizations need approval."] -.-> UC1
+    N2["Students can track progress across<br/>the flight-plan categories."] -.-> UC7
+    N3["Administrators have full access under the SRS,<br/>including these management actions."] -.-> UC15
+
+    classDef actor fill:#e0edfc,stroke:#9bb7da,stroke-width:1.4px,color:#253047
+    classDef usecase fill:#f5f6f8,stroke:#c6ccd5,stroke-width:1.4px,color:#253047
+    classDef note fill:#fff5d9,stroke:#ccb77e,stroke-width:1.4px,color:#253047
+    class Visitor,Reg,Student,Faculty,Org,Admin actor
+    class UC1,UC2,UC3,UC4,UC5,UC6,UC7,UC8,UC9,UC10,UC11,UC12,UC13,UC14,UC15,UC16 usecase
+    class N1,N2,N3 note
