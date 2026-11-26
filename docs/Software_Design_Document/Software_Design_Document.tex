@@ -155,6 +155,8 @@ Security best practices will be followed including leveraging CORS, CSRF and ant
             \item The userid-hash must be deleted from the database upon expiry of the JWT, a forgot-password, or logout request.
             \item The contents of the JWT must not identify the user, and must not contain any data that is not required.
             \item The JWT should be deleted from the browser upon logout.
+            \item Password Reset links must expire after being clicked or after 4 hours.
+            \item Password reset counter for emails must be stored, and frequent resets must lock out an account and notify an administrator. An account locked by frequent resets must be unlocked by an administrator.
         \end{enumerate}
 
 \newpage %
@@ -188,6 +190,8 @@ This section covers general endpoints that are known at the time of design, the 
     \subsection{Endpoints}
         \begin{enumerate}[leftmargin=3\parindent]
             \item \textbf{/user/profile}: This returns the current users profile, or the profile of another user.
+            \item \textbf{/admin/users/locked}: This returns the list of locked accounts and the reason each was locked. This endpoint requires the Admin role.
+            \item \textbf{/admin/users/unlock}: This unlocks an account by clearing AccountLocked, LockReason, and FailedLoginCount, and records the action in the Security Event table. This endpoint requires the Admin role.
         \end{enumerate}
 
 \newpage %
@@ -203,6 +207,8 @@ This section covers general endpoints that are known at the time of design, the 
             \item The users table contains a list of usernames, unique user IDs, and unique role IDs, which are used to look up the roles and profiles in their appropriate tables.
             \item The profile table associates the profiles with the unique user IDs.
             \item There will be an authentication table. Since all backend calls leverage a JWT, there must be a value that can be used to find the user for a given JWT without exposing any user information in the JWT.
+            \item There will be a password reset table, which tracks every reset request so that link expiry, rate limiting, and lockouts can be enforced.
+            \item There will be a security event table, which records events that require administrator notification.
         \end{enumerate}
 
         \subsubsection{User Table}
@@ -213,8 +219,11 @@ This section covers general endpoints that are known at the time of design, the 
                 \item \textbf{Email} Primary email address of the user.
                 \item \textbf{Roles} List of RoleIDs the user is part of.
                 \item \textbf{UserActive} Can be set to false to disable a user.
+                \item \textbf{AccountLocked} Set to true when the account is locked, either by failed logins or frequent password resets. An account locked by failed logins is unlocked by a forgot password reset. An account locked by frequent resets can only be unlocked by an administrator.
+                \item \textbf{LockReason} Reason the account was locked, for example failed logins or frequent resets. Empty when the account is not locked.
+                \item \textbf{FailedLoginCount} Number of consecutive failed logins. The account is locked at 5, and the count is cleared on a successful login or password reset.
                 \item \textbf{CreatedDate} Date this entry was created.
-                \item \textbf{LastUpdatedDate} Date this entry was created.
+                \item \textbf{LastUpdatedDate} Date this entry was last updated.
             \end{enumerate}
 
         \subsubsection{Roles Table}
@@ -224,24 +233,46 @@ This section covers general endpoints that are known at the time of design, the 
                 \item \textbf{PermissionIDs} List of Permission IDs that the role has.
                 \item \textbf{RoleActive} Can be set to false to disable a role.
                 \item \textbf{CreatedDate} Date this entry was created.
-                \item \textbf{LastUpdatedDate} Date this entry was created.
+                \item \textbf{LastUpdatedDate} Date this entry was last updated.
             \end{enumerate}
 
         \subsubsection{Profiles Table}
             \begin{enumerate}[leftmargin=3\parindent]
-                \item \textbf{UserUUID} \textit{Key} UUID of the user that the role belongs to.
+                \item \textbf{UserUUID} \textit{Key} UUID of the user that this profile belongs to.
                 \item \textbf{CreatedDate} Date this entry was created.
-                \item \textbf{LastUpdatedDate} Date this entry was created.
+                \item \textbf{LastUpdatedDate} Date this entry was last updated.
             \end{enumerate}
 
         \subsubsection{Authentication Table}
         The authentication table will contain at a minimum:
             \begin{enumerate}[leftmargin=3\parindent]
                 \item \textbf{AuthUUID} \textit{Primary Key} Unique UUID that was generated and stored in the JWT, this is the lookup key to convert a JWT into a user.
-                \item \textbf{UserUUID} \textit{Key} UUID of the user that the role belongs to.
+                \item \textbf{UserUUID} \textit{Key} UUID of the user that this authentication entry belongs to.
+                \item \textbf{CreatedDate} Date this entry was created.
+                \item \textbf{LastPasswordReset} Last time the password was reset.
+            \end{enumerate}
+            All entries for a user must be deleted on logout, JWT expiry, or a forgot password reset, which invalidates all of their other login sessions.
+
+        \subsubsection{Password Reset Table}
+        Every password reset request creates an entry, whether or not an email was sent, so that the reset limits can be enforced without exposing them to the user.
+            \begin{enumerate}[leftmargin=3\parindent]
+                \item \textbf{ResetUUID} \textit{Primary Key} Unique UUID that is included in the password reset link.
+                \item \textbf{UserUUID} \textit{Key} UUID of the user that requested the reset.
+                \item \textbf{RequestedDate} Date and time the reset was requested. Used to limit resets to 1 every 10 minutes and to count resets. 5 or more requests within 24 hours is a frequent reset, which locks the account and notifies an administrator.
+                \item \textbf{ExpiresDate} Date and time the link expires, 4 hours after \textbf{RequestedDate}.
+                \item \textbf{UsedDate} Date and time the link was clicked. Empty until clicked, and a link with a value here is no longer valid.
+            \end{enumerate}
+            Resets for unknown accounts have no user, so they are recorded in the Security Event table instead.
+
+        \subsubsection{Security Event Table}
+            \begin{enumerate}[leftmargin=3\parindent]
+                \item \textbf{EventUUID} \textit{Primary Key} Unique UUID for the event.
+                \item \textbf{EventType} Type of event, for example UnknownAccountReset, FrequentResetLock, FailedLoginLock, or AccountUnlocked.
+                \item \textbf{UserUUID} \textit{Key} UUID of the related user. Empty when the account is unknown.
+                \item \textbf{Email} Email address that was submitted, if any.
+                \item \textbf{AdminNotified} Set to true once an administrator has been notified.
                 \item \textbf{CreatedDate} Date this entry was created.
             \end{enumerate}
-
 \newpage %
 \section{Glossary}
     \subsection{User Facing}
@@ -261,7 +292,7 @@ This section covers general endpoints that are known at the time of design, the 
         \end{enumerate}
         \item Backend -- The portion of the software that hosts the website and database, this is the portion that the web pages reference.
         \item Docker -- Technology for deploying sites and reproducible builds.
-        \item Frontend -- The web site and user facing view of the software, covers the aspect o the software running in the web browser.
+        \item Frontend -- The web site and user facing view of the software, covers the aspect of the software running in the web browser.
         \item UUID: Universally Unique Identifier
     \end{enumerate}
 

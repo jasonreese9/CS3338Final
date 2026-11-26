@@ -24,13 +24,15 @@
 \contentsline {section}{\numberline {5}Database Design}{10}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Tables}{10}{subsection.5.1}%
 \contentsline {subsubsection}{\numberline {5.1.1}User Table}{10}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Roles Table}{10}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}Profiles Table}{10}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.2}Roles Table}{11}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Profiles Table}{11}{subsubsection.5.1.3}%
 \contentsline {subsubsection}{\numberline {5.1.4}Authentication Table}{11}{subsubsection.5.1.4}%
-\contentsline {section}{\numberline {6}Glossary}{12}{section.6}%
-\contentsline {subsection}{\numberline {6.1}User Facing}{12}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Technical}{12}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Front End}{12}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Database}{12}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Documents}{12}{subsection.6.5}%
-\contentsline {section}{\numberline {7}References}{14}{section.7}%
+\contentsline {subsubsection}{\numberline {5.1.5}Password Reset Table}{11}{subsubsection.5.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.6}Security Event Table}{12}{subsubsection.5.1.6}%
+\contentsline {section}{\numberline {6}Glossary}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}User Facing}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Technical}{13}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Front End}{13}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Database}{13}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Documents}{13}{subsection.6.5}%
+\contentsline {section}{\numberline {7}References}{15}{section.7}%

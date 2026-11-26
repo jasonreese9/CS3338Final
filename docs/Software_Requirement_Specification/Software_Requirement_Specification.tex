@@ -58,7 +58,7 @@ References to a specific section should be \emph{SRS v\currentVersion - Registra
 		Given the diverse needs of students, and challenges they may encounter accessiblity is a high priority for this site.
 		\begin{enumerate}[leftmargin=3\parindent]
 			\item Accessibility must be implemented for all features of the software.
-			\item Events need to allow for acommodations to be communicated
+			\item Events need to allow for accommodations to be communicated
 			\item The UI must work with screen-readers, and common accessiblity tools.
 		\end{enumerate}
 	\subsection{General}
@@ -134,7 +134,7 @@ References to a specific section should be \emph{SRS v\currentVersion - Registra
 	\subsection{User Profiles}
 		\begin{enumerate}[leftmargin=3\parindent]
 			\item Every user will have a profile.
-			\item Each role will has a specfict profile.
+			\item Each role will have a specific profile.
 			\item The profile will contain information about the user which is only visible to certain users based on their roles.
 			\item Students will only be able to view their own profiles, and Faculty or Student Organization profiles.
 		\end{enumerate}
@@ -163,6 +163,10 @@ References to a specific section should be \emph{SRS v\currentVersion - Registra
 				\item The admin homepage will include a log of recent actions related to creating, updating, or deleting accounts and events.
 				\item The admin homepage will display a notification if a user was able to access a part of the website that is not allowed by their roles.
 				\item The admin homepage will include a list of users attempting to register as a Faculty or Student Organization.
+				\item The admin homepage will include a list of accounts that are locked, including the reason each account was locked.
+				\item The admin homepage will display a notification when an account is locked due to frequent password resets, or when a password reset is requested for an unknown account.
+				\item Admin users must be able to unlock a locked account from the admin homepage.
+				\item Unlocking an account must be recorded in the log of recent actions.
 			\end{enumerate}
 
 \subsection{Flight Plan}
@@ -196,14 +200,35 @@ References to a specific section should be \emph{SRS v\currentVersion - Registra
 	\subsection{Replying to an event.}
 		\begin{enumerate}[leftmargin=3\parindent]
 			\item When a student is replying to an event, they must be able to request accomdations.
-			\item Common acommodations can be a check box, such as wheelchair, or interpreter required.
-			\item A checkbox to provide text box for other acommodations must be available..
+			\item Common accommodations can be a check box, such as wheelchair, or interpreter required.
+			\item A checkbox to provide text box for other accommodations must be available.
+		\end{enumerate}
+\newpage %
+\section{Authentication and Security}
+This section covers minimal security requirements.
+	\subsection{Login}
+		\begin{enumerate}[leftmargin=3\parindent]
+			\item If a user is not logged in they must be redirected to a login page.
+			\item Failed logins must not expose that a user does not exist.
+			\item Login endpoints must include a delay to avoid password guessing attacks.
+			\item Five (\textbf{5}) failed logins must lock an account and require a forgot password reset.
+		\end{enumerate}
+	\subsection{Password Recovery}
+		\begin{enumerate}[leftmargin=3\parindent]
+			\item A user can request to reset their password using a password recovery link.
+			\item The password recovery page must not show the email, it may obfuscate the email \textbf{j***d@c***.edu} for \textbf{john.doe@calstate.edu}
+			\item Reset links must expire after being clicked or after 4 hours.
+			\item Resetting a password via Forgot Password must invalidate all other login sessions.
+			\item Password resets must be time limited, no more than 1 password reset every 10 minutes.
+			\item The password reset pages must not expose the time limits, every reset should be \textbf{successful} even if no email was sent.
+			\item A Password reset counter for emails must be stored, and frequent resets (\textbf{5} or more within \textbf{24 hours}) must lock out an account and notify an administrator. An account locked this way cannot be unlocked with Forgot Password, and must be unlocked by an administrator.
+			\item Password resets for unknown accounts must notify an administrator.
 		\end{enumerate}
 
 \newpage %
 \section{Software Interface Requirements}
 	\subsection{Technical Requirements}
-			\begin{enumerate}[leftmargin=3\parindent]
+		\begin{enumerate}[leftmargin=3\parindent]
 			\item The design of our project is such that we will have a database that will store our events and our users and their permissions.
 			\item We will have a frontend, an API, a backend, and a database.
 			\item Every user will have a password, the password will be salted and use bcrypt.
@@ -227,7 +252,7 @@ References to a specific section should be \emph{SRS v\currentVersion - Registra
 		Given the diverse needs of students, and challenges they may encounter accessiblity is a high priority for this site.
 		\begin{enumerate}[leftmargin=3\parindent]
 			\item Accessibility must be implemented for all features of the software.
-			\item Events need to allow for acommodations to be communicated
+			\item Events need to allow for accommodations to be communicated
 			\item The UI must work with screen-readers, and common accessiblity tools.
 		\end{enumerate}
 	\subsection{Ethics}
@@ -254,7 +279,7 @@ References to a specific section should be \emph{SRS v\currentVersion - Registra
 		\end{enumerate}
 		\item Backend -- The portion of the software that hosts the website and database, this is the portion that the web pages reference.
 		\item Docker -- Technology for deploying sites and reproducible builds.
-		\item Frontend -- The web site and user facing view of the software, covers the aspect o the software running in the web browser.
+		\item Frontend -- The web site and user facing view of the software, covers the aspect of the software running in the web browser.
 	\end{enumerate}
 
 	% include the documents glossary

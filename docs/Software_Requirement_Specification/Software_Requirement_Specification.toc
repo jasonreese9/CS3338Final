@@ -1,40 +1,43 @@
-\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Purpose}{4}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Intended Audience}{4}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Overview}{4}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Document Conventions}{4}{subsection.1.4}%
-\contentsline {section}{\numberline {2}External Interface Requirements}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Web Browsers}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Mobile}{5}{subsection.2.2}%
-\contentsline {section}{\numberline {3}User Interface Requirements}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Accessibility}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}General}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Registration}{6}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Users}{6}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}User Roles}{6}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}User Permissions}{7}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Student Users}{7}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Faculty Users}{7}{subsubsection.3.4.4}%
-\contentsline {subsubsection}{\numberline {3.4.5}Student Organization Users}{7}{subsubsection.3.4.5}%
-\contentsline {subsubsection}{\numberline {3.4.6}Admin Users}{7}{subsubsection.3.4.6}%
-\contentsline {subsection}{\numberline {3.5}User Profiles}{7}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Home Page}{8}{subsection.3.6}%
-\contentsline {subsubsection}{\numberline {3.6.1}Student Home Page}{8}{subsubsection.3.6.1}%
-\contentsline {subsubsection}{\numberline {3.6.2}Faculty Home Page}{8}{subsubsection.3.6.2}%
-\contentsline {subsubsection}{\numberline {3.6.3}Student Organization Home Page}{8}{subsubsection.3.6.3}%
-\contentsline {subsubsection}{\numberline {3.6.4}Admin Home Page}{8}{subsubsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.7}Flight Plan}{8}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Events}{9}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}Event Information}{9}{subsection.3.9}%
-\contentsline {subsection}{\numberline {3.10}Replying to an event.}{9}{subsection.3.10}%
-\contentsline {section}{\numberline {4}Software Interface Requirements}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Technical Requirements}{10}{subsection.4.1}%
-\contentsline {section}{\numberline {5}Legal and Ethical Considerations}{11}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Legal Requirements}{11}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Accessibility}{11}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Ethics}{11}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Glossary}{12}{section.6}%
-\contentsline {subsection}{\numberline {6.1}User Facing}{12}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Technical}{12}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Documents}{12}{subsection.6.3}%
-\contentsline {section}{\numberline {7}References}{13}{section.7}%
+\contentsline {section}{\numberline {1}Introduction}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Purpose}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Intended Audience}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Overview}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Document Conventions}{5}{subsection.1.4}%
+\contentsline {section}{\numberline {2}External Interface Requirements}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Web Browsers}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Mobile}{6}{subsection.2.2}%
+\contentsline {section}{\numberline {3}User Interface Requirements}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Accessibility}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}General}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Registration}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Users}{7}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}User Roles}{7}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}User Permissions}{8}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Student Users}{8}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Faculty Users}{8}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Student Organization Users}{8}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.6}Admin Users}{8}{subsubsection.3.4.6}%
+\contentsline {subsection}{\numberline {3.5}User Profiles}{8}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Home Page}{9}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Student Home Page}{9}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Faculty Home Page}{9}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Student Organization Home Page}{9}{subsubsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.4}Admin Home Page}{9}{subsubsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.7}Flight Plan}{10}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Events}{10}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Event Information}{10}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}Replying to an event.}{10}{subsection.3.10}%
+\contentsline {section}{\numberline {4}Authentication and Security}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Login}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Password Recovery}{11}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Software Interface Requirements}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Technical Requirements}{12}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Legal and Ethical Considerations}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Legal Requirements}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Accessibility}{13}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Ethics}{13}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Glossary}{14}{section.7}%
+\contentsline {subsection}{\numberline {7.1}User Facing}{14}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Technical}{14}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Documents}{14}{subsection.7.3}%
+\contentsline {section}{\numberline {8}References}{15}{section.8}%
