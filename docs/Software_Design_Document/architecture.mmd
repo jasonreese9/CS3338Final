@@ -1,0 +1,40 @@
+flowchart LR
+    U(["Users<br/>Student, Faculty, Student Organization, Administrator"])
+
+    subgraph FE ["Front End (runs in the user's browser)"]
+        W["React web site<br/>JavaScript, CSS, HTML"]
+    end
+
+    subgraph BE ["Back End (Node.js and Express)"]
+        direction TB
+        A["Authentication<br/>login, logout, JWT, password reset"]
+        Z["Authorization<br/>role and ownership checks"]
+        L["Business logic<br/>accounts, profiles, approvals"]
+        O["OpenAPI specification<br/>/api/spec/openapi-v1.yaml"]
+        A --> Z --> L
+    end
+
+    subgraph DBS ["Database (PostgreSQL)"]
+        D[("Users, Roles, Profiles,<br/>Authentication, Password Reset,<br/>Security Event")]
+    end
+
+    M(["Email service<br/>reset and approval emails"])
+
+    U -->|"Uses a web browser"| W
+    W -->|"HTTPS API calls with JWT"| A
+    L <-->|"Read and write"| D
+    L -->|"Sends emails"| M
+    M -.->|"Links and notices"| U
+
+    %% Only /login, /logout, /whoami, /account/create and /account/forgot accept requests without a JWT.
+    %% All database access happens through the back end, never directly from the browser.
+
+    classDef actor fill:#dff1e6,stroke:#92b69e,stroke-width:1.4px,color:#253047
+    classDef front fill:#e0edfc,stroke:#9bb7da,stroke-width:1.4px,color:#253047
+    classDef back fill:#eee3f6,stroke:#bba2cc,stroke-width:1.4px,color:#253047
+    classDef data fill:#fff5d9,stroke:#ccb77e,stroke-width:1.4px,color:#253047
+    class U,M actor
+    class W front
+    class A,Z,L,O back
+    class D data
+    linkStyle default stroke:#667085,stroke-width:2px

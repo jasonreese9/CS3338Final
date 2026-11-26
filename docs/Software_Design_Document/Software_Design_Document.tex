@@ -70,7 +70,34 @@ The only calls that do not require authentication are the Unauthenticated Endpoi
         \end{enumerate}
 
 \newpage %
-\section{Front End Design}
+\section{System Architecture}
+This section shows how a user reaches the software, where their data goes, and what has access to it.
+The source for the diagram is \texttt{architecture.mmd}.
+
+\begin{center}
+\IfFileExists{architecture.png}{%
+\includegraphics[width=\textwidth,height=0.45\textheight,keepaspectratio]{architecture.png}%
+}{\textit{(architecture.png has not been generated, run \texttt{make mermaid} to create it.)}}
+\end{center}
+
+\subsection{Site Breakdown}
+\begin{enumerate}[leftmargin=3\parindent]
+    \item \textbf{Front End:} The website that runs in the user's browser. It shows the pages for each role and sends every request to the back end. It never talks to the database.
+    \item \textbf{Back End:} A Node.js and Express service that hosts the APIs. It authenticates every request, checks the role and ownership of the user, runs the business logic, and sends emails for password resets and account approvals.
+    \item \textbf{Database:} A PostgreSQL database that stores users, roles, profiles, login sessions, password resets, and security events. Only the back end can access it.
+    \item \textbf{Email service:} Delivers password reset links and account approval notices to users. The back end is the only part that sends email.
+\end{enumerate}
+
+\subsection{Request Flow}
+\begin{enumerate}[leftmargin=3\parindent]
+    \item The user opens the site in a browser, and is redirected to the login page if they are not logged in.
+    \item The front end sends the login to the back end over HTTPS, and receives a JWT.
+    \item Every later request includes the JWT. The back end uses it to find the user, checks that the user's role allows the request, and then reads or writes the database.
+    \item The back end returns the result to the front end, which displays it to the user.
+\end{enumerate}
+
+\newpage %
+\section{User Interface Design (Front End)}
 The front end consists of the user visible web pages.
 The content of all pages will be fetched from the backend and displayed to the user.
 
