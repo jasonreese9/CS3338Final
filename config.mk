@@ -7,17 +7,19 @@ TEX_FILES := $(filter-out project_macros.tex,$(wildcard *.tex))
 PDF_FILES := $(patsubst %.tex,%.pdf,$(TEX_FILES))
 PROJECT_MACROS ?= ../project_macros.tex
 
-# Mermaid diagrams: every .mmd file is rendered to a .png and .svg with mmdc.
+# Mermaid diagrams: every .mmd file is rendered to a .png, .svg and .pdf with mmdc.
 MMDC ?= mmdc
 # Use the installed Chrome instead of puppeteer's downloaded headless shell.
 CHROME ?= /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 MMD_FILES := $(wildcard *.mmd)
+MMD_PDFS :=
 # Only render when both mermaid-cli and Chrome are installed; otherwise skip
 # and keep the existing images.
 HAVE_MMDC := $(shell command -v "$(MMDC)" >/dev/null 2>&1 && echo yes)
 HAVE_CHROME := $(shell test -x "$(CHROME)" && echo yes)
 ifeq ($(HAVE_MMDC)$(HAVE_CHROME),yesyes)
-MMD_OUTPUTS := $(MMD_FILES:.mmd=.png) $(MMD_FILES:.mmd=.svg)
+MMD_PDFS := $(MMD_FILES:.mmd=.pdf)
+MMD_OUTPUTS := $(MMD_FILES:.mmd=.png) $(MMD_FILES:.mmd=.svg) $(MMD_PDFS)
 else
 MMD_OUTPUTS :=
 endif
@@ -45,6 +47,11 @@ $(PDF_FILES): $(PROJECT_MACROS) $(TEX_FILES) $(MMD_OUTPUTS)
 	PUPPETEER_EXECUTABLE_PATH="$(CHROME)" $(MMDC) -i $< -o $@ --scale 3
 
 %.svg: %.mmd
+	@echo "Rendering $< -> $@"
+	PUPPETEER_EXECUTABLE_PATH="$(CHROME)" $(MMDC) -i $< -o $@
+
+# Static pattern rule so it does not clash with the %.pdf:: %.tex rule below.
+$(MMD_PDFS): %.pdf: %.mmd
 	@echo "Rendering $< -> $@"
 	PUPPETEER_EXECUTABLE_PATH="$(CHROME)" $(MMDC) -i $< -o $@
 
