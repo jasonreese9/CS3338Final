@@ -49,14 +49,14 @@ The only unauthicated call allowed is login.
         \end{itemize}
 
     \subsection{General Constraints}
-    Security and Privacy constraints require that all calls be authenticated, and that passwords are not transmitted.
+    Security and Privacy constraints require that all calls be authenticated, and that passwords are only transmitted over HTTPS.
 
     The site must be accessible on limited bandwidth and screen size constrained devices.
 
     \subsection{Technical Constraints}
     All API calls must be authenticated, which will require the login process to store limited data on in the browser in order for the site to function.
 
-    The passwords must not be transmitted to the backend.
+    Passwords must only be sent to the backend over HTTPS, and must never be logged or stored in plain text.
 
     In order to leverage the Cal State LA Single Sign On, there will be changes made depending on the technologies Cal State SSO leverages.
 
@@ -148,7 +148,9 @@ Security best practices will be followed including leveraging CORS, CSRF and ant
         \end{enumerate}
     \subsection{Authentication}
         \begin{enumerate}[leftmargin=3\parindent]
-            \item The password will be hashed on the client, and will not be transmitted to the server.
+            \item The password will be sent to the server over HTTPS only. This applies to login, account creation, and password reset.
+            \item The server will hash the password with bcrypt, which generates a random per-user salt that is stored inside the hash. The server will never store or log the plain text password, and request bodies for the login, account creation, and password reset endpoints must not be logged.
+            \item The server will compare passwords using the bcrypt library's constant-time comparison. Because bcrypt only uses the first 72 bytes of a password, passwords will have a maximum length of 72 bytes.
             \item Upon a successful login, a Javascript Web Token (JWT) will be returned. Each JWT will last 8 hours, and then will expire.
             \item The login itself lasts longer than a single JWT. Before a JWT expires it can be refreshed to receive a new 8 hour JWT, until the login session expires. Once the login session expires the user will be required to login again. The login session lifetime will start out at 7 days, and be configurable by the admin.
             \item The JWT will be signed to prevent forgery, and will contain a userid-hash that is stored in the database to identify the user it belongs to.
@@ -232,7 +234,7 @@ This section covers general endpoints that are known at the time of design, the 
             \begin{enumerate}[leftmargin=3\parindent]
                 \item \textbf{UserUUID} \textit{Key} Unique UUID for the user.
                 \item \textbf{Username} \textit{Key} Username of the user.
-                \item \textbf{HashedPassword} Hashed password for the user.
+                \item \textbf{HashedPassword} Hashed password for the user. This is a bcrypt hash with the salt embedded, so no separate salt column is needed.
                 \item \textbf{Email} Primary email address of the user.
                 \item \textbf{Roles} List of RoleIDs the user is part of.
                 \item \textbf{UserActive} Can be set to false to disable a user.
