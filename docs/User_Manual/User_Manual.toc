@@ -1,23 +1,26 @@
 \contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Purpose}{4}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Project Objectives}{4}{subsection.1.2}%
-\contentsline {section}{\numberline {2}Getting Started}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Download the Project}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Build the Documentation}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Start the Application}{5}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Stop the Application}{5}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Planned Account Workflow}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Create an Account}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Sign In and Sign Out}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Profiles and Permissions}{6}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Troubleshooting}{7}{section.4}%
-\contentsline {section}{\numberline {5}Documentation Updates}{8}{section.5}%
-\contentsline {section}{\numberline {6}Editing the Documentation}{9}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Documentation Details}{9}{subsection.6.1}%
-\contentsline {subsubsection}{\numberline {6.1.1}Required Preamble}{9}{subsubsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.2}Macro Explanations}{9}{subsubsection.6.1.2}%
-\contentsline {section}{\numberline {7}Glossary}{11}{section.7}%
-\contentsline {subsection}{\numberline {7.1}User Facing}{11}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Technical}{11}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Documents}{11}{subsection.7.3}%
-\contentsline {section}{\numberline {8}References}{12}{section.8}%
+\contentsline {subsection}{\numberline {1.1}Documentation Updates}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Purpose}{4}{subsection.1.2}%
+\contentsline {section}{\numberline {2}User Facing Documentation}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Planned Account Workflow}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Create an Account}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Sign In and Sign Out}{4}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Profiles and Permissions}{5}{subsubsection.2.1.3}%
+\contentsline {section}{\numberline {3}Development Documentation}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Project Objectives}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Getting Started}{6}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Download the Project}{6}{subsubsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.3}Build the Documentation}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Running the Application}{6}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Start the Application}{6}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Stop the Application}{7}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}Troubleshooting}{7}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Editing the Documentation}{8}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Documentation Details}{8}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Required Preamble}{8}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Macro Explanations}{8}{subsubsection.3.6.3}%
+\contentsline {section}{\numberline {4}Glossary}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}User Facing}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Technical}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Documents}{10}{subsection.4.3}%
+\contentsline {section}{\numberline {5}References}{11}{section.5}%
