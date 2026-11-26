@@ -37,7 +37,7 @@ The back end is written in JavaScript running on Node.js, and interacts with the
 
 All api calls to the backend must be authenticated.
 
-The only unauthicated call allowed is login.
+The only calls that do not require authentication are the Unauthenticated Endpoints listed in the Back End Design section.
 
 \newpage %
 \section{Design Considerations}
@@ -67,7 +67,7 @@ The content of all pages will be fetched from the backend and displayed to the u
 
 All requests to the backend must contain an authorization cookie that can be linked back to the user request.
 
-Upon a sucessful login the backend will return a JWT to the user that can be used to authenticate all future back end calls, and can be refreshed.
+Upon a successful login the backend will return a JWT to the user that can be used to authenticate all future back end calls, and can be refreshed.
 
 Security best practices will be followed including leveraging CORS, CSRF and anti-replay.
 
@@ -154,7 +154,7 @@ Security best practices will be followed including leveraging CORS, CSRF and ant
             \item The password will be sent to the server over HTTPS only. This applies to login, account creation, and password reset.
             \item The server will hash the password with bcrypt, which generates a random per-user salt that is stored inside the hash. The server will never store or log the plain text password, and request bodies for the login, account creation, and password reset endpoints must not be logged.
             \item The server will compare passwords using the bcrypt library's constant-time comparison. Because bcrypt only uses the first 72 bytes of a password, passwords will have a maximum length of 72 bytes.
-            \item Upon a successful login, a Javascript Web Token (JWT) will be returned. Each JWT will last 8 hours, and then will expire.
+            \item Upon a successful login, a JSON Web Token (JWT) will be returned. Each JWT will last 8 hours, and then will expire.
             \item The login itself lasts longer than a single JWT. Before a JWT expires it can be refreshed to receive a new 8 hour JWT, until the login session expires. Once the login session expires the user will be required to login again. The login session lifetime will start out at 7 days, and be configurable by the admin.
             \item The JWT will be signed to prevent forgery, and will contain a userid-hash that is stored in the database to identify the user it belongs to.
             \item The userid-hash must be deleted from the database upon expiry of the login session, a forgot-password, or logout request.
@@ -215,7 +215,6 @@ This section covers general endpoints that are known at the time of design, the 
 \section{Database Design}
     All tables use UUIDs for the ID column.
 
-    \newpage %
     \begin{landscape}
     \thispagestyle{empty}
     % The fancyhdr header stays in portrait inside a landscape page, so draw it in the rotated body instead.
@@ -312,7 +311,7 @@ This section covers general endpoints that are known at the time of design, the 
     \subsection{User Facing}
     This section defines non-technical terms that may be used in this document.
     \begin{enumerate}[leftmargin=3\parindent]
-        \item Student Organization -- An organization that provides support to Students, and may be compromised of Faculty, Students, or non-student members.
+        \item Student Organization -- An organization that provides support to Students, and may be comprised of Faculty, Students, or non-student members.
     \end{enumerate}
 
     \subsection{Technical}
@@ -335,7 +334,7 @@ This section covers general endpoints that are known at the time of design, the 
         \item anti-replay: anti-replay is a method of ensuring that data sent to the server cannot be sent more than once by including a token that must be sent with each request that changes.
         \item CORS: Cross-Origin Resource Sharing, this ensures that all resources served by the front-end only come from trusted domains to avoid security concerns.
         \item CSRF: Cross Site Request Forgery, this is a method of ensuring that other sites cannot impersonate the front end.
-        \item JWT: Javascript Web Token, used as an authentication token.
+        \item JWT: JSON Web Token, used as an authentication token.
     \end{enumerate}
     \subsection{Database}
     % include the documents glossary
