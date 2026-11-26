@@ -3,5 +3,6 @@
 \contentsline {section}{\numberline {3}Glossary}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}User Facing}{5}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Technical}{5}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Documents}{5}{subsection.3.3}%
-\contentsline {section}{\numberline {4}References}{6}{section.4}%
+\contentsline {subsection}{\numberline {3.3}Acronyms}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Documents}{6}{subsection.3.4}%
+\contentsline {section}{\numberline {4}References}{7}{section.4}%

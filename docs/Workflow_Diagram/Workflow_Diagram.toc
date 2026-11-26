@@ -9,5 +9,6 @@
 \contentsline {section}{\numberline {6}Glossary}{9}{section.6}%
 \contentsline {subsection}{\numberline {6.1}User Facing}{9}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Technical}{9}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Documents}{9}{subsection.6.3}%
-\contentsline {section}{\numberline {7}References}{10}{section.7}%
+\contentsline {subsection}{\numberline {6.3}Acronyms}{9}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Documents}{10}{subsection.6.4}%
+\contentsline {section}{\numberline {7}References}{11}{section.7}%

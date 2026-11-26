@@ -368,15 +368,11 @@ This section covers general endpoints that are known at the time of design, the 
         \item Backend -- The portion of the software that hosts the website and database, this is the portion that the web pages reference.
         \item Docker -- Technology for deploying sites and reproducible builds.
         \item Frontend -- The web site and user facing view of the software, covers the aspect of the software running in the web browser.
-        \item UUID: Universally Unique Identifier
     \end{enumerate}
 
     \subsection{Front End}
     \begin{enumerate}[leftmargin=3\parindent]
         \item anti-replay: anti-replay is a method of ensuring that data sent to the server cannot be sent more than once by including a token that must be sent with each request that changes.
-        \item CORS: Cross-Origin Resource Sharing, this ensures that all resources served by the front-end only come from trusted domains to avoid security concerns.
-        \item CSRF: Cross Site Request Forgery, this is a method of ensuring that other sites cannot impersonate the front end.
-        \item JWT: JSON Web Token, used as an authentication token.
     \end{enumerate}
     \subsection{Database}
     % include the documents glossary

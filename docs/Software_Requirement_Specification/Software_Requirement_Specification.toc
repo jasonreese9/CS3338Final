@@ -39,5 +39,6 @@
 \contentsline {section}{\numberline {7}Glossary}{15}{section.7}%
 \contentsline {subsection}{\numberline {7.1}User Facing}{15}{subsection.7.1}%
 \contentsline {subsection}{\numberline {7.2}Technical}{15}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Documents}{15}{subsection.7.3}%
-\contentsline {section}{\numberline {8}References}{16}{section.8}%
+\contentsline {subsection}{\numberline {7.3}Acronyms}{15}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Documents}{16}{subsection.7.4}%
+\contentsline {section}{\numberline {8}References}{17}{section.8}%
