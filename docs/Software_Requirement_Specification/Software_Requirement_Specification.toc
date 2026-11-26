@@ -16,7 +16,7 @@
 \contentsline {subsubsection}{\numberline {3.4.3}Student Users}{8}{subsubsection.3.4.3}%
 \contentsline {subsubsection}{\numberline {3.4.4}Faculty Users}{8}{subsubsection.3.4.4}%
 \contentsline {subsubsection}{\numberline {3.4.5}Student Organization Users}{8}{subsubsection.3.4.5}%
-\contentsline {subsubsection}{\numberline {3.4.6}Admin Users}{8}{subsubsection.3.4.6}%
+\contentsline {subsubsection}{\numberline {3.4.6}Admin Users}{9}{subsubsection.3.4.6}%
 \contentsline {subsection}{\numberline {3.5}User Profiles}{9}{subsection.3.5}%
 \contentsline {subsection}{\numberline {3.6}Home Page}{10}{subsection.3.6}%
 \contentsline {subsubsection}{\numberline {3.6.1}Student Home Page}{10}{subsubsection.3.6.1}%

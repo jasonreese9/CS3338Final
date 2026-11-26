@@ -102,7 +102,9 @@ References to a specific section should be \emph{SRS v\currentVersion - Registra
 				\end{itemize}
 			\item Admin
 				\begin{itemize}
-					\item When the service is first configured, an Admin user must be created.
+					\item The first time the application starts without any users, the first user to create an account becomes the Admin user.
+					\item The first user is created as an active Admin immediately, without the approval process, regardless of the account type they choose. Every user after the first follows the normal registration rules.
+					\item This must only be possible for the very first account. Once any user exists it must no longer be available, and two people registering at the same time must not both become Admin.
 					\item Admin users can give the Admin role to Faculty accounts.
 				\end{itemize}
 		\end{subenumerate}
@@ -134,6 +136,9 @@ References to a specific section should be \emph{SRS v\currentVersion - Registra
 			\begin{subenumerate}[leftmargin=3\parindent]
 				\item Admin users will be able to manage everything about the site.
 				\item Admin users will have all permissions.
+				\item Admin users can create an account of any type (Student, Faculty, Student Organization, or Admin) directly, without the registration approval process.
+				\item An account created by an Admin is active immediately with the roles the Admin selected, and the Admin never sets or sees the user's password. The user must be sent an email with a link to set their own password.
+				\item The same unique email and email domain rules apply to accounts created by an Admin, and the creation must be recorded in the log of recent actions.
 			\end{subenumerate}
 	\subsection{User Profiles}
 		\begin{enumerate}[leftmargin=3\parindent]
@@ -237,6 +242,9 @@ This section covers minimal security requirements.
 			\item We will have a frontend, an API, a backend, and a database.
 			\item Every user will have a password, the password will be salted and use bcrypt.
 			\item A future release will support using SingleSignOn instead of storing passwords.
+			\item A first time setup script must be provided that creates the initial Admin user in the database before the software is deployed.
+			\item The script must create the Admin user with the Admin role as an active account, must store the password hashed using bcrypt, and must never write the password to a log or file.
+			\item The script must refuse to create an Admin user if an Admin user already exists.
 		\end{enumerate}
 
 \newpage %

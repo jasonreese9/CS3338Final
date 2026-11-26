@@ -60,6 +60,15 @@ The only calls that do not require authentication are the Unauthenticated Endpoi
 
     In order to leverage the Cal State LA Single Sign On, there will be changes made depending on the technologies Cal State SSO leverages.
 
+    \subsection{Risks}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item \textbf{First Administrator takeover.} The first user to create an account becomes the Admin user, so if a new deployment is reachable before its owner creates the first account, anyone who finds it can create the first account and gain full control of the site.
+                \begin{itemize}
+                    \item \textit{Impact:} The attacker would have all permissions, including approving accounts, viewing student profiles, and managing roles, and the owner would have to reset the database to recover.
+                    \item \textit{Mitigation:} The first account must be created before the site is made publicly available. This can be done with a first time setup script that creates the Admin user directly in the database before deployment, so that the site never starts without an Admin. The creation is recorded in the Security Event table so it can be reviewed. A stronger option, such as a one-time setup token supplied at install time, can be added if this risk is not acceptable.
+                \end{itemize}
+        \end{enumerate}
+
 \newpage %
 \section{Front End Design}
 The front end consists of the user visible web pages.
@@ -149,6 +158,27 @@ Security best practices will be followed including leveraging CORS, CSRF and ant
             \item A rejected user cannot login or appeal within the system. They may submit a new registration with the same details, and a rejected registration does not block the email address from being used again.
             \item Approvals and rejections are recorded in the Administrator log of recent actions.
         \end{enumerate}
+    \subsubsection{First Administrator}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item The first time the application starts without any users, the first user to create an account becomes the Admin user.
+            \item The first user uses the normal account creation page and endpoint, and enters the same details as any other user.
+            \item If there are no rows in the users table, the account is created active (\textbf{UserActive} set to true) with the Admin role, regardless of the account type selected. It does not wait for approval.
+            \item The check for an empty users table and the creation of the user must happen in a single database transaction, so that two requests at the same time cannot both become Admin.
+            \item Once any user exists this behavior is never used again, and every later account follows the normal Account Validation rules.
+            \item The creation is recorded in the Security Event table.
+            \item Because the first account to register becomes Admin, a new deployment must create its first account before the site is made publicly available.
+            \item A first time setup script can create the Admin user directly in the database before deployment. The script creates the user the same way as the back end, with the Admin role, a bcrypt hashed password, and \textbf{UserActive} set to true, and records the creation in the Security Event table. Because an Admin user then already exists, the first user rule above is never used.
+            \item Admin users created after this follow the Administrator Created Accounts rules.
+        \end{enumerate}
+    \subsubsection{Administrator Created Accounts}
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item An Administrator can create a Student, Faculty, Student Organization, or Admin account directly, without the registration and approval process.
+            \item The Administrator enters the same details that are required for the account type, selects the roles, and does not enter a password.
+            \item The account is created active (\textbf{UserActive} set to true) with the selected roles.
+            \item The same email rules apply: the email must be unique, and must end in \emph{@calstatela.edu} for \emph{Student} or \emph{Faculty}.
+            \item The system will email the user a link to set their password. This link follows the same rules as a Password Reset link, including the 4 hour expiry, and is recorded in the Password Reset table.
+            \item The creation is recorded in the Administrator log of recent actions.
+        \end{enumerate}
     \subsection{Authentication}
         \begin{enumerate}[leftmargin=3\parindent]
             \item The password will be sent to the server over HTTPS only. This applies to login, account creation, and password reset.
@@ -207,8 +237,20 @@ This section covers general endpoints that are known at the time of design, the 
     \subsection{Endpoints}
         \begin{enumerate}[leftmargin=3\parindent]
             \item \textbf{/user/profile}: This returns the current users profile, or the profile of another user.
+            \item \textbf{/admin/users/create}: This creates an active account of any type with the selected roles, and emails the user a link to set their password. This endpoint requires the Admin role.
             \item \textbf{/admin/users/locked}: This returns the list of locked accounts and the reason each was locked. This endpoint requires the Admin role.
             \item \textbf{/admin/users/unlock}: This unlocks an account by clearing AccountLocked, LockReason, and FailedLoginCount, and records the action in the Security Event table. This endpoint requires the Admin role.
+        \end{enumerate}
+
+    \subsection{First Time Setup Script}
+        A first time setup script is provided to create the initial Admin user in the database before the application is deployed.
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item The script is run once by the person deploying the application, before the site is made available to other users.
+            \item The script prompts for a username, an email address, and a password, and the password is not echoed, written to a log, or stored in a file.
+            \item The script creates the user with the Admin role, \textbf{UserActive} set to true, and the password hashed with bcrypt in the same way as the back end.
+            \item The script records the creation in the Security Event table with the \textbf{FirstAdminCreated} event type.
+            \item The script must refuse to run, and make no changes, if an Admin user already exists.
+            \item Once the script has run, the First Administrator rule is never used.
         \end{enumerate}
 
 \newpage %
@@ -300,7 +342,7 @@ This section covers general endpoints that are known at the time of design, the 
         \subsubsection{Security Event Table}
             \begin{enumerate}[leftmargin=3\parindent]
                 \item \textbf{EventUUID} \textit{Primary Key} Unique UUID for the event.
-                \item \textbf{EventType} Type of event, for example UnknownAccountReset, FrequentResetLock, FailedLoginLock, or AccountUnlocked.
+                \item \textbf{EventType} Type of event, for example UnknownAccountReset, FrequentResetLock, FailedLoginLock, AccountUnlocked, or FirstAdminCreated.
                 \item \textbf{UserUUID} \textit{Key} UUID of the related user. Empty when the account is unknown.
                 \item \textbf{Email} Email address that was submitted, if any.
                 \item \textbf{AdminNotified} Set to true once an administrator has been notified.

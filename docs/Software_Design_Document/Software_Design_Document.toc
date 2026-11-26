@@ -1,40 +1,44 @@
-\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Purpose}{4}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Document Conventions}{4}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Intended Audience and Reading Suggestions}{4}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}System Overview}{4}{subsection.1.4}%
-\contentsline {subsubsection}{\numberline {1.4.1}Front End}{4}{subsubsection.1.4.1}%
-\contentsline {subsubsection}{\numberline {1.4.2}Back End}{4}{subsubsection.1.4.2}%
-\contentsline {section}{\numberline {2}Design Considerations}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Assumptions and Dependencies}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}General Constraints}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Technical Constraints}{5}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Front End Design}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Login Page Design}{6}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Login Page}{6}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Logging Into an Existing Account}{6}{subsubsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.3}Forgot Password}{6}{subsubsection.3.1.3}%
-\contentsline {subsubsection}{\numberline {3.1.4}Creating a New Account}{7}{subsubsection.3.1.4}%
-\contentsline {subsubsection}{\numberline {3.1.5}Account Validation}{8}{subsubsection.3.1.5}%
-\contentsline {subsection}{\numberline {3.2}Authentication}{8}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Back End Design}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Well Known Endpoints}{10}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Unauthenticated Endpoints}{10}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Profile Access}{10}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Endpoints}{11}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Database Design}{12}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Entity Relationship Diagram}{13}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Tables}{14}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}User Table}{14}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Roles Table}{15}{subsubsection.5.2.2}%
-\contentsline {subsubsection}{\numberline {5.2.3}Profiles Table}{15}{subsubsection.5.2.3}%
-\contentsline {subsubsection}{\numberline {5.2.4}Authentication Table}{15}{subsubsection.5.2.4}%
-\contentsline {subsubsection}{\numberline {5.2.5}Password Reset Table}{15}{subsubsection.5.2.5}%
-\contentsline {subsubsection}{\numberline {5.2.6}Security Event Table}{16}{subsubsection.5.2.6}%
-\contentsline {section}{\numberline {6}Glossary}{17}{section.6}%
-\contentsline {subsection}{\numberline {6.1}User Facing}{17}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Technical}{17}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Front End}{17}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Database}{17}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Documents}{17}{subsection.6.5}%
-\contentsline {section}{\numberline {7}References}{19}{section.7}%
+\contentsline {section}{\numberline {1}Introduction}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Purpose}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Document Conventions}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Intended Audience and Reading Suggestions}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}System Overview}{5}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Front End}{5}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}Back End}{5}{subsubsection.1.4.2}%
+\contentsline {section}{\numberline {2}Design Considerations}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Assumptions and Dependencies}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}General Constraints}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Technical Constraints}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Risks}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Front End Design}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Login Page Design}{7}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Login Page}{7}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Logging Into an Existing Account}{7}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Forgot Password}{7}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}Creating a New Account}{8}{subsubsection.3.1.4}%
+\contentsline {subsubsection}{\numberline {3.1.5}Account Validation}{9}{subsubsection.3.1.5}%
+\contentsline {subsubsection}{\numberline {3.1.6}First Administrator}{9}{subsubsection.3.1.6}%
+\contentsline {subsubsection}{\numberline {3.1.7}Administrator Created Accounts}{10}{subsubsection.3.1.7}%
+\contentsline {subsection}{\numberline {3.2}Authentication}{10}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Back End Design}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Well Known Endpoints}{12}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Unauthenticated Endpoints}{12}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Profile Access}{12}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Endpoints}{13}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}First Time Setup Script}{13}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Database Design}{14}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Entity Relationship Diagram}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Tables}{16}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}User Table}{16}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Roles Table}{17}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Profiles Table}{17}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Authentication Table}{17}{subsubsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.5}Password Reset Table}{17}{subsubsection.5.2.5}%
+\contentsline {subsubsection}{\numberline {5.2.6}Security Event Table}{18}{subsubsection.5.2.6}%
+\contentsline {section}{\numberline {6}Glossary}{19}{section.6}%
+\contentsline {subsection}{\numberline {6.1}User Facing}{19}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Technical}{19}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Front End}{19}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Database}{19}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Documents}{19}{subsection.6.5}%
+\contentsline {section}{\numberline {7}References}{21}{section.7}%
