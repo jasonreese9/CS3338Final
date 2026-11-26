@@ -121,12 +121,12 @@ The \texttt{src/frontend} and \texttt{src/backend} folders each have a Dockerfil
 
 \newpage %
 \section{Snapshot Plan}
-The Snapshot Objectives document we have so far only explains the start of the project: setting up the website framework and account permissions. The outline below is one possible way to divide the remaining features. We should adjust it once the team agrees on the snapshot goals.
+The Snapshot Objectives document defines Snapshot 1 in detail and leaves Snapshots 2 to 4 to be filled in. The outline below follows Snapshot 1 in that document, and is a proposal for the remaining snapshots that we should adjust once the team agrees on their goals.
 \begin{itemize}
-\item Snapshot 1: base framework, registration, login, profile, and initial access rules.
-\item Snapshot 2: proposed event creation, RSVP, and event-management interfaces.
+\item Snapshot 1 (first 2 months, 6 sprints): base framework, registration, login and logout, roles and permissions, the homepage, and a first version of events that all users can see and that faculty and student organizations can create and cancel. RSVPs are not part of this snapshot.
+\item Snapshot 2: proposed RSVPs, rescheduling events, event interest counts, event update notifications, and accommodation requests.
 \item Snapshot 3: proposed scoreboard, resources, and personalized event filtering.
-\item Snapshot 4: testing refinements, documentation updates, and future work (including AI features if not implemented).
+\item Snapshot 4: testing refinements, documentation updates, and future work (including AI features and anonymous event attendance, if not implemented).
 \end{itemize}
 After each snapshot, we will update this document to match the changes made to the SRS, SDD, Jira tasks, and Docker setup.
 
@@ -173,7 +173,8 @@ This is a conceptual model of the information the system needs. The User, Role, 
 \section{Things We Still Need to Confirm}
 \begin{todolist}[leftmargin=3\parindent]
 \item \done Are we keeping React for the web frontend or planning to introduce React Native/Expo later? \textit{React Native/Expo will be added in a later snapshot.}
-\item \planned Which snapshot contains events, RSVPs, scoreboard, and personalized filtering?
+\item \done Which snapshot contains events, RSVPs, scoreboard, and personalized filtering? \textit{Basic events are in Snapshot 1 (Sprint 6) and RSVPs are proposed for Snapshot 2, as described in the Snapshot Objectives.}
+\item \planned Which snapshot contains the scoreboard and personalized event filtering? \textit{Proposed for Snapshot 3, to be confirmed in the Snapshot Objectives.}
 \item \done Will the group keep the current React/PostgreSQL starter or switch to the original React Native/Expo and MongoDB Atlas architecture? \textit{React/PostgreSQL and React Native/Expo PostgreSQL will be added in a later snapshot.}
 \item \planned What student-profile information may faculty access, and under what authorization conditions?
 \item \planned What is the finalized data schema and API route design?
