@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: |
     Minimal API specification for Snapshot 1, generated from the SDD and SRS.
-    All endpoints require a JWT except the ones tagged Unauthenticated, which
+    All endpoints require a JWT bearer token except the ones tagged Unauthenticated, which
     accept an optional JWT. Passwords are only sent over HTTPS.
 servers:
   - url: /
@@ -227,6 +227,9 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+      description: |
+        Signed JWT sent as Authorization: Bearer <JWT>. The JWT is never
+        accepted from a cookie or a URL, so requests are not exposed to CSRF.
   responses:
     IncorrectLogin:
       description: Incorrect Username/Password. Does not say which was wrong.

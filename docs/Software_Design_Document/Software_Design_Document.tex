@@ -67,6 +67,11 @@ The only calls that do not require authentication are the Unauthenticated Endpoi
                     \item \textit{Impact:} The attacker would have all permissions, including approving accounts, viewing student profiles, and managing roles, and the owner would have to reset the database to recover.
                     \item \textit{Mitigation:} The first account must be created before the site is made publicly available. This can be done with a first time setup script that creates the Admin user directly in the database before deployment, so that the site never starts without an Admin. The creation is recorded in the Security Event table so it can be reviewed. A stronger option, such as a one-time setup token supplied at install time, can be added if this risk is not acceptable.
                 \end{itemize}
+            \item \textbf{JWT theft through Cross Site Scripting.} The JWT is kept in session storage so that the front end can send it in the \textbf{Authorization} header, which means a script injected into a page can read it.
+                \begin{itemize}
+                    \item \textit{Impact:} An attacker with the JWT can act as the user until it expires after 8 hours or the user logs out. For an Admin user this includes viewing student profiles and managing accounts.
+                    \item \textit{Mitigation:} Escape all user supplied content, avoid inline and third party scripts, use a Content Security Policy, keep the JWT lifetime short, and delete the userid-hash on logout, a password reset, or when the session expires. See the CSRF Protection section.
+                \end{itemize}
         \end{enumerate}
 
 \newpage %
@@ -101,7 +106,7 @@ The source for the diagram is \texttt{architecture.mmd}.
 The front end consists of the user visible web pages.
 The content of all pages will be fetched from the backend and displayed to the user.
 
-All requests to the backend must contain an authorization cookie that can be linked back to the user request.
+All requests to the backend must contain an \textbf{Authorization} header with the JWT as a bearer token, in the form \texttt{Authorization: Bearer <JWT>}, so that the request can be linked back to the user.
 
 Upon a successful login the backend will return a JWT to the user that can be used to authenticate all future back end calls, and can be refreshed.
 
@@ -216,9 +221,22 @@ Security best practices will be followed including leveraging CORS, CSRF and ant
             \item The JWT will be signed to prevent forgery, and will contain a userid-hash that is stored in the database to identify the user it belongs to.
             \item The userid-hash must be deleted from the database upon expiry of the login session, a forgot-password, or logout request.
             \item The contents of the JWT must not identify the user, and must not contain any data that is not required.
-            \item The JWT should be deleted from the browser upon logout.
+            \item The front end will send the JWT as a bearer token in the \textbf{Authorization} header of every API request, as described in RFC 6750, in the form \texttt{Authorization: Bearer <JWT>}. The back end will only accept the JWT from this header, and must never accept it from a cookie, a URL, or a request body.
+            \item The front end will keep the JWT in the browser's session storage, so that it is removed when the tab is closed, and will never put it in a URL. The OWASP Session Management Cheat Sheet describes the trade-offs of the places a session token can be stored.
+            \item The JWT must be removed from session storage upon logout, and the back end must delete the userid-hash so that the JWT can no longer be used even if it was copied.
             \item Password Reset links must expire after being clicked or after 4 hours.
             \item Password reset counter for emails must be stored, and frequent resets must lock out an account and notify an administrator. An account locked by frequent resets must be unlocked by an administrator.
+        \end{enumerate}
+
+    \subsection{CSRF Protection}
+        Cross Site Request Forgery (CSRF) relies on the browser automatically attaching a credential, such as a cookie, to a request that another site causes it to make.
+        Because the JWT is sent in the \textbf{Authorization} header by the front end code and is not stored in a cookie, the browser never attaches it automatically, and the attack does not work.
+        \begin{enumerate}[leftmargin=3\parindent]
+            \item \textbf{Normal request.} The front end reads the JWT from session storage and sets the \textbf{Authorization: Bearer} header. The back end finds the user from the JWT and handles the request.
+            \item \textbf{Forged request.} A malicious site can make the browser send a request to the back end, for example by submitting a form, but it cannot read the JWT from this site, and the browser does not add the header. The request arrives without a JWT and the back end returns \textbf{401 Unauthorized}, so nothing is changed.
+            \item \textbf{No cookies.} The back end must not use a cookie to authenticate any request. If a cookie were ever added, this protection would no longer apply, and CSRF tokens and \textbf{SameSite} cookies would be required.
+            \item \textbf{CORS.} The back end will only allow the origin of the front end. A cross-origin request that sets the \textbf{Authorization} header causes the browser to send a preflight request first, and the back end will reject the preflight from any other origin.
+            \item \textbf{Cross Site Scripting.} Since the JWT can be read by scripts running on the page, a Cross Site Scripting (XSS) attack could steal it. The front end must escape all user supplied content, must not use inline scripts or third party scripts, and will use a Content Security Policy. The 8 hour JWT lifetime and the deletion of the userid-hash on logout limit the damage.
         \end{enumerate}
 
 \newpage %
@@ -399,6 +417,7 @@ This section covers general endpoints that are known at the time of design, the 
 
     \subsection{Front End}
     \begin{enumerate}[leftmargin=3\parindent]
+        \item Bearer token: A token that is sent in the \textbf{Authorization} header as \texttt{Authorization: Bearer <token>}, and that grants access to whoever presents it. The JWT is used as a bearer token, as defined in RFC 6750.
         \item anti-replay: anti-replay is a method of ensuring that data sent to the server cannot be sent more than once by including a token that must be sent with each request that changes.
     \end{enumerate}
     \subsection{Database}
@@ -408,6 +427,9 @@ This section covers general endpoints that are known at the time of design, the 
 % Add the references at the end
 \referencesSection[
     \item OpenAPI Specification \url{https://openapis.org}
+    \item RFC 6750, The OAuth 2.0 Authorization Framework: Bearer Token Usage \url{https://datatracker.ietf.org/doc/html/rfc6750}
+    \item RFC 7519, JSON Web Token (JWT) \url{https://datatracker.ietf.org/doc/html/rfc7519}
+    \item OWASP Session Management Cheat Sheet \url{https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html}
 ]
 
 \end{document}
