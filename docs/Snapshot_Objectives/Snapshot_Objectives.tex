@@ -18,7 +18,7 @@ There are 4 Snaphots:
 	\begin{enumerate}[leftmargin=3\parindent]
 		\item Snapshot 1 (Start)
 		\item Snapshot 2 (Checkpoint 1)
-		\item Snapshot 2 (Checkpoint 3)
+		\item Snapshot 3 (Checkpoint 3)
 		\item Snapshot 4 (Original Due Date)
 	\end{enumerate}
 
@@ -35,22 +35,23 @@ This document outlines the targets for each snapshot and the work that will be d
 \section{Overview}
 Our goals for the start is to set up the base framework of the project and have a base website. The objective for the first 4 months of our project is to have a full framework for the website with some features implemented including giving different types of accounts (students, faculty, admin) different permissions, and allowing different types of accounts to access certain parts of the website while restricting access to other parts. Everyone on our team will be able to work on both the frontend and backend since they both use JavaScript.
 
-The first Snapshot is fine grained and covers the first month of development towards an MVP (Minimum Viable Product), which is defined as the basic site running with users able to access it.
+The first Snapshot is fine grained and covers the first 2 months of development towards an MVP (Minimum Viable Product), which is defined as the basic site running with users able to access it.
+
 Snapshots 2-4 have a wider timeline and are not as fine grained and cover features that are being added.
 
 
 \newpage %
 \section{Snapshot 1 (Start)}
 Snapshot 1 fine grained and covers the first 4 sprints of development towards an MVP (Minimum Viable Product), which is defined as the basic site running with users able to access it.
-Initial sprints will be 1 week at a time to allow for faster iteration, followed by standard 2 week sprints.
+The first 4 Sprints will be 1 week long to allow for faster iteration.
+The following sprints will be standard 2 week sprints.
 
 \subsection {Sprint 1: Define Requirements}
-
-In the first sprint we will define and design the requirements for the Minimum Viable Product (MVP) of the Golden Eagle Flight plan.
+In Sprint 1 we will define and design the requirements for the Minimum Viable Product (MVP) of the Golden Eagle Flight plan.
 This involves determining which requirements from the \emph{SRS v1.1.0} apply to the features and developing in depth requirements and design for those features.
 
 
-At the end of the first spring we will have the requirements for our user types, login/logout and will have determined where we are hosting the site, what technology stack we are using, and have basic development environments setup.
+At the end of the first sprint we will have the requirements for our user types, login/logout and will have determined where we are hosting the site, what technology stack we are using, and have basic development environments setup.
 
 	\begin{todolist}[leftmargin=3\parindent]
 		\item User Type requirements defined and updated in \emph{SRS}.
@@ -63,55 +64,93 @@ At the end of the first spring we will have the requirements for our user types,
 	\end{todolist}
 
 \subsection {Sprint 2: MVP Design}
-The second week, we will begin the design for the MVP, which is a site that allows users to login, logout and can be hosted somewhere.
+In Sprint 2 we will begin the design for the MVP, which is a site that allows users to login, logout and can be hosted somewhere.
 This design will include selection of the technology stack and selection of the hosting provider.
-	\begin{enumerate}[leftmargin=3\parindent]
+	\begin{todolist}[leftmargin=3\parindent]
 		\item User Creation design.
 		\item Login/Logout/User design.
 		\item User Type Desgin.
 		\item User Database Schema design.
 		\item Basic site running in development and deployed.
-	\end{enumerate}
+		\item Intial OpenAPI specs for the Login/Logout/User to allow building Front End/BackEnd.
+	\end{todolist}
 
-At the end of the second week, we will have our site running and engineers will be ready to start development.
+At the end of Sprint 2, we will have our site running and engineers will be ready to start development.
 We will start with design of User Types, and login/logout, with a stretch goal of having a site that has login and logout functionality and is ready to start adding users to.
 
 
 \subsection {Sprint 3: MVP Basics}
-The 3rd week we will work on the basics of making sure we can create users, login and logout.
+In Sprint 3 we will work on the basics of making sure we can create users, login and logout.
 This is when the first implementations of roles and approvals will be working.
 
-	\begin{enumerate}[leftmargin=3\parindent]
+	\begin{todolist}[leftmargin=3\parindent]
 		\item User Creation implementation.
 		\item Login/Logout/User implementation.
 		\item Initial Permissions work, and users can be created and login and logout.
 		\item Admins can create any type of user.
-	\end{enumerate}
+		\item Database will have the tables for users roles and permissions.
+	\end{todolist}
 
 
 \subsection {Sprint 4: Setting Roles}
-The 4th week we will create the appropriate roles for users. We will begin assigning permissions to these roles so that users have restricted access based on their roles. Permissions related to specific actions that can be performed on the website will be added when those actions are added.
-	\begin{enumerate}[leftmargin=3\parindent]
+In Sprint 4 we will create the appropriate roles for users. We will begin assigning permissions to these roles so that users have restricted access based on their roles. Permissions related to specific actions that can be performed on the website will be added when those actions are added.
+	\begin{todolist}[leftmargin=3\parindent]
 		\item Creation of Admin, Student, Faculty, and Student Organization roles.
 		\item Implementation of a webpage that allows admins to edit permissions. 
 		\item Adding global permissions for every logged in user.
 		\item Adding role-specific permissions for implemented features.
-	\end{enumerate}
+		\item Adding roles table to the database.
+		\item Adding test pages that are only accessible with specific permissions to validate permissions.
+	\end{todolist}
+
+\subsection {Sprint 5: Homepage}
+Sprint 5 will be our first 2 week sprint.
+At this point we will have a working login/logout and OpenAPI Specs that allow for authorization.
+We will have the basic permissions in place and test pages that allow us to validate permissions.
+This groundwork will allow us to start adding features that are based on roles, and build up the home page.
+
+We will work on the design of the homepage the user sees upon logging in. The homepage will contain important announcements and information related to the user which will be added later and it will contain buttons to redirect the user to other parts of the website.
+	\begin{todolist}[leftmargin=3\parindent]
+		\item Design of the homepage.
+		\item Creation of homepage.
+		\item Integrating links into the homepage.
+		\item Adding a settings dropdown menu to the homepage.
+	\end{todolist}
+
+\subsection {Sprint 6: Events}
+Sprint 6 is where the first real user visible features start to land.
+Now that we have a homepage, and users working, we will start building support for events.
+
+The first version of events will be ones that all users can see.
+The RVSP features will not be implemented, and any Faculty or Student Organization can post an event.
+This will allow us to prove out the design of events with minimal effort as there will be a number of unforseen issues in this area.
+
+A stretch goal will be to determine what should control visiblity of events to users and to gather feedback on how to integrate the events.
+
+	\begin{todolist}[leftmargin=3\parindent]
+		\item Design of event pages.
+		\item Event database and API updates.
+		\item Creation of event pages.
+		\item Add calendar widget to the homepage.
+		\item Add Create Event page.
+		\item Cancel Event page.
+		\item SPIKE: Examine ical/google calendar/outlook calendar integration for the future.
+		\item STRETCH: Reach out to users to research what they think is important for events.
+	\end{todolist}
+
+At the end of this sprint the home page should show all upcoming events, and Faculty and Students Organizations should be able to create events.
+
+There is a SPIKE goal here, which is research around determining what is required for calendar integration at a later date. This exists to make sure that we can make early design choices that allow calendar integration later.
+
+There is a STRETCH goal here, which is to work with users of all kinds to find the missing edges for the events.
+
+\newpage %
+
+
 \newpage %
 \section {Snapshot 2 (Checkpoint 1)}
 
-\subsection {Sprint 5: Homepage}
-The first sprint we will work on the design of the homepage the user sees upon logging in. The homepage will contain important announcements and information related to the user which will be added later and it will contain buttons to redirect the user to other parts of the website.
-	\begin{enumerate}[leftmargin=3\parindent]
-		\item Creation of homepage.
-		\item Design of the homepage.
-		\item Integrating links into the hoomepage.
-		\item Adding a settings dropdown menu to the homepage. 
-	\end{enumerate}
 
-
-\subsection {Sprint 6: }
-\newpage %
 \section {Snapshot 3 (Checkpoint 3)}
 \newpage %
 \section {Snapshot 4 (Original Due Date)}
