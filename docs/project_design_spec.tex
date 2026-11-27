@@ -145,20 +145,13 @@ This diagram shows how someone signs up for an account. Students can register di
 This is a conceptual model of the information the system needs. The User, Role, and Profile records come from our SDD. Event information comes from the SRS, and RSVP is shown as a proposed record for tracking event responses. Exact field names and database relationships still need to be agreed on by the team.
 
 \clearpage
-\newgeometry{margin=0.35in}
-\begin{landscape}
-\thispagestyle{empty}
 \begin{center}
 \includegraphics[width=0.98\linewidth,height=0.97\textheight,keepaspectratio]{diagrams/Use_Case_Diagram.png}
 \end{center}
-\end{landscape}
 
-\begin{landscape}
-\thispagestyle{empty}
 \begin{center}
 \includegraphics[width=0.98\linewidth,height=0.97\textheight,keepaspectratio]{diagrams/Activity_Diagram.png}
 \end{center}
-\end{landscape}
 
 \begin{landscape}
 \thispagestyle{empty}
@@ -171,14 +164,14 @@ This is a conceptual model of the information the system needs. The User, Role, 
 
 \newpage %
 \section{Things We Still Need to Confirm}
-\begin{todolist}[leftmargin=3\parindent]
-\item \done Are we keeping React for the web frontend or planning to introduce React Native/Expo later? \textit{React Native/Expo will be added in a later snapshot.}
-\item \done Which snapshot contains events, RSVPs, scoreboard, and personalized filtering? \textit{Basic events are in Snapshot 1 (Sprint 6), and RSVPs and the scoreboard are in Snapshot 2, as described in the Snapshot Objectives. Personalized event filtering and resources are proposed for Snapshot 3.}
-\item \done Will the group keep the current React/PostgreSQL starter or switch to the original React Native/Expo and MongoDB Atlas architecture? \textit{React/PostgreSQL and React Native/Expo PostgreSQL will be added in a later snapshot.}
-\item \done What student-profile information may faculty access, and under what authorization conditions? \textit{The SDD Profile Access section says faculty and admins can search for and view student profiles and student organizations cannot. Which individual profile fields are visible will be decided when the profile contents are designed.}
-\item \done What is the finalized data schema and API route design? \textit{For Snapshot 1, the SDD defines the account tables (users, roles, profiles, authentication, password reset, and security event) and the account endpoints. The event and RSVP tables, and the full OpenAPI specification, will be added in later snapshots.}
-\item \done Have the team review the UML diagrams, and keep Juan's high-level workflow diagram as a separate deliverable? \textit{These have been added.}
-\end{todolist}
+	\begin{todolist}[leftmargin=3\parindent]
+		\item \done Are we keeping React for the web frontend or planning to introduce React Native/Expo later? \textit{React Native/Expo will be added in a later snapshot.}
+		\item \done Which snapshot contains events, RSVPs, scoreboard, and personalized filtering? \textit{Basic events are in Snapshot 1 (Sprint 6), and RSVPs and the scoreboard are in Snapshot 2, as described in the Snapshot Objectives. Personalized event filtering and resources are proposed for Snapshot 3.}
+		\item \done Will the group keep the current React/PostgreSQL starter or switch to the original React Native/Expo and MongoDB Atlas architecture? \textit{React/PostgreSQL and React Native/Expo PostgreSQL will be added in a later snapshot.}
+		\item \done What student-profile information may faculty access, and under what authorization conditions? \textit{The SDD Profile Access section says faculty and admins can search for and view student profiles and student organizations cannot. Which individual profile fields are visible will be decided when the profile contents are designed.}
+		\item \done What is the finalized data schema and API route design? \textit{For Snapshot 1, the SDD defines the account tables (users, roles, profiles, authentication, password reset, and security event) and the account endpoints. The event and RSVP tables, and the full OpenAPI specification, will be added in later snapshots.}
+		\item \done Have the team review the UML diagrams, and keep Juan's high-level workflow diagram as a separate deliverable? \textit{These have been added.}
+	\end{todolist}
 
 
 \newpage %
